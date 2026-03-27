@@ -1,22 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProductByHandle } from "@/lib/shopify";
 
-const VALID_STORES = ["zepory", "nautictalk"] as const;
-type Store = (typeof VALID_STORES)[number];
-
-const STORE_LABELS: Record<Store, string> = {
-  zepory: "Zepory",
-  nautictalk: "Nautic Talk",
-};
-
-function isValidStore(value: string): value is Store {
-  return VALID_STORES.includes(value as Store);
-}
-
 function formatPrice(amount: string, currency: string) {
-  return new Intl.NumberFormat("en-US", {
+  return new Intl.NumberFormat("es-ES", {
     style: "currency",
     currency,
   }).format(parseFloat(amount));
@@ -25,34 +12,29 @@ function formatPrice(amount: string, currency: string) {
 export async function generateMetadata({
   params,
 }: {
-  params: { store: string; handle: string };
+  params: { handle: string };
 }) {
-  if (!isValidStore(params.store)) return {};
-  const product = await getProductByHandle(params.store, params.handle);
+  const product = await getProductByHandle("zepory", params.handle);
   if (!product) return {};
   return {
-    title: `${product.title} | ${STORE_LABELS[params.store]} | Shipstore`,
+    title: `${product.title} | Zepory`,
   };
 }
 
 export default async function ProductPage({
   params,
 }: {
-  params: { store: string; handle: string };
+  params: { handle: string };
 }) {
-  if (!isValidStore(params.store)) {
-    notFound();
-  }
-
   let product;
   try {
-    product = await getProductByHandle(params.store, params.handle);
+    product = await getProductByHandle("zepory", params.handle);
   } catch {
     return (
       <div className="error-message">
-        <p>Failed to load product. Check your environment variables.</p>
-        <Link href={`/${params.store}`} style={{ color: "#a78bfa" }}>
-          Back to {STORE_LABELS[params.store]}
+        <p>No se pudo cargar el producto. Verifica las variables de entorno.</p>
+        <Link href="/productos" style={{ color: "var(--teal)" }}>
+          &larr; Volver a productos
         </Link>
       </div>
     );
@@ -70,9 +52,9 @@ export default async function ProductPage({
     <>
       <div className="page-header">
         <div className="page-header-breadcrumb">
-          <Link href="/">Home</Link> &nbsp;/&nbsp;{" "}
-          <Link href={`/${params.store}`}>{STORE_LABELS[params.store]}</Link>{" "}
-          &nbsp;/&nbsp; {product.title}
+          <Link href="/">Inicio</Link> &nbsp;/&nbsp;{" "}
+          <Link href="/productos">Productos</Link> &nbsp;/&nbsp;{" "}
+          {product.title}
         </div>
       </div>
 
@@ -80,12 +62,9 @@ export default async function ProductPage({
         <div className="product-images">
           {mainImage && (
             <div className="product-main-image">
-              <Image
+              <img
                 src={mainImage.url}
                 alt={mainImage.altText ?? product.title}
-                width={mainImage.width}
-                height={mainImage.height}
-                priority
               />
             </div>
           )}
@@ -93,11 +72,9 @@ export default async function ProductPage({
             <div className="product-thumbnails">
               {additionalImages.map(({ node: image }, index) => (
                 <div key={index} className="product-thumbnail">
-                  <Image
+                  <img
                     src={image.url}
                     alt={image.altText ?? `${product.title} ${index + 2}`}
-                    width={image.width}
-                    height={image.height}
                   />
                 </div>
               ))}
@@ -106,6 +83,7 @@ export default async function ProductPage({
         </div>
 
         <div className="product-info">
+          <div className="product-vendor">AMERICOL</div>
           <h1>{product.title}</h1>
           <div className="product-price">
             {formatPrice(price.amount, price.currencyCode)}
@@ -117,7 +95,7 @@ export default async function ProductPage({
 
           {product.variants && product.variants.edges.length > 1 && (
             <>
-              <div className="product-variants-label">Options</div>
+              <div className="product-variants-label">Opciones</div>
               <div className="product-variants">
                 {product.variants.edges.map(({ node: variant }) => (
                   <span
@@ -133,7 +111,7 @@ export default async function ProductPage({
             </>
           )}
 
-          <button className="add-to-cart-btn">Add to Cart</button>
+          <button className="add-to-cart-btn">Comprar ahora &rarr;</button>
         </div>
       </div>
     </>
