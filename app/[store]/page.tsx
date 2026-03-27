@@ -28,6 +28,13 @@ export async function generateMetadata({
   return { title: `${STORE_LABELS[params.store]} | Shipstore` };
 }
 
+function formatPrice(amount: string, currency: string) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency,
+  }).format(parseFloat(amount));
+}
+
 export default async function StorePage({
   params,
 }: {
@@ -48,27 +55,31 @@ export default async function StorePage({
   }
 
   return (
-    <div style={{ maxWidth: "960px", margin: "0 auto" }}>
-      <h1>{STORE_LABELS[params.store]} Products</h1>
+    <>
+      <div className="page-header">
+        <div className="page-header-breadcrumb">
+          <Link href="/">Home</Link> &nbsp;/&nbsp; {STORE_LABELS[params.store]}
+        </div>
+        <h1>{STORE_LABELS[params.store]}</h1>
+        <p>
+          {products.length > 0
+            ? `${products.length} product${products.length === 1 ? "" : "s"}`
+            : "Browse our collection"}
+        </p>
+      </div>
 
       {error && (
-        <p style={{ color: "#dc2626" }}>
-          Could not load products: {error}. Make sure your environment
-          variables are configured.
+        <p className="error-message">
+          Could not load products. Make sure your environment variables are
+          configured.
         </p>
       )}
 
       {!error && products.length === 0 && (
-        <p style={{ color: "#6b7280" }}>No products found.</p>
+        <p className="empty-message">No products found yet.</p>
       )}
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
-          gap: "1.5rem",
-        }}
-      >
+      <div className="product-grid">
         {products.map((product) => {
           const image = product.images.edges[0]?.node;
           const price = product.priceRange.minVariantPrice;
@@ -77,33 +88,28 @@ export default async function StorePage({
             <Link
               key={product.id}
               href={`/${params.store}/products/${product.handle}`}
-              style={{
-                textDecoration: "none",
-                color: "inherit",
-                border: "1px solid #e5e7eb",
-                borderRadius: "0.5rem",
-                overflow: "hidden",
-              }}
+              className="product-card"
             >
-              {image && (
-                <Image
-                  src={image.url}
-                  alt={image.altText ?? product.title}
-                  width={image.width}
-                  height={image.height}
-                  style={{ width: "100%", height: "auto" }}
-                />
-              )}
-              <div style={{ padding: "1rem" }}>
-                <h3 style={{ margin: "0 0 0.25rem" }}>{product.title}</h3>
-                <p style={{ margin: 0, color: "#6b7280" }}>
-                  {price.amount} {price.currencyCode}
-                </p>
+              <div className="product-card-image">
+                {image && (
+                  <Image
+                    src={image.url}
+                    alt={image.altText ?? product.title}
+                    width={image.width}
+                    height={image.height}
+                  />
+                )}
+              </div>
+              <div className="product-card-info">
+                <div className="product-card-title">{product.title}</div>
+                <div className="product-card-price">
+                  {formatPrice(price.amount, price.currencyCode)}
+                </div>
               </div>
             </Link>
           );
         })}
       </div>
-    </div>
+    </>
   );
 }

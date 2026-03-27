@@ -15,6 +15,13 @@ function isValidStore(value: string): value is Store {
   return VALID_STORES.includes(value as Store);
 }
 
+function formatPrice(amount: string, currency: string) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency,
+  }).format(parseFloat(amount));
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -42,12 +49,11 @@ export default async function ProductPage({
     product = await getProductByHandle(params.store, params.handle);
   } catch {
     return (
-      <div style={{ maxWidth: "960px", margin: "0 auto" }}>
-        <p style={{ color: "#dc2626" }}>
-          Failed to load product. Make sure your environment variables are
-          configured.
-        </p>
-        <Link href={`/${params.store}`}>Back to {STORE_LABELS[params.store]}</Link>
+      <div className="error-message">
+        <p>Failed to load product. Check your environment variables.</p>
+        <Link href={`/${params.store}`} style={{ color: "#a78bfa" }}>
+          Back to {STORE_LABELS[params.store]}
+        </Link>
       </div>
     );
   }
@@ -57,80 +63,79 @@ export default async function ProductPage({
   }
 
   const price = product.priceRange.minVariantPrice;
+  const mainImage = product.images.edges[0]?.node;
+  const additionalImages = product.images.edges.slice(1);
 
   return (
-    <div style={{ maxWidth: "960px", margin: "0 auto" }}>
-      <Link
-        href={`/${params.store}`}
-        style={{ color: "#4f46e5", textDecoration: "none" }}
-      >
-        &larr; Back to {STORE_LABELS[params.store]}
-      </Link>
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "2rem",
-          marginTop: "1.5rem",
-        }}
-      >
-        <div>
-          {product.images.edges.map(({ node: image }, index) => (
-            <Image
-              key={index}
-              src={image.url}
-              alt={image.altText ?? product.title}
-              width={image.width}
-              height={image.height}
-              style={{
-                width: "100%",
-                height: "auto",
-                borderRadius: "0.5rem",
-                marginBottom: "1rem",
-              }}
-            />
-          ))}
+    <>
+      <div className="page-header">
+        <div className="page-header-breadcrumb">
+          <Link href="/">Home</Link> &nbsp;/&nbsp;{" "}
+          <Link href={`/${params.store}`}>{STORE_LABELS[params.store]}</Link>{" "}
+          &nbsp;/&nbsp; {product.title}
         </div>
+      </div>
 
-        <div>
-          <h1 style={{ marginTop: 0 }}>{product.title}</h1>
-          <p
-            style={{
-              fontSize: "1.5rem",
-              fontWeight: 600,
-              color: "#111",
-            }}
-          >
-            {price.amount} {price.currencyCode}
-          </p>
-
-          {product.description && (
-            <p style={{ color: "#374151", lineHeight: 1.6 }}>
-              {product.description}
-            </p>
+      <div className="product-detail">
+        <div className="product-images">
+          {mainImage && (
+            <div className="product-main-image">
+              <Image
+                src={mainImage.url}
+                alt={mainImage.altText ?? product.title}
+                width={mainImage.width}
+                height={mainImage.height}
+                priority
+              />
+            </div>
           )}
-
-          {product.variants && product.variants.edges.length > 1 && (
-            <div style={{ marginTop: "1.5rem" }}>
-              <h3>Variants</h3>
-              <ul style={{ paddingLeft: "1.25rem" }}>
-                {product.variants.edges.map(({ node: variant }) => (
-                  <li key={variant.id} style={{ marginBottom: "0.5rem" }}>
-                    {variant.title} &mdash; {variant.price.amount}{" "}
-                    {variant.price.currencyCode}
-                    {!variant.availableForSale && (
-                      <span style={{ color: "#dc2626", marginLeft: "0.5rem" }}>
-                        (Sold out)
-                      </span>
-                    )}
-                  </li>
-                ))}
-              </ul>
+          {additionalImages.length > 0 && (
+            <div className="product-thumbnails">
+              {additionalImages.map(({ node: image }, index) => (
+                <div key={index} className="product-thumbnail">
+                  <Image
+                    src={image.url}
+                    alt={image.altText ?? `${product.title} ${index + 2}`}
+                    width={image.width}
+                    height={image.height}
+                  />
+                </div>
+              ))}
             </div>
           )}
         </div>
+
+        <div className="product-info">
+          <h1>{product.title}</h1>
+          <div className="product-price">
+            {formatPrice(price.amount, price.currencyCode)}
+          </div>
+
+          {product.description && (
+            <p className="product-description">{product.description}</p>
+          )}
+
+          {product.variants && product.variants.edges.length > 1 && (
+            <>
+              <div className="product-variants-label">Options</div>
+              <div className="product-variants">
+                {product.variants.edges.map(({ node: variant }) => (
+                  <span
+                    key={variant.id}
+                    className={`variant-chip${
+                      !variant.availableForSale ? " variant-chip--soldout" : ""
+                    }`}
+                  >
+                    {variant.title}
+                  </span>
+                ))}
+              </div>
+            </>
+          )}
+
+          <button className="add-to-cart-btn">Add to Cart</button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

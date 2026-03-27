@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Shipstore",
@@ -13,42 +14,28 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body style={{ margin: 0, fontFamily: "system-ui, sans-serif" }}>
-        <nav
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "1.5rem",
-            padding: "1rem 2rem",
-            borderBottom: "1px solid #e5e7eb",
-            backgroundColor: "#fff",
-          }}
-        >
-          <Link
-            href="/"
-            style={{
-              fontWeight: 700,
-              fontSize: "1.25rem",
-              textDecoration: "none",
-              color: "#111",
-            }}
-          >
+      <body>
+        <nav className="nav">
+          <Link href="/" className="nav-logo">
             Shipstore
           </Link>
-          <Link
-            href="/zepory"
-            style={{ textDecoration: "none", color: "#4f46e5" }}
-          >
-            Zepory
-          </Link>
-          <Link
-            href="/nautictalk"
-            style={{ textDecoration: "none", color: "#0e7490" }}
-          >
-            Nautic Talk
-          </Link>
+          <ul className="nav-links">
+            <li>
+              <Link href="/zepory" className="nav-link">
+                Zepory
+              </Link>
+            </li>
+            <li>
+              <Link href="/nautictalk" className="nav-link">
+                Nautic Talk
+              </Link>
+            </li>
+          </ul>
         </nav>
-        <main style={{ padding: "2rem" }}>{children}</main>
+        {children}
+        <footer className="footer">
+          &copy; {new Date().getFullYear()} Shipstore. All rights reserved.
+        </footer>
       </body>
     </html>
   );
