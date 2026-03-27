@@ -37,7 +37,9 @@ async function shopifyFetch<T>(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-Shopify-Storefront-Access-Token": config.storefrontAccessToken,
+      ...(config.storefrontAccessToken.startsWith("shpat_")
+        ? { "Shopify-Storefront-Private-Token": config.storefrontAccessToken }
+        : { "X-Shopify-Storefront-Access-Token": config.storefrontAccessToken }),
     },
     body: JSON.stringify({ query, variables }),
   });
