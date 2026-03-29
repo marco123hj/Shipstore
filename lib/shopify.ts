@@ -31,7 +31,7 @@ async function shopifyFetch<T>(
   variables?: Record<string, unknown>
 ): Promise<T> {
   const config = getStoreConfig(store);
-  const url = `https://${config.storeDomain}/api/2024-01/graphql.json`;
+  const url = `https://${config.storeDomain}/api/2025-01/graphql.json`;
 
   const response = await fetch(url, {
     method: "POST",
@@ -42,6 +42,7 @@ async function shopifyFetch<T>(
         : { "X-Shopify-Storefront-Access-Token": config.storefrontAccessToken }),
     },
     body: JSON.stringify({ query, variables }),
+    cache: "no-store",
   });
 
   if (!response.ok) {
