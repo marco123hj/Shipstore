@@ -54,10 +54,12 @@ export default async function HomePage() {
           </div>
         </div>
         <div className="hero-images">
-          <div className="hero-image" style={{ background: "#dbeafe" }}>
+          <div className="hero-image">
+            <img src="/hero-barcos.jpg" alt="Yates y barcos" />
             <div className="hero-image-label">Yates &amp; Barcos</div>
           </div>
-          <div className="hero-image" style={{ background: "#e0f2fe" }}>
+          <div className="hero-image">
+            <img src="/hero-cocinas.jpg" alt="Cocinas" />
             <div className="hero-image-label">Cocinas</div>
           </div>
         </div>
