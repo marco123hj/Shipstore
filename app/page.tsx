@@ -55,11 +55,11 @@ export default async function HomePage() {
         </div>
         <div className="hero-images">
           <div className="hero-image">
-            <img src="/hero-barcos.jpg" alt="Yates y barcos" />
+            <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=600&h=750&fit=crop" alt="Yates y barcos" />
             <div className="hero-image-label">Yates &amp; Barcos</div>
           </div>
           <div className="hero-image">
-            <img src="/hero-cocinas.jpg" alt="Cocinas" />
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=750&fit=crop" alt="Cocinas" />
             <div className="hero-image-label">Cocinas</div>
           </div>
         </div>
