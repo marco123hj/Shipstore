@@ -17,7 +17,7 @@ export default async function ProductsPage() {
   let error: string | null = null;
 
   try {
-    products = await getProducts("zepory", 50);
+    products = await getProducts(50);
   } catch (err) {
     error = err instanceof Error ? err.message : "Failed to load products";
   }

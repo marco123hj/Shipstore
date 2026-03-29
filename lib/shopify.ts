@@ -1,53 +1,46 @@
-type StoreName = "zepory" | "nautictalk";
-
 interface ShopifyStoreConfig {
   storeDomain: string;
   storefrontAccessToken: string;
 }
 
-function getStoreConfig(store: StoreName): ShopifyStoreConfig {
-  if (store === "zepory") {
-    return {
-      storeDomain:
-        process.env.NEXT_PUBLIC_ZEPORY_SHOPIFY_STORE_DOMAIN ??
-        "zepory.myshopify.com",
-      storefrontAccessToken:
-        process.env.ZEPORY_SHOPIFY_STOREFRONT_ACCESS_TOKEN ?? "",
-    };
-  }
-
+function getStoreConfig(): ShopifyStoreConfig {
   return {
     storeDomain:
-      process.env.NEXT_PUBLIC_NAUTICTALK_SHOPIFY_STORE_DOMAIN ??
-      "nautictalk.myshopify.com",
+      process.env.NEXT_PUBLIC_ZEPORY_SHOPIFY_STORE_DOMAIN ??
+      "zepory.myshopify.com",
     storefrontAccessToken:
-      process.env.NAUTICTALK_SHOPIFY_STOREFRONT_ACCESS_TOKEN ?? "",
+      process.env.ZEPORY_SHOPIFY_STOREFRONT_ACCESS_TOKEN ?? "",
   };
 }
 
 async function shopifyFetch<T>(
-  store: StoreName,
   query: string,
   variables?: Record<string, unknown>
 ): Promise<T> {
-  const config = getStoreConfig(store);
-  const url = `https://${config.storeDomain}/api/2025-01/graphql.json`;
+  const config = getStoreConfig();
+  const url = `https://${config.storeDomain}/api/2024-10/graphql.json`;
+
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+  };
+
+  if (config.storefrontAccessToken.startsWith("shpat_")) {
+    headers["Shopify-Storefront-Private-Token"] = config.storefrontAccessToken;
+  } else {
+    headers["X-Shopify-Storefront-Access-Token"] = config.storefrontAccessToken;
+  }
 
   const response = await fetch(url, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      ...(config.storefrontAccessToken.startsWith("shpat_")
-        ? { "Shopify-Storefront-Private-Token": config.storefrontAccessToken }
-        : { "X-Shopify-Storefront-Access-Token": config.storefrontAccessToken }),
-    },
+    headers,
     body: JSON.stringify({ query, variables }),
     cache: "no-store",
   });
 
   if (!response.ok) {
+    const text = await response.text();
     throw new Error(
-      `Shopify API error for ${store}: ${response.status} ${response.statusText}`
+      `Shopify API error: ${response.status} ${response.statusText} — ${text}`
     );
   }
 
@@ -193,21 +186,18 @@ interface ProductByHandleResponse {
 // ---------- Public helpers ----------
 
 export async function getProducts(
-  store: StoreName,
   first: number = 20
 ): Promise<ShopifyProduct[]> {
-  const data = await shopifyFetch<ProductsResponse>(store, PRODUCTS_QUERY, {
+  const data = await shopifyFetch<ProductsResponse>(PRODUCTS_QUERY, {
     first,
   });
   return data.products.edges.map((edge) => edge.node);
 }
 
 export async function getProductByHandle(
-  store: StoreName,
   handle: string
 ): Promise<ShopifyProduct | null> {
   const data = await shopifyFetch<ProductByHandleResponse>(
-    store,
     PRODUCT_BY_HANDLE_QUERY,
     { handle }
   );

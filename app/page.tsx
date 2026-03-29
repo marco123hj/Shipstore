@@ -11,7 +11,7 @@ function formatPrice(amount: string, currency: string) {
 export default async function HomePage() {
   let products: ShopifyProduct[] = [];
   try {
-    products = await getProducts("zepory", 10);
+    products = await getProducts(10);
   } catch {
     // Products will be empty, sections will handle gracefully
   }

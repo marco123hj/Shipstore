@@ -14,7 +14,7 @@ export async function generateMetadata({
 }: {
   params: { handle: string };
 }) {
-  const product = await getProductByHandle("zepory", params.handle);
+  const product = await getProductByHandle(params.handle);
   if (!product) return {};
   return {
     title: `${product.title} | Zepory`,
@@ -28,7 +28,7 @@ export default async function ProductPage({
 }) {
   let product;
   try {
-    product = await getProductByHandle("zepory", params.handle);
+    product = await getProductByHandle(params.handle);
   } catch {
     return (
       <div className="error-message">
