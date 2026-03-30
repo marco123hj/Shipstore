@@ -83,7 +83,7 @@ export default async function ProductPage({
         </div>
 
         <div className="product-info">
-          <div className="product-vendor">AMERICOL</div>
+          <div className="product-vendor">{product.vendor || "ZEPORY"}</div>
           <h1>{product.title}</h1>
           <div className="product-price">
             {formatPrice(price.amount, price.currencyCode)}

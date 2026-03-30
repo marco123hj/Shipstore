@@ -141,7 +141,7 @@ export default async function HomePage() {
                       )}
                     </div>
                     <div className="product-card-info">
-                      <div className="product-card-vendor">AMERICOL</div>
+                      <div className="product-card-vendor">{product.vendor || "ZEPORY"}</div>
                       <div className="product-card-title">{product.title}</div>
                       <div className="product-card-bottom">
                         <span className="product-card-price">
