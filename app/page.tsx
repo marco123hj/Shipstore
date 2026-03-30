@@ -11,7 +11,7 @@ function formatPrice(amount: string, currency: string) {
 export default async function HomePage() {
   let products: ShopifyProduct[] = [];
   try {
-    products = await getProducts(10);
+    products = await getProducts(4);
   } catch {
     // Products will be empty, sections will handle gracefully
   }
@@ -71,9 +71,7 @@ export default async function HomePage() {
           <div className="trust-item">
             <div className="trust-icon">&#9989;</div>
             <div className="trust-title">Grado Profesional</div>
-            <div className="trust-desc">
-              Certificaci&oacute;n A1, HACCP, normativa UE
-            </div>
+            <div className="trust-desc">Certificaci&oacute;n A1, HACCP, normativa UE</div>
           </div>
           <div className="trust-item">
             <div className="trust-icon">&#127968;</div>
@@ -83,9 +81,7 @@ export default async function HomePage() {
           <div className="trust-item">
             <div className="trust-icon">&#128666;</div>
             <div className="trust-title">Env&iacute;o 24-72h</div>
-            <div className="trust-desc">
-              Espa&ntilde;a y toda Europa
-            </div>
+            <div className="trust-desc">Espa&ntilde;a y toda Europa</div>
           </div>
           <div className="trust-item">
             <div className="trust-icon">&#128230;</div>
@@ -95,7 +91,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* FEATURED PRODUCTS */}
+      {/* FEATURED PRODUCTS — only 4 */}
       <section className="section">
         <div className="section-label">Cat&aacute;logo</div>
         <div className="section-title">Productos destacados</div>
@@ -105,18 +101,10 @@ export default async function HomePage() {
 
         {products.length > 0 ? (
           <>
-            <div className="product-grid">
+            <div className="product-grid product-grid--4">
               {products.map((product, index) => {
                 const image = product.images.edges[0]?.node;
                 const price = product.priceRange.minVariantPrice;
-                const badges = ["TOP", "PRO", "PREMIUM", "", ""];
-                const badgeClasses = [
-                  "badge--top",
-                  "badge--pro",
-                  "badge--premium",
-                  "",
-                  "",
-                ];
 
                 return (
                   <Link
@@ -125,13 +113,6 @@ export default async function HomePage() {
                     className="product-card"
                   >
                     <div className="product-card-image">
-                      {index < 3 && badges[index] && (
-                        <span
-                          className={`product-card-badge ${badgeClasses[index]}`}
-                        >
-                          {badges[index]}
-                        </span>
-                      )}
                       {image && (
                         <img
                           src={image.url}
@@ -156,7 +137,7 @@ export default async function HomePage() {
             </div>
             <div className="view-all-btn">
               <Link href="/productos">
-                Ver los {products.length}+ productos &rarr;
+                Ver todo el cat&aacute;logo &rarr;
               </Link>
             </div>
           </>
@@ -168,10 +149,7 @@ export default async function HomePage() {
       </section>
 
       {/* WHY ZEPORY */}
-      <section
-        className="section"
-        style={{ background: "var(--bg-light)", maxWidth: "100%" }}
-      >
+      <section className="section section--alt">
         <div className="section-label">&iquest;Por qu&eacute; Zepory?</div>
         <div className="section-title">Profesional y para uso diario</div>
         <div className="section-subtitle">
@@ -181,9 +159,7 @@ export default async function HomePage() {
         <div className="features-grid">
           <div className="feature-card">
             <div className="feature-icon">&#10003;</div>
-            <div className="feature-title">
-              Certificaci&oacute;n Europea
-            </div>
+            <div className="feature-title">Certificaci&oacute;n Europea</div>
             <div className="feature-desc">
               Qu&iacute;micos Americol con certificaci&oacute;n A1, HACCP y
               normativa ambiental UE completa.
