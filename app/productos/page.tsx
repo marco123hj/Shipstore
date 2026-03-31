@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getProducts, type ShopifyProduct } from "@/lib/shopify";
 
 export const metadata = {
-  title: "Productos | Zepory",
+  title: "Productos | Nautic Talk",
 };
 
 function formatPrice(amount: string, currency: string) {
@@ -67,7 +67,7 @@ export default async function ProductsPage() {
                 )}
               </div>
               <div className="product-card-info">
-                <div className="product-card-vendor">{product.vendor || "ZEPORY"}</div>
+                <div className="product-card-vendor">{product.vendor || "NAUTIC TALK"}</div>
                 <div className="product-card-title">{product.title}</div>
                 <div className="product-card-bottom">
                   <span className="product-card-price">

@@ -17,7 +17,7 @@ export async function generateMetadata({
   const product = await getProductByHandle(params.handle);
   if (!product) return {};
   return {
-    title: `${product.title} | Zepory`,
+    title: `${product.title} | Nautic Talk`,
   };
 }
 
@@ -33,7 +33,7 @@ export default async function ProductPage({
     return (
       <div className="error-message">
         <p>No se pudo cargar el producto. Verifica las variables de entorno.</p>
-        <Link href="/productos" style={{ color: "var(--teal)" }}>
+        <Link href="/productos" style={{ color: "var(--ocean)" }}>
           &larr; Volver a productos
         </Link>
       </div>
@@ -83,7 +83,7 @@ export default async function ProductPage({
         </div>
 
         <div className="product-info">
-          <div className="product-vendor">{product.vendor || "ZEPORY"}</div>
+          <div className="product-vendor">{product.vendor || "NAUTIC TALK"}</div>
           <h1>{product.title}</h1>
           <div className="product-price">
             {formatPrice(price.amount, price.currencyCode)}

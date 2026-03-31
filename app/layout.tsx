@@ -3,9 +3,9 @@ import Link from "next/link";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Zepory — Limpieza Profesional",
+  title: "Nautic Talk — Marine Communications",
   description:
-    "Limpieza de grado profesional para cada superficie. Productos certificados Americol y herramientas Vikan.",
+    "Equipos de comunicación marina profesional. VHF, AIS, antenas y más para navegación segura.",
 };
 
 export default function RootLayout({
@@ -18,10 +18,10 @@ export default function RootLayout({
       <body>
         <nav className="nav">
           <Link href="/" className="nav-left">
-            <div className="nav-logo-icon">Z</div>
+            <div className="nav-logo-icon">NT</div>
             <div className="nav-logo-text">
-              <span className="nav-logo-name">Zepory</span>
-              <span className="nav-logo-sub">Limpieza Profesional</span>
+              <span className="nav-logo-name">Nautic Talk</span>
+              <span className="nav-logo-sub">Marine Communications</span>
             </div>
           </Link>
           <ul className="nav-center">
@@ -33,11 +33,6 @@ export default function RootLayout({
             <li>
               <Link href="/productos" className="nav-link">
                 Marcas
-              </Link>
-            </li>
-            <li>
-              <Link href="/productos" className="nav-link">
-                Soluciones
               </Link>
             </li>
             <li>
@@ -55,78 +50,51 @@ export default function RootLayout({
           <div className="footer-inner">
             <div>
               <div className="footer-brand-name">
-                <div className="footer-logo-icon">Z</div>
+                <div className="footer-logo-icon">NT</div>
                 <div className="footer-logo-text">
-                  <span className="footer-logo-name">Zepory</span>
-                  <span className="footer-logo-sub">
-                    Limpieza Profesional
-                  </span>
+                  <span className="footer-logo-name">Nautic Talk</span>
+                  <span className="footer-logo-sub">Marine Communications</span>
                 </div>
               </div>
               <p className="footer-desc">
-                Limpieza profesional y uso diario para barcos, cocinas,
-                industria y hogar. Calidad certificada europea.
+                Equipos de comunicaci&oacute;n marina profesional para
+                navegaci&oacute;n segura. VHF, AIS, antenas y accesorios.
               </p>
             </div>
             <div>
               <div className="footer-col-title">Productos</div>
               <ul className="footer-links">
-                <li>
-                  <Link href="/productos">Qu&iacute;micos Americol</Link>
-                </li>
-                <li>
-                  <Link href="/productos">Herramientas Vikan</Link>
-                </li>
-                <li>
-                  <Link href="/productos">Oven &amp; Grill</Link>
-                </li>
-                <li>
-                  <Link href="/productos">Ver todo</Link>
-                </li>
+                <li><Link href="/productos">VHF</Link></li>
+                <li><Link href="/productos">AIS</Link></li>
+                <li><Link href="/productos">Antenas</Link></li>
+                <li><Link href="/productos">Ver todo</Link></li>
               </ul>
             </div>
             <div>
               <div className="footer-col-title">Soporte</div>
               <ul className="footer-links">
-                <li>
-                  <Link href="/productos">Contacto</Link>
-                </li>
-                <li>
-                  <Link href="/productos">Env&iacute;os</Link>
-                </li>
-                <li>
-                  <Link href="/productos">Devoluciones</Link>
-                </li>
-                <li>
-                  <Link href="/productos">FAQ</Link>
-                </li>
+                <li><Link href="/productos">Contacto</Link></li>
+                <li><Link href="/productos">Env&iacute;os</Link></li>
+                <li><Link href="/productos">Devoluciones</Link></li>
+                <li><Link href="/productos">FAQ</Link></li>
               </ul>
             </div>
             <div>
               <div className="footer-col-title">Legal</div>
               <ul className="footer-links">
-                <li>
-                  <Link href="/productos">Aviso legal</Link>
-                </li>
-                <li>
-                  <Link href="/productos">Privacidad</Link>
-                </li>
-                <li>
-                  <Link href="/productos">Cookies</Link>
-                </li>
-                <li>
-                  <Link href="/productos">Condiciones</Link>
-                </li>
+                <li><Link href="/productos">Aviso legal</Link></li>
+                <li><Link href="/productos">Privacidad</Link></li>
+                <li><Link href="/productos">Cookies</Link></li>
+                <li><Link href="/productos">Condiciones</Link></li>
               </ul>
             </div>
           </div>
           <div className="footer-bottom">
-            <span>&copy; {new Date().getFullYear()} Zepory</span>
+            <span>&copy; {new Date().getFullYear()} Nautic Talk</span>
             <div className="footer-payments">
               <span>VISA</span>
               <span>MC</span>
               <span>PAYPAL</span>
-              <span>BIZUM</span>
               <span>iDEAL</span>
             </div>
           </div>

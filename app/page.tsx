@@ -21,46 +21,45 @@ export default async function HomePage() {
       {/* HERO */}
       <section className="hero">
         <div className="hero-content">
-          <span className="hero-tag">Profesional + Uso Diario</span>
+          <span className="hero-tag">Comunicaci&oacute;n Mar&iacute;tima Profesional</span>
           <h1>
-            Limpieza de grado <em>profesional</em> para cada superficie
+            Equipos de comunicaci&oacute;n marina de <em>confianza</em>
           </h1>
           <p className="hero-description">
-            Barcos, cocinas industriales, cristales, tuber&iacute;as y hogar
-            &mdash; productos certificados Americol y herramientas Vikan para
-            profesionales y uso diario.
+            Radios VHF, transpondedores AIS, antenas marinas e intercomunicadores
+            &mdash; todo lo que necesitas para una navegaci&oacute;n segura y conectada.
           </p>
           <div className="hero-buttons">
             <Link href="/productos" className="btn-primary">
               Ver productos &rarr;
             </Link>
             <Link href="/productos" className="btn-secondary">
-              Pedir presupuesto
+              Contactar
             </Link>
           </div>
           <div className="hero-stats">
             <div>
-              <div className="hero-stat-value">182+</div>
+              <div className="hero-stat-value">50+</div>
               <div className="hero-stat-label">Productos</div>
-            </div>
-            <div>
-              <div className="hero-stat-value">6</div>
-              <div className="hero-stat-label">Sectores</div>
             </div>
             <div>
               <div className="hero-stat-value">24h</div>
               <div className="hero-stat-label">Env&iacute;o</div>
             </div>
+            <div>
+              <div className="hero-stat-value">2 a&ntilde;os</div>
+              <div className="hero-stat-label">Garant&iacute;a</div>
+            </div>
           </div>
         </div>
         <div className="hero-images">
           <div className="hero-image">
-            <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=600&h=750&fit=crop" alt="Yates y barcos" />
-            <div className="hero-image-label">Yates &amp; Barcos</div>
+            <img src="https://images.unsplash.com/photo-1540946485063-a40da27545f8?w=600&h=750&fit=crop" alt="Navegaci&oacute;n" />
+            <div className="hero-image-label">Navegaci&oacute;n</div>
           </div>
           <div className="hero-image">
-            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=750&fit=crop" alt="Cocinas" />
-            <div className="hero-image-label">Cocinas</div>
+            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&h=750&fit=crop" alt="Comunicaci&oacute;n" />
+            <div className="hero-image-label">Comunicaci&oacute;n</div>
           </div>
         </div>
       </section>
@@ -69,34 +68,34 @@ export default async function HomePage() {
       <section className="trust-bar">
         <div className="trust-bar-inner">
           <div className="trust-item">
-            <div className="trust-icon">&#9989;</div>
-            <div className="trust-title">Grado Profesional</div>
-            <div className="trust-desc">Certificaci&oacute;n A1, HACCP, normativa UE</div>
-          </div>
-          <div className="trust-item">
-            <div className="trust-icon">&#127968;</div>
-            <div className="trust-title">Tambi&eacute;n Uso Diario</div>
-            <div className="trust-desc">Productos para hogar, cocina y ba&ntilde;o</div>
+            <div className="trust-icon">&#9881;</div>
+            <div className="trust-title">Marcas L&iacute;deres</div>
+            <div className="trust-desc">Equipos homologados y certificados</div>
           </div>
           <div className="trust-item">
             <div className="trust-icon">&#128666;</div>
-            <div className="trust-title">Env&iacute;o 24-72h</div>
-            <div className="trust-desc">Espa&ntilde;a y toda Europa</div>
+            <div className="trust-title">Env&iacute;o R&aacute;pido</div>
+            <div className="trust-desc">24-72h en toda Europa</div>
           </div>
           <div className="trust-item">
-            <div className="trust-icon">&#128230;</div>
-            <div className="trust-title">750ml a 200L</div>
-            <div className="trust-desc">Todos los formatos</div>
+            <div className="trust-icon">&#128737;</div>
+            <div className="trust-title">Garant&iacute;a 2 A&ntilde;os</div>
+            <div className="trust-desc">En todos nuestros productos</div>
+          </div>
+          <div className="trust-item">
+            <div className="trust-icon">&#128172;</div>
+            <div className="trust-title">Asesoramiento Experto</div>
+            <div className="trust-desc">Te ayudamos a elegir</div>
           </div>
         </div>
       </section>
 
-      {/* FEATURED PRODUCTS — only 4 */}
+      {/* FEATURED PRODUCTS */}
       <section className="section">
         <div className="section-label">Cat&aacute;logo</div>
         <div className="section-title">Productos destacados</div>
         <div className="section-subtitle">
-          Lo m&aacute;s solicitado por profesionales y para uso diario.
+          Equipos de comunicaci&oacute;n marina seleccionados para profesionales y aficionados.
         </div>
 
         {products.length > 0 ? (
@@ -122,7 +121,7 @@ export default async function HomePage() {
                       )}
                     </div>
                     <div className="product-card-info">
-                      <div className="product-card-vendor">{product.vendor || "ZEPORY"}</div>
+                      <div className="product-card-vendor">{product.vendor || "NAUTIC TALK"}</div>
                       <div className="product-card-title">{product.title}</div>
                       <div className="product-card-bottom">
                         <span className="product-card-price">
@@ -148,37 +147,37 @@ export default async function HomePage() {
         )}
       </section>
 
-      {/* WHY ZEPORY */}
+      {/* WHY NAUTIC TALK */}
       <section className="section section--alt">
-        <div className="section-label">&iquest;Por qu&eacute; Zepory?</div>
-        <div className="section-title">Profesional y para uso diario</div>
+        <div className="section-label">&iquest;Por qu&eacute; Nautic Talk?</div>
+        <div className="section-title">Comunicaci&oacute;n marina de confianza</div>
         <div className="section-subtitle">
-          Productos que funcionan en una cocina industrial y en tu hogar.
+          Equipos que funcionan cuando m&aacute;s los necesitas.
         </div>
 
         <div className="features-grid">
           <div className="feature-card">
-            <div className="feature-icon">&#10003;</div>
-            <div className="feature-title">Certificaci&oacute;n Europea</div>
+            <div className="feature-icon">&#128225;</div>
+            <div className="feature-title">Equipos Homologados</div>
             <div className="feature-desc">
-              Qu&iacute;micos Americol con certificaci&oacute;n A1, HACCP y
-              normativa ambiental UE completa.
+              Todos nuestros equipos cumplen con las normativas mar&iacute;timas
+              internacionales y certificaciones requeridas.
+            </div>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">&#127754;</div>
+            <div className="feature-title">Resistentes al Mar</div>
+            <div className="feature-desc">
+              Equipos dise&ntilde;ados para condiciones marinas extremas.
+              Resistentes al agua, sal y vibraciones.
             </div>
           </div>
           <div className="feature-card">
             <div className="feature-icon">&#128295;</div>
-            <div className="feature-title">Herramientas Vikan</div>
+            <div className="feature-title">Instalaci&oacute;n F&aacute;cil</div>
             <div className="feature-desc">
-              La marca danesa l&iacute;der mundial en cepillos, mangos y
-              equipamiento de limpieza higi&eacute;nica.
-            </div>
-          </div>
-          <div className="feature-card">
-            <div className="feature-icon">&#127775;</div>
-            <div className="feature-title">Pro + Uso Diario</div>
-            <div className="feature-desc">
-              Misma calidad profesional accesible para tu hogar. Hornos,
-              ba&ntilde;os, cocinas, cristales.
+              Gu&iacute;as de instalaci&oacute;n incluidas y soporte t&eacute;cnico
+              para que configures tu equipo sin complicaciones.
             </div>
           </div>
           <div className="feature-card">
@@ -195,16 +194,16 @@ export default async function HomePage() {
       {/* NEWSLETTER */}
       <section className="newsletter">
         <h2>
-          Superficies <em>impecables</em>, siempre
+          Navega <em>conectado</em>, siempre
         </h2>
         <p>
-          Cat&aacute;logo completo, precios empresa y novedades profesionales.
+          Novedades, ofertas y gu&iacute;as t&eacute;cnicas de comunicaci&oacute;n marina.
         </p>
         <div className="newsletter-form">
           <input
             type="email"
             className="newsletter-input"
-            placeholder="tu@empresa.com"
+            placeholder="tu@email.com"
           />
           <button className="newsletter-btn">Suscribirme</button>
         </div>

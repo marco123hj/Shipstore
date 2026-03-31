@@ -6,10 +6,10 @@ interface ShopifyStoreConfig {
 function getStoreConfig(): ShopifyStoreConfig {
   return {
     storeDomain:
-      process.env.NEXT_PUBLIC_ZEPORY_SHOPIFY_STORE_DOMAIN ??
-      "9k08qb-i0.myshopify.com",
+      process.env.NEXT_PUBLIC_NAUTICTALK_SHOPIFY_STORE_DOMAIN ??
+      "aayzmr-8g.myshopify.com",
     storefrontAccessToken:
-      process.env.ZEPORY_SHOPIFY_STOREFRONT_ACCESS_TOKEN ?? "",
+      process.env.NAUTICTALK_SHOPIFY_STOREFRONT_ACCESS_TOKEN ?? "",
   };
 }
 
