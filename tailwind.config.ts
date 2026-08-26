@@ -1,33 +1,21 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./app/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-  ],
+  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        navy: {
-          DEFAULT: "#0b2238",
-          light: "#14324f",
-          deep: "#071829",
-        },
-        brass: {
-          DEFAULT: "#c8a24c",
-          light: "#e0c079",
-          dark: "#a5822f",
-        },
-        sand: "#f6f2ea",
-        sea: "#1f6f8b",
+        ink: { DEFAULT: "#122a3a", deep: "#0c1e2b", soft: "#26536b" },
+        paper: { DEFAULT: "#f1e7d3", warm: "#ece0c8", dark: "#e2d3b4" },
+        rust: { DEFAULT: "#c0492c", dark: "#9c3a22", light: "#d8654a" },
+        brass: { DEFAULT: "#b5893c", light: "#d3ad63" },
+        sea: { DEFAULT: "#2c6e77", dark: "#1f5158" },
       },
       fontFamily: {
-        serif: ["Georgia", "Cambria", "Times New Roman", "serif"],
-        sans: ["Inter", "system-ui", "Segoe UI", "Helvetica", "Arial", "sans-serif"],
+        display: ["var(--font-display)", "Georgia", "serif"],
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
       },
-      maxWidth: {
-        content: "1200px",
-      },
+      maxWidth: { content: "1180px" },
     },
   },
   plugins: [],

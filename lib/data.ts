@@ -8,11 +8,14 @@
 // talks to a backend directly. Nothing in the UI has to be rebuilt.
 // -----------------------------------------------------------------------------
 
+export type Tone = "ink" | "rust" | "sea" | "brass";
+
 export type Category = {
   slug: string;
   name: string;
   tagline: string;
-  icon: string;
+  icon: string; // Icon component key (see components/Icon.tsx)
+  tone: Tone;
   blurb: string;
 };
 
@@ -33,17 +36,17 @@ export type Brand = { name: string; note: string };
 // --- Categories (curated for the Spain leisure boat & yacht market) ----------
 
 export const categories: Category[] = [
-  { slug: "maintenance", name: "Maintenance & Care", tagline: "Keep her looking new", icon: "🧴", blurb: "Cleaners, polishes, antifouling and varnish from Hempel, Epifanes and Yachticon." },
-  { slug: "deck-hardware", name: "Deck & Hardware", tagline: "Built to last at sea", icon: "⚙️", blurb: "Cleats, shackles, stainless fittings and rope for every deck." },
-  { slug: "mooring-fenders", name: "Mooring & Fenders", tagline: "Come alongside with confidence", icon: "🪢", blurb: "Yacht fenders, mooring lines and bollards sized for leisure boats." },
-  { slug: "electrical-lighting", name: "Electrical & Lighting", tagline: "Power and visibility", icon: "💡", blurb: "Marine batteries, tinned cabling and navigation lighting." },
-  { slug: "engine-bilge", name: "Engine & Bilge", tagline: "Keep her running", icon: "🔧", blurb: "Pumps, oils, grease, belts and engine-room essentials." },
-  { slug: "safety-rescue", name: "Safety & Rescue", tagline: "Everyone home safe", icon: "🦺", blurb: "Life jackets, flares, first aid and fire safety." },
-  { slug: "electronics-comms", name: "Electronics & Comms", tagline: "Stay connected on board", icon: "📡", blurb: "Nautic Talk headset systems, binoculars and onboard electronics." },
-  { slug: "clothing", name: "Clothing & Foul-Weather", tagline: "Dress for the Med", icon: "🧥", blurb: "Sailing jackets, boots, gloves and rain gear." },
-  { slug: "flags-accessories", name: "Flags & Accessories", tagline: "The finishing touches", icon: "🚩", blurb: "Courtesy flags, poles, cabin and decoration." },
-  { slug: "tools", name: "Tools", tagline: "For jobs on the water", icon: "🛠️", blurb: "Marine tool kits, covers, tarpaulins and lifting straps." },
-  { slug: "fishing", name: "Fishing", tagline: "Right at the Turia mouth", icon: "🎣", blurb: "Rods, reels and lures for lubina, boat and Mediterranean fishing." },
+  { slug: "maintenance", name: "Maintenance & Care", tagline: "Keep her looking new", icon: "droplet", tone: "sea", blurb: "Cleaners, polishes, antifouling and varnish from Hempel, Epifanes and Yachticon." },
+  { slug: "deck-hardware", name: "Deck & Hardware", tagline: "Built to last at sea", icon: "link", tone: "ink", blurb: "Cleats, shackles, stainless fittings and rope for every deck." },
+  { slug: "mooring-fenders", name: "Mooring & Fenders", tagline: "Come alongside easy", icon: "anchor", tone: "rust", blurb: "Yacht fenders, mooring lines and bollards sized for leisure boats." },
+  { slug: "electrical-lighting", name: "Electrical & Lighting", tagline: "Power and visibility", icon: "bolt", tone: "brass", blurb: "Marine batteries, tinned cabling and navigation lighting." },
+  { slug: "engine-bilge", name: "Engine & Bilge", tagline: "Keep her running", icon: "gear", tone: "ink", blurb: "Pumps, oils, grease, belts and engine-room essentials." },
+  { slug: "safety-rescue", name: "Safety & Rescue", tagline: "Everyone home safe", icon: "buoy", tone: "rust", blurb: "Life jackets, flares, first aid and fire safety." },
+  { slug: "electronics-comms", name: "Electronics & Comms", tagline: "Stay connected aboard", icon: "radio", tone: "sea", blurb: "Nautic Talk headset systems, binoculars and onboard electronics." },
+  { slug: "clothing", name: "Foul-Weather & Kit", tagline: "Dress for the Med", icon: "umbrella", tone: "ink", blurb: "Sailing jackets, boots, gloves and rain gear." },
+  { slug: "flags-accessories", name: "Flags & Accessories", tagline: "The finishing touches", icon: "flag", tone: "brass", blurb: "Courtesy flags, poles, cabin and decoration." },
+  { slug: "tools", name: "Tools", tagline: "For jobs on the water", icon: "wrench", tone: "sea", blurb: "Marine tool kits, covers, tarpaulins and lifting straps." },
+  { slug: "fishing", name: "Fishing", tagline: "Right at the Turia mouth", icon: "fish", tone: "rust", blurb: "Rods, reels and lures for lubina, boat and Mediterranean fishing." },
 ];
 
 // --- Brands ------------------------------------------------------------------
@@ -98,7 +101,7 @@ export const products: Product[] = [
   { slug: "nautic-talk-solo", name: "Nautic Talk Solo Headset", brand: "Nautic Talk", category: "electronics-comms", price: 179.0, blurb: "Single-headset version of the Nautic Talk system." },
   { slug: "binoculars-7x50", name: "Marine Binoculars 7x50", brand: "La Capitana", category: "electronics-comms", price: 69.95, blurb: "Waterproof 7x50 binoculars with a built-in compass." },
 
-  // Clothing & Foul-Weather
+  // Foul-Weather & Kit
   { slug: "offshore-jacket", name: "Offshore Sailing Jacket", brand: "La Capitana", category: "clothing", price: 149.0, blurb: "Breathable, fully waterproof offshore jacket with a high fleece-lined collar." },
   { slug: "deck-gloves", name: "Deck Gloves", brand: "La Capitana", category: "clothing", price: 14.95, unit: "per pair", blurb: "Grippy short-finger gloves for lines and winches." },
   { slug: "sailing-boots", name: "Sailing Boots", brand: "La Capitana", category: "clothing", price: 59.95, blurb: "Non-slip, warm-lined boots for wet decks." },
@@ -148,6 +151,19 @@ export function getFeaturedProducts(): Product[] {
 
 export function getBrands(): Brand[] {
   return brands;
+}
+
+export function toneBg(tone: Tone): string {
+  switch (tone) {
+    case "rust":
+      return "bg-rust";
+    case "sea":
+      return "bg-sea";
+    case "brass":
+      return "bg-brass";
+    default:
+      return "bg-ink";
+  }
 }
 
 export function formatPrice(value: number): string {
