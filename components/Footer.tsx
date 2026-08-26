@@ -5,8 +5,8 @@ export default function Footer() {
   const cats = getCategories().slice(0, 6);
   return (
     <footer className="mt-20 bg-navy text-white/70">
-      <div className="container-c grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
-        <div>
+      <div className="container-c grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="sm:col-span-2 lg:col-span-1">
           <div className="text-xl font-bold text-white">La Capitana</div>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/55">
             Marine and yacht supplies at the Valencia Mar marina, Valencia.
@@ -36,6 +36,16 @@ export default function Footer() {
           <ul className="mt-3 space-y-2 text-sm">
             <li><Link href="/about" className="transition hover:text-brass">About</Link></li>
             <li><Link href="/contact" className="transition hover:text-brass">Contact</Link></li>
+            <li><Link href="/faq" className="transition hover:text-brass">FAQ</Link></li>
+            <li><Link href="/shipping" className="transition hover:text-brass">Shipping & Returns</Link></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="text-sm font-semibold text-white">Legal</h4>
+          <ul className="mt-3 space-y-2 text-sm">
+            <li><Link href="/terms" className="transition hover:text-brass">Terms & Conditions</Link></li>
+            <li><Link href="/privacy" className="transition hover:text-brass">Privacy Policy</Link></li>
           </ul>
         </div>
 
