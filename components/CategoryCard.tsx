@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Icon from "@/components/Icon";
-import { Category, toneBg } from "@/lib/data";
+import { Category } from "@/lib/data";
 
 export default function CategoryCard({
   category,
@@ -12,24 +12,19 @@ export default function CategoryCard({
   return (
     <Link
       href={`/category/${category.slug}`}
-      className="group flex min-h-[164px] flex-col justify-between border border-ink/15 bg-paper-warm p-5 transition hover:-translate-y-0.5 hover:border-ink"
+      className="group flex min-h-[140px] flex-col justify-between rounded-lg border border-navy/10 bg-white p-5 transition hover:border-navy/40"
     >
       <div className="flex items-start justify-between">
-        <span className={`grid h-11 w-11 place-items-center text-paper ${toneBg(category.tone)}`}>
+        <span className="grid h-10 w-10 place-items-center rounded-md bg-navy/5 text-navy">
           <Icon name={category.icon} className="h-5 w-5" />
         </span>
-        <span className="font-display text-2xl font-semibold text-ink/20">
+        <span className="text-sm font-semibold text-navy/25">
           {String(index).padStart(2, "0")}
         </span>
       </div>
-      <div className="mt-5">
-        <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-ink/45">
-          {category.tagline}
-        </div>
-        <h3 className="mt-1 font-display text-lg font-semibold text-ink transition group-hover:text-rust">
-          {category.name}
-        </h3>
-      </div>
+      <h3 className="mt-4 text-base font-semibold text-navy transition group-hover:text-brass-dark">
+        {category.name}
+      </h3>
     </Link>
   );
 }

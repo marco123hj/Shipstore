@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Icon from "@/components/Icon";
-import { getCategory, getCategories, getProductsByCategory, toneBg } from "@/lib/data";
+import { getCategory, getCategories, getProductsByCategory } from "@/lib/data";
 import ProductCard from "@/components/ProductCard";
 
 export function generateStaticParams() {
@@ -20,24 +20,24 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      <section className="bg-ink text-paper">
-        <div className="container-c py-14">
-          <Link href="/shop" className="text-[11px] font-bold uppercase tracking-[0.2em] text-rust-light hover:text-rust">
+      <section className="bg-navy text-white">
+        <div className="container-c py-12">
+          <Link href="/shop" className="text-sm text-brass hover:underline">
             ← Shop
           </Link>
-          <div className="mt-5 flex items-center gap-4">
-            <span className={`grid h-14 w-14 place-items-center text-paper ${toneBg(cat.tone)}`}>
+          <div className="mt-4 flex items-center gap-4">
+            <span className="grid h-12 w-12 place-items-center rounded-md bg-white/10 text-white">
               <Icon name={cat.icon} className="h-6 w-6" />
             </span>
             <div>
-              <h1 className="font-display text-4xl font-semibold">{cat.name}</h1>
-              <p className="mt-1 max-w-xl text-paper/70">{cat.blurb}</p>
+              <h1 className="text-3xl font-bold">{cat.name}</h1>
+              <p className="mt-1 max-w-xl text-white/70">{cat.blurb}</p>
             </div>
           </div>
         </div>
       </section>
 
-      <div className="container-c py-12">
+      <div className="container-c py-10">
         {products.length ? (
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {products.map((p) => (
@@ -45,7 +45,7 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
             ))}
           </div>
         ) : (
-          <p className="text-ink/60">Products in this category are coming soon.</p>
+          <p className="text-navy/60">Products in this category are coming soon.</p>
         )}
       </div>
     </>
