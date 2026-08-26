@@ -100,6 +100,29 @@ const paths: Record<string, ReactNode> = {
   wave: (
     <path d="M2 9c2-2.5 4-2.5 6 0s4 2.5 6 0 4-2.5 6 0M2 15c2-2.5 4-2.5 6 0s4 2.5 6 0 4-2.5 6 0" />
   ),
+  shield: (
+    <>
+      <path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5z" />
+      <path d="m9 12 2 2 4-4" />
+    </>
+  ),
+  refresh: (
+    <>
+      <path d="M3 12a9 9 0 0 1 15-6.7L21 8" />
+      <path d="M21 3v5h-5" />
+      <path d="M21 12a9 9 0 0 1-15 6.7L3 16" />
+      <path d="M3 21v-5h5" />
+    </>
+  ),
+  lock: (
+    <>
+      <rect x="4" y="10" width="16" height="10" rx="2" />
+      <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+    </>
+  ),
+  heart: (
+    <path d="M12 20s-7-4.6-9.5-9A4.5 4.5 0 0 1 12 6a4.5 4.5 0 0 1 9.5 5c-2.5 4.4-9.5 9-9.5 9z" />
+  ),
 };
 
 export default function Icon({ name, className }: { name: string; className?: string }) {

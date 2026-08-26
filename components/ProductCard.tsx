@@ -21,7 +21,7 @@ export default function ProductCard({ product }: { product: Product }) {
         <span className="text-xs text-navy/50">{product.brand}</span>
         <Link
           href={`/product/${product.slug}`}
-          className="mt-0.5 line-clamp-2 min-h-[2.6em] text-sm font-medium text-navy transition group-hover:text-brass-dark"
+          className="mt-0.5 line-clamp-2 min-h-[2.6em] text-sm font-medium text-ink transition group-hover:text-brass-dark"
         >
           {product.name}
         </Link>
@@ -34,7 +34,7 @@ export default function ProductCard({ product }: { product: Product }) {
           </div>
           <button
             type="button"
-            className="rounded-md bg-navy px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-navy-light"
+            className="rounded-md bg-ink px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-ink-soft"
           >
             Add
           </button>

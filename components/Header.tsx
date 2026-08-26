@@ -14,7 +14,7 @@ export default function Header() {
       <div className="container-c flex h-16 items-center justify-between gap-4">
         <Link href="/" className="flex items-center gap-2 text-navy">
           <Icon name="anchor" className="h-6 w-6 text-brass-dark" />
-          <span className="text-xl font-bold">La Capitana</span>
+          <span className="text-xl font-bold text-ink">La Capitana</span>
         </Link>
 
         <nav className="hidden items-center gap-7 text-sm font-medium text-navy/80 md:flex">

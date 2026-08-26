@@ -8,6 +8,7 @@ const config: Config = {
         navy: { DEFAULT: "#0b2238", light: "#14324f", deep: "#071829" },
         brass: { DEFAULT: "#c8a24c", dark: "#a5822f" },
         sand: { DEFAULT: "#f6f2ea", dark: "#efe7d6" },
+        ink: { DEFAULT: "#141414", soft: "#2e2e2e" },
       },
       fontFamily: {
         display: ["var(--font-sans)", "system-ui", "sans-serif"],

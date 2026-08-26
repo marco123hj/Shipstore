@@ -28,7 +28,7 @@ body {
     @apply mx-auto max-w-content px-5 sm:px-8;
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-md bg-navy px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-navy-light;
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-ink px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-ink-soft;
   }
   .btn-brass {
     @apply inline-flex items-center justify-center gap-2 rounded-md bg-brass px-5 py-2.5 text-sm font-semibold text-navy transition hover:bg-brass-dark;

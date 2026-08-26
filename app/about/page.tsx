@@ -33,7 +33,7 @@ export default function AboutPage() {
             <span className="grid h-10 w-10 place-items-center rounded-md bg-navy/5 text-navy">
               <Icon name="anchor" className="h-5 w-5" />
             </span>
-            <h3 className="mt-3 text-base font-semibold text-navy">Marine &amp; yacht</h3>
+            <h3 className="mt-3 text-base font-semibold text-ink">Marine &amp; yacht</h3>
             <p className="mt-1 text-sm text-navy/65">
               Maintenance, hardware, safety, electronics and engine parts.
             </p>
@@ -42,7 +42,7 @@ export default function AboutPage() {
             <span className="grid h-10 w-10 place-items-center rounded-md bg-navy/5 text-navy">
               <Icon name="fish" className="h-5 w-5" />
             </span>
-            <h3 className="mt-3 text-base font-semibold text-navy">Fishing</h3>
+            <h3 className="mt-3 text-base font-semibold text-ink">Fishing</h3>
             <p className="mt-1 text-sm text-navy/65">Rods, reels and lures for the Mediterranean.</p>
           </div>
           <Link href="/contact" className="btn-primary w-full">Visit the shop</Link>

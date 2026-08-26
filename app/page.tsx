@@ -45,7 +45,7 @@ export default function HomePage() {
       </section>
 
       <section className="container-c py-14">
-        <h2 className="text-2xl font-bold text-navy">Shop by category</h2>
+        <h2 className="text-2xl font-bold text-ink">Shop by category</h2>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {categories.map((c, i) => (
             <CategoryCard key={c.slug} category={c} index={i + 1} />
@@ -55,7 +55,7 @@ export default function HomePage() {
 
       <section className="border-y border-navy/10 bg-sand-dark py-14">
         <div className="container-c">
-          <h2 className="text-2xl font-bold text-navy">Featured products</h2>
+          <h2 className="text-2xl font-bold text-ink">Featured products</h2>
           <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {featured.map((p) => (
               <ProductCard key={p.slug} product={p} />
@@ -65,7 +65,7 @@ export default function HomePage() {
       </section>
 
       <section className="container-c py-14">
-        <h2 className="text-2xl font-bold text-navy">Brands</h2>
+        <h2 className="text-2xl font-bold text-ink">Brands</h2>
         <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
           {brands.map((b) => (
             <div key={b.name} className="rounded-lg border border-navy/10 bg-white px-4 py-4">
@@ -78,7 +78,7 @@ export default function HomePage() {
 
       <section className="border-t border-navy/10 bg-white">
         <div className="container-c py-14">
-          <h2 className="text-2xl font-bold text-navy">Visit us</h2>
+          <h2 className="text-2xl font-bold text-ink">Visit us</h2>
           <p className="mt-3 max-w-lg text-navy/70">
             Valencia Mar marina, El Saler side, next to Plan B. 46012 València.
           </p>

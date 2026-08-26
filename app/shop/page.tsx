@@ -10,7 +10,7 @@ export default function ShopPage() {
 
   return (
     <div className="container-c py-12">
-      <h1 className="text-3xl font-bold text-navy">Shop</h1>
+      <h1 className="text-3xl font-bold text-ink">Shop</h1>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {categories.map((c, i) => (
@@ -18,7 +18,7 @@ export default function ShopPage() {
         ))}
       </div>
 
-      <h2 className="mt-14 text-2xl font-bold text-navy">All products</h2>
+      <h2 className="mt-14 text-2xl font-bold text-ink">All products</h2>
       <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {products.map((p) => (
           <ProductCard key={p.slug} product={p} />

@@ -22,7 +22,7 @@ export default function CategoryCard({
           {String(index).padStart(2, "0")}
         </span>
       </div>
-      <h3 className="mt-4 text-base font-semibold text-navy transition group-hover:text-brass-dark">
+      <h3 className="mt-4 text-base font-semibold text-ink transition group-hover:text-brass-dark">
         {category.name}
       </h3>
     </Link>
