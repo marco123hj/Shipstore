@@ -5,23 +5,24 @@ import Link from "next/link";
 import Icon from "@/components/Icon";
 import ProductCard from "@/components/ProductCard";
 import { Product, Category, formatPrice } from "@/lib/data";
+import type { Dict } from "@/lib/i18n";
 
-const trust = [
-  { icon: "shield", label: "Genuine stock" },
-  { icon: "truck", label: "Free shipping over €75" },
-  { icon: "refresh", label: "14-day returns" },
-  { icon: "lock", label: "Secure payment" },
-];
+const trustIcons = ["shield", "truck", "refresh", "lock"];
 
 export default function ProductDetail({
   product,
   category,
   related,
+  locale,
+  dict,
 }: {
   product: Product;
   category?: Category;
   related: Product[];
+  locale: string;
+  dict: Dict;
 }) {
+  const t = dict.product;
   const [quantity, setQuantity] = useState(1);
   const [wishlisted, setWishlisted] = useState(false);
   const [open, setOpen] = useState<string | null>("description");
@@ -29,9 +30,9 @@ export default function ProductDetail({
   const hasDiscount = product.oldPrice != null && product.oldPrice > product.price;
 
   const specs: [string, string][] = [
-    ["Brand", product.brand],
-    ...(category ? ([["Category", category.name]] as [string, string][]) : []),
-    ...(product.unit ? ([["Sold per", product.unit]] as [string, string][]) : []),
+    [t.specBrand, product.brand],
+    ...(category ? ([[t.specCategory, category.name]] as [string, string][]) : []),
+    ...(product.unit ? ([[t.specSoldPer, product.unit]] as [string, string][]) : []),
   ];
 
   const toggle = (s: string) => setOpen(open === s ? null : s);
@@ -39,12 +40,12 @@ export default function ProductDetail({
   const sections = [
     {
       id: "description",
-      title: "Description",
+      title: t.description,
       body: <p className="leading-relaxed text-navy/75">{product.blurb}</p>,
     },
     {
       id: "specifications",
-      title: "Specifications",
+      title: t.specifications,
       body: (
         <ul className="space-y-1.5">
           {specs.map(([k, v]) => (
@@ -58,12 +59,12 @@ export default function ProductDetail({
     },
     {
       id: "shipping",
-      title: "Shipping & returns",
+      title: t.shipping,
       body: (
         <div className="space-y-2 text-sm text-navy/75">
-          <p>Free delivery across mainland Spain on orders over €75.</p>
-          <p>Dispatched in 1 to 2 working days from the Valencia Mar marina.</p>
-          <p>14-day returns on unused items in original packaging.</p>
+          {t.shippingBody.map((line, i) => (
+            <p key={i}>{line}</p>
+          ))}
         </div>
       ),
     },
@@ -74,13 +75,13 @@ export default function ProductDetail({
       {/* Breadcrumb */}
       <div className="container-c pt-8 pb-4">
         <nav className="flex flex-wrap items-center gap-2 text-sm text-navy/50">
-          <Link href="/" className="transition hover:text-brass-dark">Home</Link>
+          <Link href={`/${locale}`} className="transition hover:text-brass-dark">{dict.common.home}</Link>
           <span className="text-navy/30">/</span>
-          <Link href="/shop" className="transition hover:text-brass-dark">Shop</Link>
+          <Link href={`/${locale}/shop`} className="transition hover:text-brass-dark">{dict.common.shop}</Link>
           {category && (
             <>
               <span className="text-navy/30">/</span>
-              <Link href={`/category/${category.slug}`} className="transition hover:text-brass-dark">
+              <Link href={`/${locale}/category/${category.slug}`} className="transition hover:text-brass-dark">
                 {category.name}
               </Link>
             </>
@@ -110,15 +111,15 @@ export default function ProductDetail({
             {/* Price */}
             <div>
               <div className="flex items-center gap-3">
-                <span className="text-2xl font-semibold text-ink">{formatPrice(product.price)}</span>
+                <span className="text-2xl font-semibold text-ink">{formatPrice(product.price, locale)}</span>
                 {hasDiscount && (
                   <>
-                    <span className="text-lg text-navy/40 line-through">{formatPrice(product.oldPrice!)}</span>
-                    <span className="rounded bg-brass px-2 py-0.5 text-[11px] font-semibold text-navy">Sale</span>
+                    <span className="text-lg text-navy/40 line-through">{formatPrice(product.oldPrice!, locale)}</span>
+                    <span className="rounded bg-brass px-2 py-0.5 text-[11px] font-semibold text-navy">{dict.common.sale}</span>
                   </>
                 )}
               </div>
-              <p className="mt-1 text-[11px] text-navy/50">Prices include VAT. Shipping calculated at checkout.</p>
+              <p className="mt-1 text-[11px] text-navy/50">{t.priceNote}</p>
             </div>
 
             {/* Quantity + add + wishlist */}
@@ -126,7 +127,7 @@ export default function ProductDetail({
               <div className="flex h-12 shrink-0 items-center rounded-lg border border-navy/20">
                 <button
                   type="button"
-                  aria-label="Decrease quantity"
+                  aria-label={t.quantityDec}
                   onClick={() => setQuantity((q) => Math.max(1, q - 1))}
                   disabled={quantity <= 1}
                   className="flex h-full w-10 items-center justify-center rounded-l-lg text-ink transition hover:bg-sand disabled:opacity-30"
@@ -138,7 +139,7 @@ export default function ProductDetail({
                 <span className="w-8 select-none text-center text-sm font-medium text-ink">{quantity}</span>
                 <button
                   type="button"
-                  aria-label="Increase quantity"
+                  aria-label={t.quantityInc}
                   onClick={() => setQuantity((q) => Math.min(10, q + 1))}
                   disabled={quantity >= 10}
                   className="flex h-full w-10 items-center justify-center rounded-r-lg text-ink transition hover:bg-sand disabled:opacity-30"
@@ -153,12 +154,12 @@ export default function ProductDetail({
                 type="button"
                 className="flex h-12 flex-1 items-center justify-center rounded-md bg-brass px-5 text-sm font-semibold text-navy transition hover:bg-brass-dark"
               >
-                Add to cart
+                {t.addToCart}
               </button>
 
               <button
                 type="button"
-                aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
+                aria-label={wishlisted ? t.wishlistRemove : t.wishlistAdd}
                 onClick={() => setWishlisted((w) => !w)}
                 className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-ink transition hover:bg-ink-soft"
               >
@@ -168,10 +169,10 @@ export default function ProductDetail({
 
             {/* Trust strip */}
             <div className="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-navy/10 pt-4">
-              {trust.map((b) => (
-                <div key={b.label} className="flex items-center gap-1.5 text-navy/60">
-                  <Icon name={b.icon} className="h-4 w-4" />
-                  <span className="text-xs">{b.label}</span>
+              {t.trust.map((label, i) => (
+                <div key={label} className="flex items-center gap-1.5 text-navy/60">
+                  <Icon name={trustIcons[i] ?? "shield"} className="h-4 w-4" />
+                  <span className="text-xs">{label}</span>
                 </div>
               ))}
             </div>
@@ -209,11 +210,11 @@ export default function ProductDetail({
         <section className="border-t border-navy/10 bg-sand-dark py-14">
           <div className="container-c">
             <h2 className="text-center text-2xl font-bold text-ink sm:text-3xl">
-              More in {category?.name ?? "the shop"}
+              {t.moreIn} {category?.name ?? t.moreInFallback}
             </h2>
             <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {related.map((p) => (
-                <ProductCard key={p.slug} product={p} />
+                <ProductCard key={p.slug} product={p} locale={locale} dict={dict} />
               ))}
             </div>
           </div>

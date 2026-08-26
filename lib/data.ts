@@ -120,37 +120,128 @@ export const products: Product[] = [
   { slug: "lubina-lure-set", name: "Lubina Lure Set (5 pcs)", brand: "La Capitana", category: "fishing", price: 29.95, blurb: "A hand-picked set of hard and soft lures for Mediterranean sea bass." },
 ];
 
+// --- Spanish overrides -------------------------------------------------------
+// English arrays above stay the canonical data (and the shape a real backend
+// will fill). These maps translate the visible fields for the "es" locale.
+// Product model numbers / brand product names are left as-is.
+
+const esCategory: Record<string, { name: string; tagline: string; blurb: string }> = {
+  maintenance: { name: "Mantenimiento y cuidado", tagline: "Que luzca como nueva", blurb: "Limpiadores, pulimentos, antifouling y barniz de Hempel, Epifanes y Yachticon." },
+  "deck-hardware": { name: "Cubierta y herrajes", tagline: "Hecho para durar en el mar", blurb: "Cornamusas, grilletes, herrajes inoxidables y cabo para cada cubierta." },
+  "mooring-fenders": { name: "Amarre y defensas", tagline: "Atraca con facilidad", blurb: "Defensas de yate, cabos de amarre y norays para embarcaciones de recreo." },
+  "electrical-lighting": { name: "Electricidad e iluminación", tagline: "Energía y visibilidad", blurb: "Baterías marinas, cableado estañado e iluminación de navegación." },
+  "engine-bilge": { name: "Motor y sentina", tagline: "Que siga en marcha", blurb: "Bombas, aceites, grasa, correas y esenciales de sala de máquinas." },
+  "safety-rescue": { name: "Seguridad y rescate", tagline: "Todos a casa a salvo", blurb: "Chalecos salvavidas, bengalas, botiquín y protección contra incendios." },
+  "electronics-comms": { name: "Electrónica y comunicaciones", tagline: "Conectados a bordo", blurb: "Sistemas de auriculares Nautic Talk, prismáticos y electrónica de a bordo." },
+  clothing: { name: "Ropa de agua y equipo", tagline: "Vístete para el Mediterráneo", blurb: "Chaquetas de vela, botas, guantes y ropa de lluvia." },
+  "flags-accessories": { name: "Banderas y accesorios", tagline: "Los últimos detalles", blurb: "Banderas de cortesía, mástiles, cabina y decoración." },
+  tools: { name: "Herramientas", tagline: "Para las tareas del barco", blurb: "Juegos de herramientas marinas, fundas, lonas y eslingas." },
+  fishing: { name: "Pesca", tagline: "Junto a la desembocadura del Turia", blurb: "Cañas, carretes y señuelos para lubina, pesca desde barco y del Mediterráneo." },
+};
+
+const esBrandNote: Record<string, string> = {
+  Hempel: "Antifouling y pinturas",
+  Epifanes: "Barnices y pintura",
+  Sika: "Selladores y adhesivos",
+  "3M": "Cintas y abrasivos",
+  Yachticon: "Limpieza y cuidado",
+  Talamex: "Efectos navales y herrajes",
+  Besto: "Chalecos y seguridad",
+  "Nautic Talk": "Comunicación a bordo",
+};
+
+const esUnit: Record<string, string> = {
+  "per tin": "por lata",
+  "per can": "por bidón",
+  "per line": "por cabo",
+  "per roll": "por rollo",
+  set: "juego",
+  "per pair": "por par",
+};
+
+const esProduct: Record<string, { name: string; blurb: string }> = {
+  "hempel-cream-cleaner-500": { name: "Hempel Cream Cleaner 500ml", blurb: "Crema abrasiva suave que elimina la suciedad y el velo mate del gelcoat sin rayar." },
+  "epifanes-clear-varnish-1l": { name: "Epifanes Barniz Brillante Incoloro 1L", blurb: "El barniz de alto brillo de referencia para maderas vistas, con fuerte protección UV." },
+  "hempel-mille-antifouling-25l": { name: "Hempel Mille NCT Antifouling 2,5L", blurb: "Antifouling autopulimentante que mantiene el casco limpio durante toda la temporada mediterránea." },
+  "zettex-ship-cleaner-10l": { name: "Zettex Limpiador de Barcos 10L", blurb: "Limpiador concentrado de alto rendimiento para casco, cubierta y línea de flotación." },
+  "talamex-ss-cleat-150": { name: "Cornamusa de acero inox 150mm", blurb: "Cornamusa de acero inoxidable A4 pulido para amarre y cabos de defensa." },
+  "bow-shackle-a4-10": { name: "Grillete de arco inox A4 10mm", blurb: "Grillete inoxidable de grado marino para jarcia y fondeo." },
+  "vikan-deck-brush-25": { name: "Vikan Cepillo de Cubierta + Parachoques 25cm", blurb: "Cepillo de cubierta de cerdas duras con parachoques de goma para proteger el costado." },
+  "talamex-fender-a3": { name: "Talamex Defensa Serie A 15x56cm", blurb: "Defensa hinchable de yate que aguanta muelles y abarloamientos." },
+  "mooring-line-14mm-10m": { name: "Cabo de amarre 14mm x 10m", blurb: "Cabo de amarre de poliéster azul con gaza blanda, ya empalmado." },
+  "fender-line-set": { name: "Juego de cabos para defensas (2 uds)", blurb: "Dos cabos de defensa ajustables, listos para colgar." },
+  "led-nav-light-bicolour": { name: "Luz de navegación LED bicolor", blurb: "Luz de proa bicolor de bajo consumo, montaje en balcón o superficie." },
+  "agm-battery-100ah": { name: "Batería marina AGM 100Ah", blurb: "Batería de servicio AGM sellada, sin mantenimiento y apta para ciclo profundo." },
+  "tinned-cable-25-10m": { name: "Cable marino estañado 2,5mm² x 10m", blurb: "Cable de cobre estañado que resiste el ambiente salino." },
+  "bilge-pump-2000": { name: "Bomba de achique 12V 2000 GPH", blurb: "Bomba de achique sumergible compacta con alto caudal." },
+  "yachticon-bio-grease": { name: "Yachticon Cartucho de Grasa Bio", blurb: "Grasa marina biodegradable para bocina y herrajes." },
+  "impeller-service-kit": { name: "Kit de mantenimiento de rodete", blurb: "Rodete con junta y tóricas para un servicio rápido de la bomba de agua salada." },
+  "besto-lifejacket-150n": { name: "Besto Chaleco Salvavidas Automático 150N", blurb: "Chaleco salvavidas hinchable automático, cómodo para llevar todo el día." },
+  "fire-extinguisher-2kg": { name: "Extintor 2kg ABC", blurb: "Extintor de polvo ABC compacto con soporte de montaje." },
+  "handheld-flare-kit": { name: "Kit de bengalas de mano", blurb: "Pack de bengalas costeras para la bolsa de emergencia." },
+  "nautic-talk-duo": { name: "Sistema de auriculares Nautic Talk Duo", blurb: "Par de auriculares Bluetooth manos libres para comunicarte sin estrés al amarrar y maniobrar." },
+  "nautic-talk-solo": { name: "Auricular Nautic Talk Solo", blurb: "Versión de un solo auricular del sistema Nautic Talk." },
+  "binoculars-7x50": { name: "Prismáticos marinos 7x50", blurb: "Prismáticos 7x50 estancos con brújula integrada." },
+  "offshore-jacket": { name: "Chaqueta náutica offshore", blurb: "Chaqueta offshore transpirable y totalmente impermeable con cuello alto forrado de forro polar." },
+  "deck-gloves": { name: "Guantes de cubierta", blurb: "Guantes de dedos cortos con buen agarre para cabos y winches." },
+  "sailing-boots": { name: "Botas náuticas", blurb: "Botas antideslizantes con forro cálido para cubiertas mojadas." },
+  "spanish-courtesy-flag": { name: "Bandera de cortesía de España 30x45cm", blurb: "Bandera de cortesía tejida para navegar por aguas españolas." },
+  "ss-flag-pole-60": { name: "Mástil de bandera inox 60cm", blurb: "Asta de bandera de acero inoxidable pulido con abrazadera para balcón." },
+  "marine-tool-kit-30": { name: "Juego de herramientas marinas 30 pzs", blurb: "Esenciales resistentes a la corrosión en una funda compacta." },
+  "boat-cover-4x6": { name: "Lona de cubrición 4x6m", blurb: "Cubierta transpirable de alta resistencia con ojales reforzados." },
+  "shore-spinning-rod-80": { name: 'Caña de spinning de costa 8\'0" 10-30g', blurb: "Caña de costa nerviosa y rápida, pensada para lubina en la desembocadura del Turia." },
+  "saltwater-reel-4000": { name: "Carrete de spinning de mar 4000", blurb: "Carrete de spinning sellado y listo para el mar, con freno suave." },
+  "lubina-lure-set": { name: "Set de señuelos para lubina (5 uds)", blurb: "Selección de señuelos duros y blandos para la lubina del Mediterráneo." },
+};
+
+function localizeCategory(c: Category, locale?: string): Category {
+  if (locale !== "es") return c;
+  const o = esCategory[c.slug];
+  return o ? { ...c, name: o.name, tagline: o.tagline, blurb: o.blurb } : c;
+}
+
+function localizeProduct(p: Product, locale?: string): Product {
+  if (locale !== "es") return p;
+  const o = esProduct[p.slug];
+  const unit = p.unit ? esUnit[p.unit] ?? p.unit : p.unit;
+  return o ? { ...p, name: o.name, blurb: o.blurb, unit } : { ...p, unit };
+}
+
 // -----------------------------------------------------------------------------
 // Data access — the ONLY functions the UI calls. Swap these for Shopify/Odoo
-// later; the rest of the site does not change.
+// later; the rest of the site does not change. Pass the active locale to get
+// localized names, blurbs and units.
 // -----------------------------------------------------------------------------
 
-export function getCategories(): Category[] {
-  return categories;
+export function getCategories(locale?: string): Category[] {
+  return categories.map((c) => localizeCategory(c, locale));
 }
 
-export function getCategory(slug: string): Category | undefined {
-  return categories.find((c) => c.slug === slug);
+export function getCategory(slug: string, locale?: string): Category | undefined {
+  const c = categories.find((c) => c.slug === slug);
+  return c ? localizeCategory(c, locale) : undefined;
 }
 
-export function getProducts(): Product[] {
-  return products;
+export function getProducts(locale?: string): Product[] {
+  return products.map((p) => localizeProduct(p, locale));
 }
 
-export function getProductsByCategory(slug: string): Product[] {
-  return products.filter((p) => p.category === slug);
+export function getProductsByCategory(slug: string, locale?: string): Product[] {
+  return products.filter((p) => p.category === slug).map((p) => localizeProduct(p, locale));
 }
 
-export function getProduct(slug: string): Product | undefined {
-  return products.find((p) => p.slug === slug);
+export function getProduct(slug: string, locale?: string): Product | undefined {
+  const p = products.find((p) => p.slug === slug);
+  return p ? localizeProduct(p, locale) : undefined;
 }
 
-export function getFeaturedProducts(): Product[] {
-  return products.filter((p) => p.featured);
+export function getFeaturedProducts(locale?: string): Product[] {
+  return products.filter((p) => p.featured).map((p) => localizeProduct(p, locale));
 }
 
-export function getBrands(): Brand[] {
-  return brands;
+export function getBrands(locale?: string): Brand[] {
+  if (locale !== "es") return brands;
+  return brands.map((b) => ({ ...b, note: esBrandNote[b.name] ?? b.note }));
 }
 
 export function toneBg(tone: Tone): string {
@@ -166,6 +257,7 @@ export function toneBg(tone: Tone): string {
   }
 }
 
-export function formatPrice(value: number): string {
-  return "€" + value.toFixed(2).replace(".", ",");
+export function formatPrice(value: number, locale?: string): string {
+  const n = value.toFixed(2).replace(".", ",");
+  return locale === "es" ? `${n} €` : `€${n}`;
 }

@@ -4,11 +4,13 @@ export default function LegalLayout({
   title,
   intro,
   updated,
+  updatedLabel = "Last updated",
   children,
 }: {
   title: string;
   intro?: string;
   updated?: string;
+  updatedLabel?: string;
   children: ReactNode;
 }) {
   return (
@@ -17,7 +19,7 @@ export default function LegalLayout({
         <div className="container-c py-14">
           <h1 className="text-3xl font-bold sm:text-4xl">{title}</h1>
           {intro && <p className="mt-3 max-w-2xl text-white/75">{intro}</p>}
-          {updated && <p className="mt-4 text-xs text-white/45">Last updated: {updated}</p>}
+          {updated && <p className="mt-4 text-xs text-white/45">{updatedLabel}: {updated}</p>}
         </div>
       </section>
 

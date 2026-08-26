@@ -5,13 +5,15 @@ import { Category } from "@/lib/data";
 export default function CategoryCard({
   category,
   index,
+  locale,
 }: {
   category: Category;
   index: number;
+  locale: string;
 }) {
   return (
     <Link
-      href={`/category/${category.slug}`}
+      href={`/${locale}/category/${category.slug}`}
       className="group flex min-h-[140px] flex-col justify-between rounded-lg border border-navy/10 bg-white p-5 transition hover:border-navy/40"
     >
       <div className="flex items-start justify-between">
