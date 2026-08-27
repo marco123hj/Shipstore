@@ -5,8 +5,8 @@ export const locales = ["en", "es"] as const;
 export type Locale = (typeof locales)[number];
 
 // Default locale. The site opens here and unprefixed URLs redirect to it.
-// To make the shop Spanish-first, change this to "es" (one line).
-export const defaultLocale: Locale = "en";
+// Spanish-first (Spain store). Change to "en" to make English the default.
+export const defaultLocale: Locale = "es";
 
 export type Dict = typeof en;
 
