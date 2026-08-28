@@ -55,12 +55,14 @@ export const categories: Category[] = [
 export const brands: Brand[] = [
   { name: "Hempel", note: "Antifouling & coatings" },
   { name: "Epifanes", note: "Varnish & paint", logo: "/brands/epifanes.png" },
-  { name: "Sika", note: "Sealants & adhesives" },
+  { name: "Sigma Coatings", note: "Coatings & antifouling", logo: "/brands/sigma.webp" },
+  { name: "Sika", note: "Sealants & adhesives", logo: "/brands/sika.avif" },
   { name: "3M", note: "Tapes & abrasives" },
   { name: "Yachticon", note: "Cleaning & care", logo: "/brands/yachticon.png" },
-  { name: "Talamex", note: "Chandlery & hardware" },
+  { name: "Americol", note: "Cleaners & degreasers", logo: "/brands/americol.webp" },
+  { name: "Talamex", note: "Chandlery & hardware", logo: "/brands/talamex.png" },
   { name: "Besto", note: "Life jackets & safety" },
-  { name: "Nautic Talk", note: "Onboard communication" },
+  { name: "Nautic Talk", note: "Onboard communication", logo: "/brands/nautic-talk.jpg" },
 ];
 
 // --- Products (placeholder catalogue) ----------------------------------------
@@ -143,9 +145,11 @@ const esCategory: Record<string, { name: string; tagline: string; blurb: string 
 const esBrandNote: Record<string, string> = {
   Hempel: "Antifouling y pinturas",
   Epifanes: "Barnices y pintura",
+  "Sigma Coatings": "Pinturas y antifouling",
   Sika: "Selladores y adhesivos",
   "3M": "Cintas y abrasivos",
   Yachticon: "Limpieza y cuidado",
+  Americol: "Limpiadores y desengrasantes",
   Talamex: "Efectos navales y herrajes",
   Besto: "Chalecos y seguridad",
   "Nautic Talk": "Comunicación a bordo",
