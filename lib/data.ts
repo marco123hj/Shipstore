@@ -17,6 +17,7 @@ export type Category = {
   icon: string; // Icon component key (see components/Icon.tsx)
   tone: Tone;
   blurb: string;
+  image?: string; // e.g. "/categories/maintenance.jpg" (drop file in public/categories/)
 };
 
 export type Product = {
@@ -228,6 +229,10 @@ export function getProducts(locale?: string): Product[] {
 
 export function getProductsByCategory(slug: string, locale?: string): Product[] {
   return products.filter((p) => p.category === slug).map((p) => localizeProduct(p, locale));
+}
+
+export function getProductsByBrand(brand: string, locale?: string): Product[] {
+  return products.filter((p) => p.brand === brand).map((p) => localizeProduct(p, locale));
 }
 
 export function getProduct(slug: string, locale?: string): Product | undefined {

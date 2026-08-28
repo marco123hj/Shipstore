@@ -58,6 +58,24 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         </div>
       </section>
 
+      <section className="bg-navy text-white">
+        <div className="container-c grid items-center gap-8 py-14 lg:grid-cols-[1fr_auto]">
+          <div>
+            <div className="text-sm font-semibold uppercase tracking-wide text-brass">{dict.nauticTalk.kicker}</div>
+            <h2 className="mt-2 text-2xl font-bold sm:text-3xl">{dict.nauticTalk.title}</h2>
+            <p className="mt-3 max-w-xl text-white/75">{dict.nauticTalk.heroSub}</p>
+            <Link href={`/${locale}/nautic-talk`} className="btn-brass mt-6 inline-flex">
+              {dict.nauticTalk.heroCta}
+            </Link>
+          </div>
+          <div className="hidden lg:block">
+            <div className="grid h-40 w-40 place-items-center rounded-2xl border border-white/15 bg-white/5">
+              <Icon name="headset" className="h-20 w-20 text-brass" />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="container-c py-14">
         <h2 className="text-2xl font-bold text-ink">{t.brands}</h2>
         <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">

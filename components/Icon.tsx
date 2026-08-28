@@ -123,6 +123,14 @@ const paths: Record<string, ReactNode> = {
   heart: (
     <path d="M12 20s-7-4.6-9.5-9A4.5 4.5 0 0 1 12 6a4.5 4.5 0 0 1 9.5 5c-2.5 4.4-9.5 9-9.5 9z" />
   ),
+  headset: (
+    <>
+      <path d="M4 13v-1a8 8 0 0 1 16 0v1" />
+      <rect x="2.5" y="13" width="4.5" height="6" rx="1.6" />
+      <rect x="17" y="13" width="4.5" height="6" rx="1.6" />
+      <path d="M19 19v1a2.5 2.5 0 0 1-2.5 2.5H13" />
+    </>
+  ),
 };
 
 export default function Icon({ name, className }: { name: string; className?: string }) {

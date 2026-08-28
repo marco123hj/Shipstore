@@ -6,6 +6,7 @@ import type { Dict } from "@/lib/i18n";
 export default function Header({ locale, dict }: { locale: string; dict: Dict }) {
   const nav = [
     { href: `/${locale}/shop`, label: dict.nav.shop },
+    { href: `/${locale}/nautic-talk`, label: dict.nav.nauticTalk },
     { href: `/${locale}/category/fishing`, label: dict.nav.fishing },
     { href: `/${locale}/about`, label: dict.nav.about },
     { href: `/${locale}/contact`, label: dict.nav.contact },
