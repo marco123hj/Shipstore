@@ -32,7 +32,7 @@ export type Product = {
   featured?: boolean;
 };
 
-export type Brand = { name: string; note: string };
+export type Brand = { name: string; note: string; logo?: string };
 
 // --- Categories (curated for the Spain leisure boat & yacht market) ----------
 
@@ -54,10 +54,10 @@ export const categories: Category[] = [
 
 export const brands: Brand[] = [
   { name: "Hempel", note: "Antifouling & coatings" },
-  { name: "Epifanes", note: "Varnish & paint" },
+  { name: "Epifanes", note: "Varnish & paint", logo: "/brands/epifanes.png" },
   { name: "Sika", note: "Sealants & adhesives" },
   { name: "3M", note: "Tapes & abrasives" },
-  { name: "Yachticon", note: "Cleaning & care" },
+  { name: "Yachticon", note: "Cleaning & care", logo: "/brands/yachticon.png" },
   { name: "Talamex", note: "Chandlery & hardware" },
   { name: "Besto", note: "Life jackets & safety" },
   { name: "Nautic Talk", note: "Onboard communication" },
