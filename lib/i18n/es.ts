@@ -478,6 +478,7 @@ const es = {
   },
   shop: { title: "Tienda", all: "Todos los productos" },
   category: { back: "Tienda", coming: "Los productos de esta categoría llegarán pronto." },
+  brand: { back: "Todas las marcas", products: "Productos", noProducts: "Los productos de esta marca llegarán pronto." },
   product: {
     priceNote: "Precios con IVA incluido. Los gastos de envío se calculan en el pago.",
     addToCart: "Añadir al carrito",

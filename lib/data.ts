@@ -32,7 +32,7 @@ export type Product = {
   featured?: boolean;
 };
 
-export type Brand = { name: string; note: string; logo?: string };
+export type Brand = { slug: string; name: string; note: string; description: string; logo?: string };
 
 // --- Categories (curated for the Spain leisure boat & yacht market) ----------
 
@@ -53,18 +53,18 @@ export const categories: Category[] = [
 // --- Brands ------------------------------------------------------------------
 
 export const brands: Brand[] = [
-  { name: "Hempel", note: "Antifouling & coatings", logo: "/brands/hempel.jpg" },
-  { name: "Epifanes", note: "Varnish & paint", logo: "/brands/epifanes.png" },
-  { name: "Sigma Coatings", note: "Coatings & antifouling", logo: "/brands/sigma.webp" },
-  { name: "Sika", note: "Sealants & adhesives", logo: "/brands/sika.avif" },
-  { name: "Zettex", note: "Sealants & cleaning", logo: "/brands/zettex.png" },
-  { name: "3M", note: "Tapes & abrasives", logo: "/brands/3m.webp" },
-  { name: "Yachticon", note: "Cleaning & care", logo: "/brands/yachticon.png" },
-  { name: "Americol", note: "Cleaners & degreasers", logo: "/brands/americol.webp" },
-  { name: "Vikan", note: "Brushes & cleaning tools", logo: "/brands/vikan.png" },
-  { name: "Talamex", note: "Chandlery & hardware", logo: "/brands/talamex.png" },
-  { name: "Besto", note: "Life jackets & safety", logo: "/brands/besto.webp" },
-  { name: "Nautic Talk", note: "Onboard communication", logo: "/brands/nautic-talk.jpg" },
+  { slug: "hempel", name: "Hempel", note: "Antifouling & coatings", logo: "/brands/hempel.jpg", description: "Hempel is one of the world's leading marine coatings manufacturers. From self-polishing antifouling to primers, fillers and topside enamels, their range keeps a hull protected season after season in Mediterranean waters." },
+  { slug: "epifanes", name: "Epifanes", note: "Varnish & paint", logo: "/brands/epifanes.png", description: "Epifanes is a Dutch family manufacturer famous for the finest marine varnishes and paints. Their clear gloss varnish is the reference for teak and brightwork, prized for depth of shine and strong UV protection." },
+  { slug: "sigma-coatings", name: "Sigma Coatings", note: "Coatings & antifouling", logo: "/brands/sigma.webp", description: "Sigma Coatings supplies durable marine and protective paints, from antifouling to primers and finishes. A trusted name for keeping steel, aluminium and GRP hulls protected against the sea." },
+  { slug: "sika", name: "Sika", note: "Sealants & adhesives", logo: "/brands/sika.avif", description: "Sika is a global leader in sealants and adhesives. Their marine-grade Sikaflex products bond and seal decks, fittings and joints with a flexible, waterproof hold that stands up to salt, sun and constant movement." },
+  { slug: "zettex", name: "Zettex", note: "Sealants & cleaning", logo: "/brands/zettex.png", description: "Zettex is a Dutch manufacturer of high-performance sealants, MS-polymer adhesives and boat cleaning products. Reliable, professional-grade chemistry for building, bonding and maintaining a boat." },
+  { slug: "3m", name: "3M", note: "Tapes & abrasives", logo: "/brands/3m.webp", description: "3M needs little introduction. On board it means dependable masking and mounting tapes, sanding abrasives, polishing compounds and adhesives, the finishing products professionals reach for." },
+  { slug: "yachticon", name: "Yachticon", note: "Cleaning & care", logo: "/brands/yachticon.png", description: "Yachticon is a German specialist in boat care and cleaning. Cleaners, polishes, tank treatments and maintenance products made specifically for life on the water, keeping a boat fresh inside and out." },
+  { slug: "americol", name: "Americol", note: "Cleaners & degreasers", logo: "/brands/americol.webp", description: "Americol makes powerful cleaning agents and degreasers for the toughest jobs on deck and in the engine room. Concentrated, effective and built for marine and industrial use." },
+  { slug: "vikan", name: "Vikan", note: "Brushes & cleaning tools", logo: "/brands/vikan.png", description: "Vikan is a Danish maker of professional cleaning brushes and tools. Deck brushes, handles and accessories built to a hard-wearing standard that lasts far longer than supermarket gear." },
+  { slug: "talamex", name: "Talamex", note: "Chandlery & hardware", logo: "/brands/talamex.png", description: "Talamex is a broad chandlery brand covering fenders, mooring lines, stainless hardware, lighting, pumps and inflatables. Solid, fair-priced equipment for the everyday jobs on any leisure boat." },
+  { slug: "besto", name: "Besto", note: "Life jackets & safety", logo: "/brands/besto.webp", description: "Besto has been making life jackets and marine safety equipment for over a century. Automatic and manual inflatables, buoyancy aids and safety gear, trusted kit for keeping everyone aboard safe." },
+  { slug: "nautic-talk", name: "Nautic Talk", note: "Onboard communication", logo: "/brands/nautic-talk.jpg", description: "Nautic Talk builds wireless Bluetooth headset systems so skipper and crew can talk clearly and hands-free while docking, mooring and manoeuvring. A favourite for taking the stress out of coming alongside." },
 ];
 
 // --- Products (placeholder catalogue) ----------------------------------------
@@ -157,6 +157,21 @@ const esBrandNote: Record<string, string> = {
   Talamex: "Efectos navales y herrajes",
   Besto: "Chalecos y seguridad",
   "Nautic Talk": "Comunicación a bordo",
+};
+
+const esBrandDescription: Record<string, string> = {
+  Hempel: "Hempel es uno de los principales fabricantes mundiales de pinturas náuticas. Desde antifouling autopulimentante hasta imprimaciones, masillas y esmaltes de obra muerta, su gama mantiene el casco protegido temporada tras temporada en aguas del Mediterráneo.",
+  Epifanes: "Epifanes es un fabricante familiar neerlandés célebre por los mejores barnices y pinturas náuticas. Su barniz brillante incoloro es la referencia para la teca y las maderas vistas, apreciado por su profundidad de brillo y su fuerte protección UV.",
+  "Sigma Coatings": "Sigma Coatings ofrece pinturas náuticas y de protección duraderas, desde antifouling hasta imprimaciones y acabados. Un nombre de confianza para mantener protegidos los cascos de acero, aluminio y fibra frente al mar.",
+  Sika: "Sika es líder mundial en selladores y adhesivos. Sus productos Sikaflex de grado marino pegan y sellan cubiertas, herrajes y juntas con una sujeción flexible e impermeable que aguanta la sal, el sol y el movimiento constante.",
+  Zettex: "Zettex es un fabricante neerlandés de selladores de altas prestaciones, adhesivos de polímero MS y productos de limpieza para barcos. Química profesional y fiable para construir, pegar y mantener una embarcación.",
+  "3M": "3M no necesita presentación. A bordo son cintas de enmascarar y de montaje fiables, abrasivos de lijado, pastas de pulir y adhesivos, los productos de acabado que eligen los profesionales.",
+  Yachticon: "Yachticon es un especialista alemán en cuidado y limpieza de barcos. Limpiadores, pulimentos, tratamientos de depósitos y productos de mantenimiento hechos específicamente para la vida en el agua, para mantener el barco impecable por dentro y por fuera.",
+  Americol: "Americol fabrica potentes agentes de limpieza y desengrasantes para los trabajos más duros en cubierta y en la sala de máquinas. Concentrados, eficaces y pensados para uso náutico e industrial.",
+  Vikan: "Vikan es un fabricante danés de cepillos y útiles de limpieza profesionales. Cepillos de cubierta, mangos y accesorios con un acabado resistente que dura mucho más que el material de supermercado.",
+  Talamex: "Talamex es una marca de efectos navales muy amplia: defensas, cabos de amarre, herrajes inoxidables, iluminación, bombas y neumáticas. Equipamiento sólido y a buen precio para las tareas del día a día en cualquier embarcación de recreo.",
+  Besto: "Besto lleva más de un siglo fabricando chalecos salvavidas y equipos de seguridad náutica. Hinchables automáticos y manuales, ayudas a la flotabilidad y material de seguridad, equipo de confianza para mantener a salvo a todos a bordo.",
+  "Nautic Talk": "Nautic Talk fabrica sistemas de auriculares Bluetooth inalámbricos para que patrón y tripulación hablen con claridad y las manos libres al atracar, amarrar y maniobrar. Un favorito para quitarle el estrés a la llegada a puerto.",
 };
 
 const esUnit: Record<string, string> = {
@@ -252,9 +267,22 @@ export function getFeaturedProducts(locale?: string): Product[] {
   return products.filter((p) => p.featured).map((p) => localizeProduct(p, locale));
 }
 
+function localizeBrand(b: Brand, locale?: string): Brand {
+  if (locale !== "es") return b;
+  return {
+    ...b,
+    note: esBrandNote[b.name] ?? b.note,
+    description: esBrandDescription[b.name] ?? b.description,
+  };
+}
+
 export function getBrands(locale?: string): Brand[] {
-  if (locale !== "es") return brands;
-  return brands.map((b) => ({ ...b, note: esBrandNote[b.name] ?? b.note }));
+  return brands.map((b) => localizeBrand(b, locale));
+}
+
+export function getBrand(slug: string, locale?: string): Brand | undefined {
+  const b = brands.find((x) => x.slug === slug);
+  return b ? localizeBrand(b, locale) : undefined;
 }
 
 export function toneBg(tone: Tone): string {

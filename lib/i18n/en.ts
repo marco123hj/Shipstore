@@ -478,6 +478,7 @@ const en = {
   },
   shop: { title: "Shop", all: "All products" },
   category: { back: "Shop", coming: "Products in this category are coming soon." },
+  brand: { back: "All brands", products: "Products", noProducts: "Products from this brand are coming soon." },
   product: {
     priceNote: "Prices include VAT. Shipping calculated at checkout.",
     addToCart: "Add to cart",

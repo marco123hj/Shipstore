@@ -76,13 +76,14 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         </div>
       </section>
 
-      <section className="container-c py-14">
+      <section id="brands" className="container-c scroll-mt-20 py-14">
         <h2 className="text-2xl font-bold text-ink">{t.brands}</h2>
         <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
           {brands.map((b) => (
-            <div
+            <Link
               key={b.name}
-              className="flex flex-col items-center rounded-lg border border-navy/10 bg-white px-4 py-5 text-center"
+              href={`/${locale}/brand/${b.slug}`}
+              className="group flex flex-col items-center rounded-lg border border-navy/10 bg-white px-4 py-5 text-center transition hover:border-navy/40"
             >
               <div className="flex h-10 w-full items-center justify-center">
                 {b.logo ? (
@@ -92,8 +93,8 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                   <span className="text-lg font-semibold text-navy">{b.name}</span>
                 )}
               </div>
-              <div className="mt-2 text-xs text-navy/50">{b.note}</div>
-            </div>
+              <div className="mt-2 text-xs text-navy/50 transition group-hover:text-brass-dark">{b.note}</div>
+            </Link>
           ))}
         </div>
       </section>
