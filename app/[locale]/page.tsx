@@ -80,16 +80,19 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         <h2 className="text-2xl font-bold text-ink">{t.brands}</h2>
         <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
           {brands.map((b) => (
-            <div key={b.name} className="flex flex-col rounded-lg border border-navy/10 bg-white px-4 py-4">
-              {b.logo ? (
-                <div className="flex h-8 items-center">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={b.logo} alt={b.name} className="max-h-8 w-auto max-w-[150px] object-contain" />
-                </div>
-              ) : (
-                <div className="flex h-8 items-center font-semibold text-navy">{b.name}</div>
-              )}
-              <div className="mt-1.5 text-xs text-navy/50">{b.note}</div>
+            <div
+              key={b.name}
+              className="flex flex-col items-center rounded-lg border border-navy/10 bg-white px-4 py-5 text-center"
+            >
+              <div className="flex h-10 w-full items-center justify-center">
+                {b.logo ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={b.logo} alt={b.name} className="max-h-9 max-w-full object-contain" />
+                ) : (
+                  <span className="text-lg font-semibold text-navy">{b.name}</span>
+                )}
+              </div>
+              <div className="mt-2 text-xs text-navy/50">{b.note}</div>
             </div>
           ))}
         </div>
