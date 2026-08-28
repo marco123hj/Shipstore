@@ -53,15 +53,17 @@ export const categories: Category[] = [
 // --- Brands ------------------------------------------------------------------
 
 export const brands: Brand[] = [
-  { name: "Hempel", note: "Antifouling & coatings" },
+  { name: "Hempel", note: "Antifouling & coatings", logo: "/brands/hempel.jpg" },
   { name: "Epifanes", note: "Varnish & paint", logo: "/brands/epifanes.png" },
   { name: "Sigma Coatings", note: "Coatings & antifouling", logo: "/brands/sigma.webp" },
   { name: "Sika", note: "Sealants & adhesives", logo: "/brands/sika.avif" },
-  { name: "3M", note: "Tapes & abrasives" },
+  { name: "Zettex", note: "Sealants & cleaning", logo: "/brands/zettex.png" },
+  { name: "3M", note: "Tapes & abrasives", logo: "/brands/3m.webp" },
   { name: "Yachticon", note: "Cleaning & care", logo: "/brands/yachticon.png" },
   { name: "Americol", note: "Cleaners & degreasers", logo: "/brands/americol.webp" },
+  { name: "Vikan", note: "Brushes & cleaning tools", logo: "/brands/vikan.png" },
   { name: "Talamex", note: "Chandlery & hardware", logo: "/brands/talamex.png" },
-  { name: "Besto", note: "Life jackets & safety" },
+  { name: "Besto", note: "Life jackets & safety", logo: "/brands/besto.webp" },
   { name: "Nautic Talk", note: "Onboard communication", logo: "/brands/nautic-talk.jpg" },
 ];
 
@@ -147,9 +149,11 @@ const esBrandNote: Record<string, string> = {
   Epifanes: "Barnices y pintura",
   "Sigma Coatings": "Pinturas y antifouling",
   Sika: "Selladores y adhesivos",
+  Zettex: "Selladores y limpieza",
   "3M": "Cintas y abrasivos",
   Yachticon: "Limpieza y cuidado",
   Americol: "Limpiadores y desengrasantes",
+  Vikan: "Cepillos y útiles de limpieza",
   Talamex: "Efectos navales y herrajes",
   Besto: "Chalecos y seguridad",
   "Nautic Talk": "Comunicación a bordo",
