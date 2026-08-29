@@ -170,9 +170,9 @@ export default function ProductDetail({
                 type="button"
                 aria-label={wishlisted ? t.wishlistRemove : t.wishlistAdd}
                 onClick={() => setWishlisted((w) => !w)}
-                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-ink transition hover:bg-ink-soft"
+                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-navy/20 bg-white transition hover:border-navy"
               >
-                <Icon name="heart" className={`h-5 w-5 ${wishlisted ? "text-brass" : "text-white"}`} />
+                <Icon name="heart" className={`h-5 w-5 ${wishlisted ? "text-brass-dark" : "text-navy/60"}`} />
               </button>
             </div>
 

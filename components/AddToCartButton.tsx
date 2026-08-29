@@ -32,8 +32,8 @@ export default function AddToCartButton({
       <button
         type="button"
         onClick={onClick}
-        className={`flex h-12 flex-1 items-center justify-center gap-2 rounded-md px-5 text-sm font-semibold transition active:scale-[0.98] ${
-          added ? "bg-navy text-white" : "bg-brass text-navy hover:bg-brass-dark"
+        className={`flex h-12 flex-1 items-center justify-center gap-2 rounded-md px-5 text-sm font-bold uppercase tracking-wide shadow-sm transition active:scale-[0.98] ${
+          added ? "bg-brass text-navy" : "bg-navy text-white hover:bg-navy-light hover:shadow-md"
         }`}
       >
         <Icon name={added ? "check" : "cart"} className="h-4 w-4" />
@@ -46,8 +46,8 @@ export default function AddToCartButton({
     <button
       type="button"
       onClick={onClick}
-      className={`flex items-center gap-1 rounded-md px-3 py-1.5 text-xs font-semibold text-white transition active:scale-95 ${
-        added ? "bg-navy" : "bg-ink hover:bg-ink-soft"
+      className={`flex items-center gap-1.5 rounded-md px-3 py-2 text-xs font-bold shadow-sm transition active:scale-95 ${
+        added ? "bg-brass text-navy" : "bg-navy text-white hover:bg-navy-light"
       }`}
     >
       <Icon name={added ? "check" : "cart"} className="h-3.5 w-3.5" />
