@@ -67,57 +67,61 @@ export const brands: Brand[] = [
   { slug: "nautic-talk", name: "Nautic Talk", note: "Onboard communication", logo: "/brands/nautic-talk.jpg", description: "Nautic Talk builds wireless Bluetooth headset systems so skipper and crew can talk clearly and hands-free while docking, mooring and manoeuvring. A favourite for taking the stress out of coming alongside." },
 ];
 
-// --- Products (placeholder catalogue) ----------------------------------------
+// --- Products ----------------------------------------------------------------
+// Curated real stock from the Logic4 export (Aug 2026), the leisure/yacht-
+// relevant items across the range. House-supplier items are shown under the
+// La Capitana own brand. The full catalogue lands with the Logic4 backend.
 
 export const products: Product[] = [
   // Maintenance & Care
-  { slug: "hempel-cream-cleaner-500", name: "Hempel Cream Cleaner 500ml", brand: "Hempel", category: "maintenance", price: 14.95, blurb: "Gentle abrasive cream that lifts dirt and dull film from gelcoat without scratching." },
-  { slug: "epifanes-clear-varnish-1l", name: "Epifanes Clear Gloss Varnish 1L", brand: "Epifanes", category: "maintenance", price: 39.5, blurb: "The benchmark high-gloss varnish for brightwork, with strong UV protection." },
-  { slug: "hempel-mille-antifouling-25l", name: "Hempel Mille NCT Antifouling 2.5L", brand: "Hempel", category: "maintenance", price: 89.95, oldPrice: 99.95, unit: "per tin", blurb: "Self-polishing antifouling that keeps the hull clean through a Mediterranean season.", featured: true },
-  { slug: "zettex-ship-cleaner-10l", name: "Zettex Ship Cleaner 10L", brand: "Zettex", category: "maintenance", price: 29.35, unit: "per can", blurb: "Heavy-duty concentrated cleaner for hull, deck and waterline." },
+  { slug: "zettex-ship-cleaner-10l", name: "Zettex Ship Cleaner 10L", brand: "Zettex", category: "maintenance", price: 33.73, unit: "per can", blurb: "Concentrated heavy-duty cleaner that lifts grime from hull, deck and waterline.", featured: true },
+  { slug: "flat-brush-2in", name: "Flat Paint Brush 2\"", brand: "La Capitana", category: "maintenance", price: 4.57, blurb: "A hard-wearing flat brush for varnish, primer and antifouling." },
+  { slug: "foam-roller-10cm", name: "Foam Paint Roller 10cm (10 pcs)", brand: "La Capitana", category: "maintenance", price: 1.09, unit: "per pack", blurb: "Fine foam mini-rollers for a smooth finish on small areas." },
 
   // Deck & Hardware
-  { slug: "talamex-ss-cleat-150", name: "Stainless Steel Cleat 150mm", brand: "Talamex", category: "deck-hardware", price: 18.5, blurb: "Polished A4 stainless cleat for mooring and fender lines." },
-  { slug: "bow-shackle-a4-10", name: "Bow Shackle A4 Stainless 10mm", brand: "La Capitana", category: "deck-hardware", price: 4.75, blurb: "Marine-grade stainless shackle for rigging and ground tackle." },
-  { slug: "vikan-deck-brush-25", name: "Vikan Deck Brush + Bumper 25cm", brand: "Vikan", category: "deck-hardware", price: 33.5, oldPrice: 40.54, blurb: "Stiff-bristle deck brush with a rubber bumper to protect the topsides." },
+  { slug: "orka-hmpe-rope-24mm", name: "Orka HMPE Rope 24mm", brand: "Orka", category: "deck-hardware", price: 22.02, unit: "per m", blurb: "High-strength HMPE line, rated to 486 kN, for halyards, sheets and heavy loads." },
+  { slug: "ss316-carabiner-120", name: "Stainless 316 Carabiner Hook 120mm", brand: "La Capitana", category: "deck-hardware", price: 10.89, blurb: "Marine-grade A4 stainless carabiner for gear, lines and safety clips." },
+  { slug: "nylon-block-single-25", name: "Single Nylon Block 25mm", brand: "La Capitana", category: "deck-hardware", price: 2.24, blurb: "Light single-sheave block for control lines and small tackle." },
 
   // Mooring & Fenders
-  { slug: "talamex-fender-a3", name: "Talamex Fender A-Series 15x56cm", brand: "Talamex", category: "mooring-fenders", price: 24.95, blurb: "Inflatable yacht fender that shrugs off marina walls and rafting.", featured: true },
-  { slug: "mooring-line-14mm-10m", name: "Mooring Line 14mm x 10m", brand: "Talamex", category: "mooring-fenders", price: 27.5, unit: "per line", blurb: "Pre-spliced navy polyester mooring line with a soft eye." },
-  { slug: "fender-line-set", name: "Fender Line Set (2 pcs)", brand: "La Capitana", category: "mooring-fenders", price: 9.95, blurb: "Two adjustable fender lines, ready to hang." },
+  { slug: "talamex-mooring-line-10", name: "Talamex Mooring Line 10mm", brand: "Talamex", category: "mooring-fenders", price: 1.0, unit: "per m", blurb: "Black PPM mooring line, sold by the metre, soft and easy on the hands." },
+  { slug: "talamex-mooring-line-12", name: "Talamex Mooring Line 12mm", brand: "Talamex", category: "mooring-fenders", price: 1.35, unit: "per m", blurb: "Heavier 12mm black PPM mooring line for larger boats, sold by the metre." },
+  { slug: "fender-12x100", name: "Fender 12x11x100cm", brand: "La Capitana", category: "mooring-fenders", price: 13.85, blurb: "Compact hanging fender that protects the topsides at the quay.", featured: true },
+  { slug: "orka-fender-rope-18", name: "Orka Fender Rope 18mm x 50m", brand: "Orka", category: "mooring-fenders", price: 61.23, unit: "per roll", blurb: "Traditional fender rope for making up your own fenders and rubbing gear." },
 
   // Electrical & Lighting
-  { slug: "led-nav-light-bicolour", name: "LED Navigation Light Bicolour", brand: "Talamex", category: "electrical-lighting", price: 34.9, blurb: "Low-draw bicolour bow light, rail or surface mount." },
-  { slug: "agm-battery-100ah", name: "AGM Marine Battery 100Ah", brand: "La Capitana", category: "electrical-lighting", price: 189.0, blurb: "Sealed AGM service battery, maintenance-free and deep-cycle capable." },
-  { slug: "tinned-cable-25-10m", name: "Marine Tinned Cable 2.5mm² x 10m", brand: "La Capitana", category: "electrical-lighting", price: 19.95, unit: "per roll", blurb: "Tinned-copper cable that stands up to a salt-air environment." },
+  { slug: "nav-bulb-bay15d-28v", name: "Navigation Bulb BAY15D 25W 28V", brand: "La Capitana", category: "electrical-lighting", price: 3.15, blurb: "Replacement bayonet bulb for navigation lights, 24 to 28V." },
+  { slug: "dhr-sealed-beam-par64", name: "DHR Sealed Beam PAR64 230V 1000W", brand: "DHR", category: "electrical-lighting", price: 70.85, blurb: "High-output sealed-beam lamp for searchlights and deck floods.", featured: true },
+  { slug: "cee-shore-plug-16a", name: "CEE Shore Power Plug 16A", brand: "La Capitana", category: "electrical-lighting", price: 13.79, blurb: "IP44 CEE connector for shore-power hook-up at the marina." },
 
   // Engine & Bilge
-  { slug: "bilge-pump-2000", name: "Bilge Pump 12V 2000 GPH", brand: "Talamex", category: "engine-bilge", price: 49.95, blurb: "Compact submersible bilge pump with a high flow rate." },
-  { slug: "yachticon-bio-grease", name: "Yachticon Bio Grease Cartridge", brand: "Yachticon", category: "engine-bilge", price: 11.5, blurb: "Biodegradable marine grease for stern gear and fittings." },
-  { slug: "impeller-service-kit", name: "Impeller Service Kit", brand: "La Capitana", category: "engine-bilge", price: 24.95, blurb: "Impeller plus gasket and O-rings for a quick raw-water pump service." },
+  { slug: "pvc-suction-hose-25", name: "PVC Suction Hose 25mm", brand: "La Capitana", category: "engine-bilge", price: 3.63, unit: "per m", blurb: "Reinforced suction hose for bilge, water and transfer pumps." },
+  { slug: "jerrycan-siphon-pump", name: "Jerrycan Siphon Pump", brand: "La Capitana", category: "engine-bilge", price: 5.75, blurb: "Simple hand siphon for moving fuel or water from a jerrycan." },
+  { slug: "ss-hose-clamp-25-40", name: "Stainless Hose Clamp 25-40mm", brand: "La Capitana", category: "engine-bilge", price: 2.53, blurb: "A4 stainless worm-drive clamp that stands up to salt air." },
 
   // Safety & Rescue
-  { slug: "besto-lifejacket-150n", name: "Besto Automatic Life Jacket 150N", brand: "Besto", category: "safety-rescue", price: 89.0, blurb: "Automatic inflatable life jacket, comfortable enough to wear all day.", featured: true },
-  { slug: "fire-extinguisher-2kg", name: "Fire Extinguisher 2kg ABC", brand: "La Capitana", category: "safety-rescue", price: 27.5, blurb: "Compact ABC powder extinguisher with a mounting bracket." },
-  { slug: "handheld-flare-kit", name: "Handheld Flare Kit", brand: "La Capitana", category: "safety-rescue", price: 44.95, blurb: "Coastal flare pack for the grab bag." },
+  { slug: "besto-lifejacket-165n", name: "Besto Automatic Life Jacket 165N", brand: "Besto", category: "safety-rescue", price: 114.22, blurb: "Automatic inflatable life jacket with 165N of buoyancy, comfortable all day.", featured: true },
+  { slug: "marinepool-300n-offshore", name: "MarinePool Automatic Life Jacket 300N Offshore", brand: "MarinePool", category: "safety-rescue", price: 216.95, blurb: "Heavy-duty 300N offshore life jacket with harness, for serious passages." },
+  { slug: "besto-dog-lifejacket-m", name: "Besto Dog Life Jacket M (8-15kg)", brand: "Besto", category: "safety-rescue", price: 27.47, blurb: "Buoyancy aid for dogs, with a grab handle to lift them back aboard." },
+  { slug: "fire-extinguisher-powder-2kg", name: "Fire Extinguisher Powder 2kg", brand: "La Capitana", category: "safety-rescue", price: 44.04, blurb: "Compact 2kg ABC powder extinguisher with a mounting bracket." },
+  { slug: "fire-blanket-100", name: "Fire Blanket 100x100cm", brand: "La Capitana", category: "safety-rescue", price: 30.49, blurb: "Galley fire blanket for smothering flames fast." },
 
   // Electronics & Comms
   { slug: "nautic-talk-duo", name: "Nautic Talk Duo Headset System", brand: "Nautic Talk", category: "electronics-comms", price: 258.26, oldPrice: 312.49, unit: "set", blurb: "Hands-free Bluetooth headset pair for stress-free communication when mooring and manoeuvring.", featured: true },
-  { slug: "nautic-talk-solo", name: "Nautic Talk Solo Headset", brand: "Nautic Talk", category: "electronics-comms", price: 179.0, blurb: "Single-headset version of the Nautic Talk system." },
-  { slug: "binoculars-7x50", name: "Marine Binoculars 7x50", brand: "La Capitana", category: "electronics-comms", price: 69.95, blurb: "Waterproof 7x50 binoculars with a built-in compass." },
+  { slug: "nautic-talk-solo", name: "Nautic Talk Solo Headset", brand: "Nautic Talk", category: "electronics-comms", price: 179.0, blurb: "Single-headset add-on for the Nautic Talk system." },
 
   // Foul-Weather & Kit
-  { slug: "offshore-jacket", name: "Offshore Sailing Jacket", brand: "La Capitana", category: "clothing", price: 149.0, blurb: "Breathable, fully waterproof offshore jacket with a high fleece-lined collar." },
-  { slug: "deck-gloves", name: "Deck Gloves", brand: "La Capitana", category: "clothing", price: 14.95, unit: "per pair", blurb: "Grippy short-finger gloves for lines and winches." },
-  { slug: "sailing-boots", name: "Sailing Boots", brand: "La Capitana", category: "clothing", price: 59.95, blurb: "Non-slip, warm-lined boots for wet decks." },
+  { slug: "winter-pvc-gloves", name: "Winter PVC Gloves", brand: "La Capitana", category: "clothing", price: 16.58, unit: "per pair", blurb: "Warm, waterproof PVC gloves for cold, wet work on deck." },
+  { slug: "nitrile-grip-gloves", name: "Nitrile Grip Gloves", brand: "Psp", category: "clothing", price: 3.15, unit: "per pair", blurb: "All-round nitrile-coated gloves with a secure grip for lines and tools." },
 
   // Flags & Accessories
-  { slug: "spanish-courtesy-flag", name: "Spanish Courtesy Flag 30x45cm", brand: "La Capitana", category: "flags-accessories", price: 9.5, blurb: "Woven courtesy ensign for cruising Spanish waters." },
-  { slug: "ss-flag-pole-60", name: "Stainless Flag Pole 60cm", brand: "Talamex", category: "flags-accessories", price: 22.9, blurb: "Polished stainless flag staff with a rail clamp." },
+  { slug: "dutch-ensign-30x45", name: "Dutch Ensign 30x45cm", brand: "La Capitana", category: "flags-accessories", price: 4.3, blurb: "Woven courtesy ensign for Dutch-flagged boats." },
+  { slug: "dressing-line-10m", name: "Dressing Line 10m", brand: "La Capitana", category: "flags-accessories", price: 9.14, blurb: "Red-white-blue dressing line to dress ship on a special day." },
 
   // Tools
-  { slug: "marine-tool-kit-30", name: "Marine Tool Kit 30pc", brand: "La Capitana", category: "tools", price: 49.95, blurb: "Corrosion-resistant essentials in a compact roll." },
-  { slug: "boat-cover-4x6", name: "Boat Cover Tarpaulin 4x6m", brand: "La Capitana", category: "tools", price: 39.95, blurb: "Heavy-duty breathable cover with reinforced eyelets." },
+  { slug: "lifting-sling-1t-3m", name: "Round Lifting Sling 1T 3m", brand: "Pro lift", category: "tools", price: 16.52, blurb: "One-tonne round sling for lifting, recovery and mast work." },
+  { slug: "ratchet-strap-9m", name: "Ratchet Tie-Down Strap 25mm x 9m", brand: "La Capitana", category: "tools", price: 27.71, blurb: "Ratchet strap for securing gear, tenders and deck cargo." },
+  { slug: "wire-cup-brush-115", name: "Wire Cup Brush 115mm", brand: "La Capitana", category: "tools", price: 17.41, blurb: "Twist-knot cup brush for angle grinders, for rust and paint prep." },
 
   // Fishing
   { slug: "shore-spinning-rod-80", name: "Shore Spinning Rod 8'0\" 10-30g", brand: "La Capitana", category: "fishing", price: 99.0, blurb: "Crisp, fast shore rod built for lubina at the Turia mouth.", featured: true },
@@ -184,35 +188,36 @@ const esUnit: Record<string, string> = {
 };
 
 const esProduct: Record<string, { name: string; blurb: string }> = {
-  "hempel-cream-cleaner-500": { name: "Hempel Cream Cleaner 500ml", blurb: "Crema abrasiva suave que elimina la suciedad y el velo mate del gelcoat sin rayar." },
-  "epifanes-clear-varnish-1l": { name: "Epifanes Barniz Brillante Incoloro 1L", blurb: "El barniz de alto brillo de referencia para maderas vistas, con fuerte protección UV." },
-  "hempel-mille-antifouling-25l": { name: "Hempel Mille NCT Antifouling 2,5L", blurb: "Antifouling autopulimentante que mantiene el casco limpio durante toda la temporada mediterránea." },
-  "zettex-ship-cleaner-10l": { name: "Zettex Limpiador de Barcos 10L", blurb: "Limpiador concentrado de alto rendimiento para casco, cubierta y línea de flotación." },
-  "talamex-ss-cleat-150": { name: "Cornamusa de acero inox 150mm", blurb: "Cornamusa de acero inoxidable A4 pulido para amarre y cabos de defensa." },
-  "bow-shackle-a4-10": { name: "Grillete de arco inox A4 10mm", blurb: "Grillete inoxidable de grado marino para jarcia y fondeo." },
-  "vikan-deck-brush-25": { name: "Vikan Cepillo de Cubierta + Parachoques 25cm", blurb: "Cepillo de cubierta de cerdas duras con parachoques de goma para proteger el costado." },
-  "talamex-fender-a3": { name: "Talamex Defensa Serie A 15x56cm", blurb: "Defensa hinchable de yate que aguanta muelles y abarloamientos." },
-  "mooring-line-14mm-10m": { name: "Cabo de amarre 14mm x 10m", blurb: "Cabo de amarre de poliéster azul con gaza blanda, ya empalmado." },
-  "fender-line-set": { name: "Juego de cabos para defensas (2 uds)", blurb: "Dos cabos de defensa ajustables, listos para colgar." },
-  "led-nav-light-bicolour": { name: "Luz de navegación LED bicolor", blurb: "Luz de proa bicolor de bajo consumo, montaje en balcón o superficie." },
-  "agm-battery-100ah": { name: "Batería marina AGM 100Ah", blurb: "Batería de servicio AGM sellada, sin mantenimiento y apta para ciclo profundo." },
-  "tinned-cable-25-10m": { name: "Cable marino estañado 2,5mm² x 10m", blurb: "Cable de cobre estañado que resiste el ambiente salino." },
-  "bilge-pump-2000": { name: "Bomba de achique 12V 2000 GPH", blurb: "Bomba de achique sumergible compacta con alto caudal." },
-  "yachticon-bio-grease": { name: "Yachticon Cartucho de Grasa Bio", blurb: "Grasa marina biodegradable para bocina y herrajes." },
-  "impeller-service-kit": { name: "Kit de mantenimiento de rodete", blurb: "Rodete con junta y tóricas para un servicio rápido de la bomba de agua salada." },
-  "besto-lifejacket-150n": { name: "Besto Chaleco Salvavidas Automático 150N", blurb: "Chaleco salvavidas hinchable automático, cómodo para llevar todo el día." },
-  "fire-extinguisher-2kg": { name: "Extintor 2kg ABC", blurb: "Extintor de polvo ABC compacto con soporte de montaje." },
-  "handheld-flare-kit": { name: "Kit de bengalas de mano", blurb: "Pack de bengalas costeras para la bolsa de emergencia." },
+  "zettex-ship-cleaner-10l": { name: "Zettex Limpiador de Barcos 10L", blurb: "Limpiador concentrado de alto rendimiento que elimina la suciedad del casco, la cubierta y la línea de flotación." },
+  "flat-brush-2in": { name: "Brocha plana 2\"", blurb: "Brocha plana resistente para barniz, imprimación y antifouling." },
+  "foam-roller-10cm": { name: "Rodillo de espuma 10cm (10 uds)", blurb: "Mini rodillos de espuma fina para un acabado liso en superficies pequeñas." },
+  "orka-hmpe-rope-24mm": { name: "Cabo Orka HMPE 24mm", blurb: "Cabo HMPE de alta resistencia, hasta 486 kN, para drizas, escotas y grandes cargas." },
+  "ss316-carabiner-120": { name: "Mosquetón inox 316 120mm", blurb: "Mosquetón de acero inoxidable A4 de grado marino para equipo, cabos y anclajes de seguridad." },
+  "nylon-block-single-25": { name: "Motón simple de nylon 25mm", blurb: "Motón ligero de una roldana para cabos de control y aparejos pequeños." },
+  "talamex-mooring-line-10": { name: "Cabo de amarre Talamex 10mm", blurb: "Cabo de amarre PPM negro, a metros, suave y agradable en las manos." },
+  "talamex-mooring-line-12": { name: "Cabo de amarre Talamex 12mm", blurb: "Cabo de amarre PPM negro de 12mm para barcos más grandes, a metros." },
+  "fender-12x100": { name: "Defensa 12x11x100cm", blurb: "Defensa colgante compacta que protege el costado en el muelle." },
+  "orka-fender-rope-18": { name: "Cabo de defensa Orka 18mm x 50m", blurb: "Cabo de defensa tradicional para hacer tus propias defensas y guardacostados." },
+  "nav-bulb-bay15d-28v": { name: "Bombilla de navegación BAY15D 25W 28V", blurb: "Bombilla de bayoneta de recambio para luces de navegación, de 24 a 28V." },
+  "dhr-sealed-beam-par64": { name: "DHR Sealed Beam PAR64 230V 1000W", blurb: "Lámpara sellada de alta potencia para focos de búsqueda y de cubierta." },
+  "cee-shore-plug-16a": { name: "Toma de puerto CEE 16A", blurb: "Conector CEE IP44 para la conexión a la toma de tierra del puerto." },
+  "pvc-suction-hose-25": { name: "Manguera de aspiración PVC 25mm", blurb: "Manguera de aspiración reforzada para bombas de achique, agua y trasiego." },
+  "jerrycan-siphon-pump": { name: "Bomba de trasiego para garrafa", blurb: "Sifón manual sencillo para pasar combustible o agua desde una garrafa." },
+  "ss-hose-clamp-25-40": { name: "Abrazadera inox 25-40mm", blurb: "Abrazadera sinfín de acero inoxidable A4 que resiste el ambiente salino." },
+  "besto-lifejacket-165n": { name: "Besto Chaleco Salvavidas Automático 165N", blurb: "Chaleco salvavidas hinchable automático de 165N, cómodo para todo el día." },
+  "marinepool-300n-offshore": { name: "MarinePool Chaleco Automático 300N Offshore", blurb: "Chaleco offshore de 300N con arnés, para travesías exigentes." },
+  "besto-dog-lifejacket-m": { name: "Besto Chaleco para Perro M (8-15kg)", blurb: "Ayuda a la flotabilidad para perros, con asa para subirlos a bordo." },
+  "fire-extinguisher-powder-2kg": { name: "Extintor de polvo 2kg", blurb: "Extintor de polvo ABC compacto de 2kg con soporte de montaje." },
+  "fire-blanket-100": { name: "Manta ignífuga 100x100cm", blurb: "Manta ignífuga para la cocina, para sofocar el fuego rápido." },
   "nautic-talk-duo": { name: "Sistema de auriculares Nautic Talk Duo", blurb: "Par de auriculares Bluetooth manos libres para comunicarte sin estrés al amarrar y maniobrar." },
-  "nautic-talk-solo": { name: "Auricular Nautic Talk Solo", blurb: "Versión de un solo auricular del sistema Nautic Talk." },
-  "binoculars-7x50": { name: "Prismáticos marinos 7x50", blurb: "Prismáticos 7x50 estancos con brújula integrada." },
-  "offshore-jacket": { name: "Chaqueta náutica offshore", blurb: "Chaqueta offshore transpirable y totalmente impermeable con cuello alto forrado de forro polar." },
-  "deck-gloves": { name: "Guantes de cubierta", blurb: "Guantes de dedos cortos con buen agarre para cabos y winches." },
-  "sailing-boots": { name: "Botas náuticas", blurb: "Botas antideslizantes con forro cálido para cubiertas mojadas." },
-  "spanish-courtesy-flag": { name: "Bandera de cortesía de España 30x45cm", blurb: "Bandera de cortesía tejida para navegar por aguas españolas." },
-  "ss-flag-pole-60": { name: "Mástil de bandera inox 60cm", blurb: "Asta de bandera de acero inoxidable pulido con abrazadera para balcón." },
-  "marine-tool-kit-30": { name: "Juego de herramientas marinas 30 pzs", blurb: "Esenciales resistentes a la corrosión en una funda compacta." },
-  "boat-cover-4x6": { name: "Lona de cubrición 4x6m", blurb: "Cubierta transpirable de alta resistencia con ojales reforzados." },
+  "nautic-talk-solo": { name: "Auricular Nautic Talk Solo", blurb: "Auricular individual adicional para el sistema Nautic Talk." },
+  "winter-pvc-gloves": { name: "Guantes de PVC de invierno", blurb: "Guantes de PVC cálidos e impermeables para el trabajo en cubierta con frío y humedad." },
+  "nitrile-grip-gloves": { name: "Guantes de nitrilo con agarre", blurb: "Guantes multiuso recubiertos de nitrilo con buen agarre para cabos y herramientas." },
+  "dutch-ensign-30x45": { name: "Bandera de Países Bajos 30x45cm", blurb: "Bandera de cortesía tejida para barcos con pabellón neerlandés." },
+  "dressing-line-10m": { name: "Empavesada 10m", blurb: "Cordón de banderines rojo-blanco-azul para empavesar en un día especial." },
+  "lifting-sling-1t-3m": { name: "Eslinga redonda 1T 3m", blurb: "Eslinga redonda de 1 tonelada para izado, recuperación y trabajos de palo." },
+  "ratchet-strap-9m": { name: "Cincha de trinquete 25mm x 9m", blurb: "Cincha de trinquete para asegurar equipo, auxiliares y carga en cubierta." },
+  "wire-cup-brush-115": { name: "Cepillo de copa de alambre 115mm", blurb: "Cepillo de copa de alambre trenzado para amoladora, para óxido y preparación de pintura." },
   "shore-spinning-rod-80": { name: 'Caña de spinning de costa 8\'0" 10-30g', blurb: "Caña de costa nerviosa y rápida, pensada para lubina en la desembocadura del Turia." },
   "saltwater-reel-4000": { name: "Carrete de spinning de mar 4000", blurb: "Carrete de spinning sellado y listo para el mar, con freno suave." },
   "lubina-lure-set": { name: "Set de señuelos para lubina (5 uds)", blurb: "Selección de señuelos duros y blandos para la lubina del Mediterráneo." },
