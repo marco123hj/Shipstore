@@ -131,6 +131,18 @@ const paths: Record<string, ReactNode> = {
       <path d="M19 19v1a2.5 2.5 0 0 1-2.5 2.5H13" />
     </>
   ),
+  check: <path d="M4.5 12.5l5 5 10-11" />,
+  close: <path d="M6 6l12 12M18 6L6 18" />,
+  trash: (
+    <>
+      <path d="M4 7h16" />
+      <path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+      <path d="M6 7l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13" />
+      <path d="M10 11v6M14 11v6" />
+    </>
+  ),
+  plus: <path d="M12 5v14M5 12h14" />,
+  minus: <path d="M5 12h14" />,
 };
 
 export default function Icon({ name, className }: { name: string; className?: string }) {

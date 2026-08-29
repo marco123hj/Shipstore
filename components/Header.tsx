@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Icon from "@/components/Icon";
 import LangSwitcher from "@/components/LangSwitcher";
+import CartButton from "@/components/CartButton";
 import type { Dict } from "@/lib/i18n";
 
 export default function Header({ locale, dict }: { locale: string; dict: Dict }) {
@@ -31,7 +32,7 @@ export default function Header({ locale, dict }: { locale: string; dict: Dict })
         <div className="flex items-center gap-3 text-navy">
           <LangSwitcher locale={locale} label={dict.switchLabel} title={dict.switchTo} />
           <Icon name="search" className="hidden h-5 w-5 sm:block" />
-          <Icon name="cart" className="h-5 w-5" />
+          <CartButton label={dict.a11y.cart} />
         </div>
       </div>
     </header>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Icon from "@/components/Icon";
 import ProductCard from "@/components/ProductCard";
+import AddToCartButton from "@/components/AddToCartButton";
 import { Product, Category, formatPrice } from "@/lib/data";
 import type { Dict } from "@/lib/i18n";
 
@@ -150,12 +151,20 @@ export default function ProductDetail({
                 </button>
               </div>
 
-              <button
-                type="button"
-                className="flex h-12 flex-1 items-center justify-center rounded-md bg-brass px-5 text-sm font-semibold text-navy transition hover:bg-brass-dark"
-              >
-                {t.addToCart}
-              </button>
+              <AddToCartButton
+                item={{
+                  slug: product.slug,
+                  name: product.name,
+                  brand: product.brand,
+                  price: product.price,
+                  unit: product.unit,
+                  iconName: category?.icon ?? "anchor",
+                }}
+                quantity={quantity}
+                label={t.addToCart}
+                addedLabel={dict.cart.added}
+                size="lg"
+              />
 
               <button
                 type="button"

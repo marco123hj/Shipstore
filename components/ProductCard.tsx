@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Icon from "@/components/Icon";
+import AddToCartButton from "@/components/AddToCartButton";
 import { Product, formatPrice, getCategory } from "@/lib/data";
 import type { Dict } from "@/lib/i18n";
 
@@ -39,12 +40,18 @@ export default function ProductCard({
               <span className="text-xs text-navy/40 line-through">{formatPrice(product.oldPrice, locale)}</span>
             )}
           </div>
-          <button
-            type="button"
-            className="rounded-md bg-ink px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-ink-soft"
-          >
-            {dict.common.add}
-          </button>
+          <AddToCartButton
+            item={{
+              slug: product.slug,
+              name: product.name,
+              brand: product.brand,
+              price: product.price,
+              unit: product.unit,
+              iconName: cat?.icon ?? "anchor",
+            }}
+            label={dict.common.add}
+            addedLabel={dict.cart.added}
+          />
         </div>
       </div>
     </div>

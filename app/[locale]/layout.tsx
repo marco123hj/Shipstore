@@ -5,6 +5,7 @@ import "../globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
+import CartDrawer from "@/components/CartDrawer";
 import { getDict } from "@/lib/i18n";
 import { locales, isLocale } from "@/lib/i18n";
 
@@ -41,6 +42,7 @@ export default function LocaleLayout({
         <Header locale={params.locale} dict={dict} />
         <main className="flex-1">{children}</main>
         <Footer locale={params.locale} dict={dict} />
+        <CartDrawer locale={params.locale} dict={dict} />
         <CookieBanner locale={params.locale} dict={dict} />
       </body>
     </html>

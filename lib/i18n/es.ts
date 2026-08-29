@@ -538,6 +538,18 @@ const es = {
     accept: "Aceptar todo",
     reject: "Rechazar no esenciales",
   },
+  cart: {
+    title: "Cesta",
+    empty: "Tu cesta está vacía.",
+    continue: "Seguir comprando",
+    subtotal: "Subtotal",
+    vat: "IVA incluido",
+    checkout: "Tramitar pedido",
+    checkoutNote: "El pago online se activa con la tienda.",
+    remove: "Quitar",
+    close: "Cerrar",
+    added: "Añadido",
+  },
   nauticTalk: {
     kicker: "Comunicación a bordo con manos libres",
     title: "Nautic Talk",
