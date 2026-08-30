@@ -69,6 +69,12 @@ export function setItemQty(slug: string, qty: number) {
   persist();
   emit();
 }
+export function clearCart() {
+  items = [];
+  open = false;
+  persist();
+  emit();
+}
 export function openCart() {
   open = true;
   emit();
@@ -102,6 +108,7 @@ export function useCart() {
     add: addItem,
     remove: removeItem,
     setQty: setItemQty,
+    clear: clearCart,
     open: openCart,
     close: closeCart,
   };

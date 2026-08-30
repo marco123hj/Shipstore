@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Icon from "@/components/Icon";
 import { useCart } from "@/context/CartContext";
 import { formatPrice } from "@/lib/data";
@@ -94,17 +95,15 @@ export default function CartDrawer({ locale, dict }: { locale: string; dict: Dic
                 <span className="text-sm text-navy/70">{t.subtotal}</span>
                 <span className="text-lg font-bold text-ink">{formatPrice(subtotal, locale)}</span>
               </div>
-              <p className="text-xs text-navy/50">
-                {t.vat} · {t.checkoutNote}
-              </p>
-              <button
-                type="button"
-                disabled
-                title={t.checkoutNote}
-                className="w-full cursor-not-allowed rounded-md bg-brass/60 px-5 py-3 text-sm font-semibold text-navy/70"
+              <p className="text-xs text-navy/50">{t.vat}</p>
+              <Link
+                href={`/${locale}/checkout`}
+                onClick={close}
+                className="flex w-full items-center justify-center rounded-md bg-navy px-5 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-sm transition hover:bg-green hover:shadow-md"
               >
                 {t.checkout}
-              </button>
+              </Link>
+              <p className="text-xs text-navy/50">{t.checkoutNote}</p>
             </div>
           </>
         )}
