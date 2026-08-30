@@ -9,6 +9,7 @@ const config: Config = {
         brass: { DEFAULT: "#c8a24c", dark: "#a5822f" },
         sand: { DEFAULT: "#f6f2ea", dark: "#efe7d6" },
         ink: { DEFAULT: "#141414", soft: "#2e2e2e" },
+        green: { DEFAULT: "#1a9f5a", dark: "#15834a" },
       },
       fontFamily: {
         display: ["var(--font-sans)", "system-ui", "sans-serif"],
