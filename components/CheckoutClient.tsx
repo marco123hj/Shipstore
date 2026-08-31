@@ -18,7 +18,7 @@ export default function CheckoutClient({ locale, dict }: { locale: string; dict:
   const { user, addOrder } = useAuth();
   const [method, setMethod] = useState<"ship" | "pickup">("ship");
   const [placed, setPlaced] = useState<string | null>(null);
-  const [showSignIn, setShowSignIn] = useState(false);
+  const [guest, setGuest] = useState(false);
 
   const shipping = method === "pickup" || subtotal >= 75 ? 0 : 5.95;
   const total = subtotal + shipping;
@@ -85,29 +85,41 @@ export default function CheckoutClient({ locale, dict }: { locale: string; dict:
     );
   }
 
+  // Choice step: sign in, create account, or continue as guest
+  if (!user && !guest) {
+    return (
+      <div className="container-c py-12">
+        <div className="mx-auto max-w-md">
+          <h1 className="text-2xl font-bold text-ink">{t.chooseTitle}</h1>
+          <p className="mt-2 text-sm text-navy/60">{t.chooseSubtitle}</p>
+          <div className="mt-6">
+            <AuthForm dict={dict} />
+          </div>
+          <div className="my-6 flex items-center gap-3 text-xs uppercase tracking-wide text-navy/40">
+            <span className="h-px flex-1 bg-navy/10" />
+            {t.or}
+            <span className="h-px flex-1 bg-navy/10" />
+          </div>
+          <button
+            type="button"
+            onClick={() => setGuest(true)}
+            className="flex w-full items-center justify-center rounded-md border border-navy/25 bg-white px-5 py-3 text-sm font-bold uppercase tracking-wide text-navy transition hover:border-navy hover:bg-sand"
+          >
+            {t.continueGuest}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="container-c py-12">
       <h1 className="text-3xl font-bold text-ink">{t.title}</h1>
 
-      {user ? (
+      {user && (
         <p className="mt-3 text-sm text-navy/60">
           {t.signedInAs} <span className="font-medium text-ink">{user.email}</span>
         </p>
-      ) : (
-        <div className="mt-4">
-          <button
-            type="button"
-            onClick={() => setShowSignIn((s) => !s)}
-            className="text-sm font-medium text-brass-dark hover:underline"
-          >
-            {t.haveAccount}
-          </button>
-          {showSignIn && (
-            <div className="mt-4 max-w-md">
-              <AuthForm dict={dict} onSuccess={() => setShowSignIn(false)} />
-            </div>
-          )}
-        </div>
       )}
 
       <form key={user?.email ?? "guest"} onSubmit={onSubmit} className="mt-8 grid gap-10 lg:grid-cols-[1fr_380px]">

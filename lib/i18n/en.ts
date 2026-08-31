@@ -597,6 +597,10 @@ const en = {
     vat: "VAT (21%) incl.",
     haveAccount: "Have an account? Sign in for faster checkout",
     signedInAs: "Signed in as",
+    chooseTitle: "How would you like to check out?",
+    chooseSubtitle: "Sign in, create an account, or continue as a guest.",
+    continueGuest: "Continue as guest",
+    or: "or",
   },
   search: {
     placeholder: "Search products",

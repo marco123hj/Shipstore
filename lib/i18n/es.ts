@@ -597,6 +597,10 @@ const es = {
     vat: "IVA (21%) incl.",
     haveAccount: "¿Tienes cuenta? Inicia sesión para un pago más rápido",
     signedInAs: "Sesión iniciada como",
+    chooseTitle: "¿Cómo quieres finalizar la compra?",
+    chooseSubtitle: "Inicia sesión, crea una cuenta o continúa como invitado.",
+    continueGuest: "Continuar como invitado",
+    or: "o",
   },
   search: {
     placeholder: "Buscar productos",
