@@ -30,6 +30,7 @@ export type Product = {
   unit?: string;
   blurb: string;
   featured?: boolean;
+  specs?: Record<string, string>;
 };
 
 export type Brand = { slug: string; name: string; note: string; description: string; logo?: string };
@@ -223,6 +224,60 @@ const esProduct: Record<string, { name: string; blurb: string }> = {
   "lubina-lure-set": { name: "Set de señuelos para lubina (5 uds)", blurb: "Selección de señuelos duros y blandos para la lubina del Mediterráneo." },
 };
 
+const productSpecs: Record<string, Record<string, string>> = {
+  "besto-lifejacket-165n": { Buoyancy: "165 N", Type: "Automatic", Fit: "Adult" },
+  "marinepool-300n-offshore": { Buoyancy: "300 N", Type: "Automatic offshore", Harness: "Integrated" },
+  "dhr-sealed-beam-par64": { Voltage: "230 V", Power: "1000 W", Fitting: "PAR64" },
+  "orka-hmpe-rope-24mm": { Diameter: "24 mm", "Break load": "486 kN", Material: "HMPE" },
+  "nautic-talk-duo": { Range: "up to 1000 m", "Talk time": "10 h", Users: "2", Rating: "Waterproof" },
+  "zettex-ship-cleaner-10l": { Volume: "10 L", Form: "Concentrate" },
+  "talamex-mooring-line-10": { Diameter: "10 mm", Material: "PPM", Colour: "Black" },
+  "besto-dog-lifejacket-m": { Size: "M", "Dog weight": "8 to 15 kg", Handle: "Yes" },
+};
+
+const esSpecLabel: Record<string, string> = {
+  Buoyancy: "Flotabilidad",
+  Type: "Tipo",
+  Fit: "Talla",
+  Harness: "Arnés",
+  Voltage: "Voltaje",
+  Power: "Potencia",
+  Fitting: "Casquillo",
+  Diameter: "Diámetro",
+  "Break load": "Carga de rotura",
+  Material: "Material",
+  Range: "Alcance",
+  "Talk time": "Autonomía",
+  Users: "Usuarios",
+  Rating: "Protección",
+  Volume: "Volumen",
+  Form: "Formato",
+  Colour: "Color",
+  Size: "Talla",
+  "Dog weight": "Peso del perro",
+  Handle: "Asa",
+};
+
+const esSpecValue: Record<string, string> = {
+  Automatic: "Automático",
+  "Automatic offshore": "Automático offshore",
+  Adult: "Adulto",
+  Integrated: "Integrado",
+  Concentrate: "Concentrado",
+  Black: "Negro",
+  Waterproof: "Estanco",
+  Yes: "Sí",
+  "up to 1000 m": "hasta 1000 m",
+  "8 to 15 kg": "8 a 15 kg",
+};
+
+function localizeSpecs(specs: Record<string, string>, locale?: string): Record<string, string> {
+  if (locale !== "es") return specs;
+  return Object.fromEntries(
+    Object.entries(specs).map(([k, v]) => [esSpecLabel[k] ?? k, esSpecValue[v] ?? v])
+  );
+}
+
 function localizeCategory(c: Category, locale?: string): Category {
   if (locale !== "es") return c;
   const o = esCategory[c.slug];
@@ -230,10 +285,13 @@ function localizeCategory(c: Category, locale?: string): Category {
 }
 
 function localizeProduct(p: Product, locale?: string): Product {
-  if (locale !== "es") return p;
+  const rawSpecs = productSpecs[p.slug];
+  const specs = rawSpecs ? localizeSpecs(rawSpecs, locale) : undefined;
+  if (locale !== "es") return specs ? { ...p, specs } : p;
   const o = esProduct[p.slug];
   const unit = p.unit ? esUnit[p.unit] ?? p.unit : p.unit;
-  return o ? { ...p, name: o.name, blurb: o.blurb, unit } : { ...p, unit };
+  const base = o ? { ...p, name: o.name, blurb: o.blurb, unit } : { ...p, unit };
+  return specs ? { ...base, specs } : base;
 }
 
 // -----------------------------------------------------------------------------

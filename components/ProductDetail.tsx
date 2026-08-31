@@ -31,6 +31,7 @@ export default function ProductDetail({
   const hasDiscount = product.oldPrice != null && product.oldPrice > product.price;
 
   const specs: [string, string][] = [
+    ...(product.specs ? (Object.entries(product.specs) as [string, string][]) : []),
     [t.specBrand, product.brand],
     ...(category ? ([[t.specCategory, category.name]] as [string, string][]) : []),
     ...(product.unit ? ([[t.specSoldPer, product.unit]] as [string, string][]) : []),
@@ -97,8 +98,26 @@ export default function ProductDetail({
         <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-16">
           {/* Gallery */}
           <div className="lg:sticky lg:top-24">
-            <div className="flex aspect-square items-center justify-center rounded-xl border border-navy/10 bg-white">
-              <Icon name={category?.icon ?? "anchor"} className="h-28 w-28 text-navy/20" />
+            <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-xl border border-navy/10 bg-gradient-to-br from-white to-sand">
+              <span className="absolute left-4 top-4 text-xs font-semibold uppercase tracking-wide text-navy/40">
+                {product.brand}
+              </span>
+              {hasDiscount && (
+                <span className="absolute right-4 top-4 rounded bg-brass px-2 py-0.5 text-[11px] font-semibold text-navy">
+                  {dict.common.sale}
+                </span>
+              )}
+              <Icon name={category?.icon ?? "anchor"} className="h-32 w-32 text-navy/15" />
+            </div>
+            <div className="mt-3 grid grid-cols-4 gap-3">
+              {[0, 1, 2, 3].map((i) => (
+                <div
+                  key={i}
+                  className="flex aspect-square items-center justify-center rounded-md border border-navy/10 bg-sand"
+                >
+                  <Icon name={category?.icon ?? "anchor"} className="h-6 w-6 text-navy/15" />
+                </div>
+              ))}
             </div>
           </div>
 
