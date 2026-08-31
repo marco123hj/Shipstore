@@ -3,7 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import Icon from "@/components/Icon";
+import AuthForm from "@/components/AuthForm";
 import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthContext";
 import { formatPrice } from "@/lib/data";
 import type { Dict } from "@/lib/i18n";
 
@@ -13,11 +15,13 @@ const inputClass =
 export default function CheckoutClient({ locale, dict }: { locale: string; dict: Dict }) {
   const t = dict.checkout;
   const { items, subtotal, count, clear } = useCart();
+  const { user, addOrder } = useAuth();
   const [method, setMethod] = useState<"ship" | "pickup">("ship");
   const [placed, setPlaced] = useState<string | null>(null);
 
   const shipping = method === "pickup" || subtotal >= 75 ? 0 : 5.95;
   const total = subtotal + shipping;
+  const vat = (total * 21) / 121;
 
   const genRef = () => {
     const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -28,7 +32,16 @@ export default function CheckoutClient({ locale, dict }: { locale: string; dict:
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!user) return;
     const ref = genRef();
+    addOrder({
+      ref,
+      email: user.email,
+      total,
+      date: new Date().toISOString().slice(0, 10),
+      method: method === "pickup" ? t.methodPickup : t.methodShip,
+      items: items.map((it) => ({ name: it.name, qty: it.qty, price: it.price })),
+    });
     setPlaced(ref);
     clear();
     if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
@@ -69,6 +82,20 @@ export default function CheckoutClient({ locale, dict }: { locale: string; dict:
     );
   }
 
+  // Require sign in before checkout
+  if (!user) {
+    return (
+      <div className="container-c py-12">
+        <div className="mx-auto max-w-md">
+          <h1 className="text-2xl font-bold text-ink">{t.signInPrompt}</h1>
+          <div className="mt-6">
+            <AuthForm dict={dict} />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="container-c py-12">
       <h1 className="text-3xl font-bold text-ink">{t.title}</h1>
@@ -78,9 +105,9 @@ export default function CheckoutClient({ locale, dict }: { locale: string; dict:
         <div className="space-y-8">
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-ink">{t.contactTitle}</h2>
-            <input className={inputClass} placeholder={t.name} required autoComplete="name" />
+            <input className={inputClass} placeholder={t.name} defaultValue={user.name} required autoComplete="name" />
             <div className="grid gap-3 sm:grid-cols-2">
-              <input className={inputClass} type="email" placeholder={t.email} required autoComplete="email" />
+              <input className={inputClass} type="email" placeholder={t.email} defaultValue={user.email} required autoComplete="email" />
               <input className={inputClass} type="tel" placeholder={t.phone} autoComplete="tel" />
             </div>
           </section>
@@ -147,6 +174,10 @@ export default function CheckoutClient({ locale, dict }: { locale: string; dict:
               <div className="flex justify-between pt-2 text-base font-bold text-ink">
                 <span>{t.total}</span>
                 <span>{formatPrice(total, locale)}</span>
+              </div>
+              <div className="flex justify-between text-xs text-navy/50">
+                <span>{t.vat}</span>
+                <span>{formatPrice(vat, locale)}</span>
               </div>
             </div>
 

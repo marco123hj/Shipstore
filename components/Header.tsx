@@ -2,6 +2,8 @@ import Link from "next/link";
 import Icon from "@/components/Icon";
 import LangSwitcher from "@/components/LangSwitcher";
 import CartButton from "@/components/CartButton";
+import SearchBar from "@/components/SearchBar";
+import AuthNav from "@/components/AuthNav";
 import type { Dict } from "@/lib/i18n";
 
 export default function Header({ locale, dict }: { locale: string; dict: Dict }) {
@@ -30,8 +32,9 @@ export default function Header({ locale, dict }: { locale: string; dict: Dict })
         </nav>
 
         <div className="flex items-center gap-3 text-navy">
+          <SearchBar locale={locale} placeholder={dict.search.placeholder} />
           <LangSwitcher locale={locale} label={dict.switchLabel} title={dict.switchTo} />
-          <Icon name="search" className="hidden h-5 w-5 sm:block" />
+          <AuthNav locale={locale} label={dict.auth.account} />
           <CartButton label={dict.a11y.cart} />
         </div>
       </div>

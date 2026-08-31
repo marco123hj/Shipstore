@@ -263,6 +263,20 @@ export function getProductsByBrand(brand: string, locale?: string): Product[] {
   return products.filter((p) => p.brand === brand).map((p) => localizeProduct(p, locale));
 }
 
+export function searchProducts(query: string, locale?: string): Product[] {
+  const q = query.trim().toLowerCase();
+  if (!q) return [];
+  return getProducts(locale).filter((p) => {
+    const cat = getCategory(p.category, locale);
+    return (
+      p.name.toLowerCase().includes(q) ||
+      p.brand.toLowerCase().includes(q) ||
+      p.blurb.toLowerCase().includes(q) ||
+      (cat ? cat.name.toLowerCase().includes(q) : false)
+    );
+  });
+}
+
 export function getProduct(slug: string, locale?: string): Product | undefined {
   const p = products.find((p) => p.slug === slug);
   return p ? localizeProduct(p, locale) : undefined;
