@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Icon from "@/components/Icon";
 import { getCategory, getCategories, getProductsByCategory } from "@/lib/data";
-import ProductCard from "@/components/ProductCard";
+import ProductBrowser from "@/components/ProductBrowser";
 import { getDict, locales } from "@/lib/i18n";
 
 export function generateStaticParams() {
@@ -44,11 +44,7 @@ export default function CategoryPage({ params }: { params: { locale: string; slu
 
       <div className="container-c py-10">
         {products.length ? (
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {products.map((p) => (
-              <ProductCard key={p.slug} product={p} locale={locale} dict={dict} />
-            ))}
-          </div>
+          <ProductBrowser products={products} locale={locale} dict={dict} />
         ) : (
           <p className="text-navy/60">{dict.category.coming}</p>
         )}

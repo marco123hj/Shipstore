@@ -1,6 +1,6 @@
 import { getCategories, getProducts } from "@/lib/data";
 import CategoryCard from "@/components/CategoryCard";
-import ProductCard from "@/components/ProductCard";
+import ProductBrowser from "@/components/ProductBrowser";
 import { getDict } from "@/lib/i18n";
 
 export default function ShopPage({ params }: { params: { locale: string } }) {
@@ -20,10 +20,8 @@ export default function ShopPage({ params }: { params: { locale: string } }) {
       </div>
 
       <h2 className="mt-14 text-2xl font-bold text-ink">{dict.shop.all}</h2>
-      <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {products.map((p) => (
-          <ProductCard key={p.slug} product={p} locale={locale} dict={dict} />
-        ))}
+      <div className="mt-6">
+        <ProductBrowser products={products} locale={locale} dict={dict} />
       </div>
     </div>
   );
