@@ -579,7 +579,8 @@ const en = {
     orderRef: "Order reference",
     continue: "Continue shopping",
     vat: "VAT (21%) incl.",
-    signInPrompt: "Sign in to place your order",
+    haveAccount: "Have an account? Sign in for faster checkout",
+    signedInAs: "Signed in as",
   },
   search: {
     placeholder: "Search products",

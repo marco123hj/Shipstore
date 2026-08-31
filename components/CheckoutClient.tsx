@@ -18,6 +18,7 @@ export default function CheckoutClient({ locale, dict }: { locale: string; dict:
   const { user, addOrder } = useAuth();
   const [method, setMethod] = useState<"ship" | "pickup">("ship");
   const [placed, setPlaced] = useState<string | null>(null);
+  const [showSignIn, setShowSignIn] = useState(false);
 
   const shipping = method === "pickup" || subtotal >= 75 ? 0 : 5.95;
   const total = subtotal + shipping;
@@ -32,11 +33,13 @@ export default function CheckoutClient({ locale, dict }: { locale: string; dict:
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!user) return;
+    const form = e.currentTarget as HTMLFormElement;
+    const emailField = form.querySelector('input[type="email"]') as HTMLInputElement | null;
+    const email = user?.email ?? emailField?.value ?? "";
     const ref = genRef();
     addOrder({
       ref,
-      email: user.email,
+      email,
       total,
       date: new Date().toISOString().slice(0, 10),
       method: method === "pickup" ? t.methodPickup : t.methodShip,
@@ -82,32 +85,39 @@ export default function CheckoutClient({ locale, dict }: { locale: string; dict:
     );
   }
 
-  // Require sign in before checkout
-  if (!user) {
-    return (
-      <div className="container-c py-12">
-        <div className="mx-auto max-w-md">
-          <h1 className="text-2xl font-bold text-ink">{t.signInPrompt}</h1>
-          <div className="mt-6">
-            <AuthForm dict={dict} />
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="container-c py-12">
       <h1 className="text-3xl font-bold text-ink">{t.title}</h1>
 
-      <form onSubmit={onSubmit} className="mt-8 grid gap-10 lg:grid-cols-[1fr_380px]">
+      {user ? (
+        <p className="mt-3 text-sm text-navy/60">
+          {t.signedInAs} <span className="font-medium text-ink">{user.email}</span>
+        </p>
+      ) : (
+        <div className="mt-4">
+          <button
+            type="button"
+            onClick={() => setShowSignIn((s) => !s)}
+            className="text-sm font-medium text-brass-dark hover:underline"
+          >
+            {t.haveAccount}
+          </button>
+          {showSignIn && (
+            <div className="mt-4 max-w-md">
+              <AuthForm dict={dict} onSuccess={() => setShowSignIn(false)} />
+            </div>
+          )}
+        </div>
+      )}
+
+      <form key={user?.email ?? "guest"} onSubmit={onSubmit} className="mt-8 grid gap-10 lg:grid-cols-[1fr_380px]">
         {/* Form */}
         <div className="space-y-8">
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-ink">{t.contactTitle}</h2>
-            <input className={inputClass} placeholder={t.name} defaultValue={user.name} required autoComplete="name" />
+            <input className={inputClass} placeholder={t.name} defaultValue={user?.name} required autoComplete="name" />
             <div className="grid gap-3 sm:grid-cols-2">
-              <input className={inputClass} type="email" placeholder={t.email} defaultValue={user.email} required autoComplete="email" />
+              <input className={inputClass} type="email" placeholder={t.email} defaultValue={user?.email} required autoComplete="email" />
               <input className={inputClass} type="tel" placeholder={t.phone} autoComplete="tel" />
             </div>
           </section>

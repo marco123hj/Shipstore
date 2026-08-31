@@ -579,7 +579,8 @@ const es = {
     orderRef: "Referencia del pedido",
     continue: "Seguir comprando",
     vat: "IVA (21%) incl.",
-    signInPrompt: "Inicia sesión para realizar tu pedido",
+    haveAccount: "¿Tienes cuenta? Inicia sesión para un pago más rápido",
+    signedInAs: "Sesión iniciada como",
   },
   search: {
     placeholder: "Buscar productos",
