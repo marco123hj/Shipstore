@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Icon from "@/components/Icon";
+import { getProducts } from "@/lib/data";
 import LangSwitcher from "@/components/LangSwitcher";
 import CartButton from "@/components/CartButton";
 import SearchBar from "@/components/SearchBar";
@@ -37,7 +38,7 @@ export default function Header({ locale, dict }: { locale: string; dict: Dict })
         </nav>
 
         <div className="flex items-center gap-3 text-navy">
-          <SearchBar locale={locale} placeholder={dict.search.placeholder} />
+          <SearchBar locale={locale} products={getProducts(locale)} search={dict.search} />
           <LangSwitcher locale={locale} label={dict.switchLabel} title={dict.switchTo} />
           <WishlistNav locale={locale} label={dict.wishlist.title} />
           <AuthNav locale={locale} label={dict.auth.account} />
