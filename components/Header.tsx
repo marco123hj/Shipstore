@@ -4,6 +4,7 @@ import LangSwitcher from "@/components/LangSwitcher";
 import CartButton from "@/components/CartButton";
 import SearchBar from "@/components/SearchBar";
 import AuthNav from "@/components/AuthNav";
+import MobileMenu from "@/components/MobileMenu";
 import type { Dict } from "@/lib/i18n";
 
 export default function Header({ locale, dict }: { locale: string; dict: Dict }) {
@@ -18,10 +19,13 @@ export default function Header({ locale, dict }: { locale: string; dict: Dict })
   return (
     <header className="sticky top-0 z-50 border-b border-navy/10 bg-sand/95 backdrop-blur">
       <div className="container-c flex h-16 items-center justify-between gap-4">
-        <Link href={`/${locale}`} className="flex items-center gap-2 text-navy">
-          <Icon name="anchor" className="h-6 w-6 text-brass-dark" />
-          <span className="text-xl font-bold text-ink">La Capitana</span>
-        </Link>
+        <div className="flex items-center gap-2">
+          <MobileMenu locale={locale} dict={dict} />
+          <Link href={`/${locale}`} className="flex items-center gap-2 text-navy">
+            <Icon name="anchor" className="h-6 w-6 text-brass-dark" />
+            <span className="text-xl font-bold text-ink">La Capitana</span>
+          </Link>
+        </div>
 
         <nav className="hidden items-center gap-7 text-sm font-medium text-navy/80 md:flex">
           {nav.map((n) => (

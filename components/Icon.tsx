@@ -149,6 +149,9 @@ const paths: Record<string, ReactNode> = {
       <path d="M4 21a8 8 0 0 1 16 0" />
     </>
   ),
+  menu: <path d="M4 7h16M4 12h16M4 17h16" />,
+  filter: <path d="M3 5h18M6 12h12M10 19h4" />,
+  chevron: <path d="M6 9l6 6 6-6" />,
 };
 
 export default function Icon({ name, className }: { name: string; className?: string }) {
