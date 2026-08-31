@@ -609,6 +609,11 @@ const en = {
     noResults: "No products found for",
     results: "results",
   },
+  wishlist: {
+    title: "Wishlist",
+    empty: "Your wishlist is empty.",
+    browse: "Browse products",
+  },
   auth: {
     signIn: "Sign in",
     signOut: "Sign out",

@@ -4,6 +4,7 @@ import LangSwitcher from "@/components/LangSwitcher";
 import CartButton from "@/components/CartButton";
 import SearchBar from "@/components/SearchBar";
 import AuthNav from "@/components/AuthNav";
+import WishlistNav from "@/components/WishlistNav";
 import MobileMenu from "@/components/MobileMenu";
 import type { Dict } from "@/lib/i18n";
 
@@ -38,6 +39,7 @@ export default function Header({ locale, dict }: { locale: string; dict: Dict })
         <div className="flex items-center gap-3 text-navy">
           <SearchBar locale={locale} placeholder={dict.search.placeholder} />
           <LangSwitcher locale={locale} label={dict.switchLabel} title={dict.switchTo} />
+          <WishlistNav locale={locale} label={dict.wishlist.title} />
           <AuthNav locale={locale} label={dict.auth.account} />
           <CartButton label={dict.a11y.cart} />
         </div>

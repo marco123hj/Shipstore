@@ -17,6 +17,7 @@ export default function MobileMenu({ locale, dict }: { locale: string; dict: Dic
     { href: `/${locale}/category/fishing`, label: dict.nav.fishing },
     { href: `/${locale}/about`, label: dict.nav.about },
     { href: `/${locale}/contact`, label: dict.nav.contact },
+    { href: `/${locale}/wishlist`, label: dict.wishlist.title },
     { href: `/${locale}/account`, label: dict.auth.account },
   ];
 

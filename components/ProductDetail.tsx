@@ -5,6 +5,7 @@ import Link from "next/link";
 import Icon from "@/components/Icon";
 import ProductCard from "@/components/ProductCard";
 import AddToCartButton from "@/components/AddToCartButton";
+import WishlistButton from "@/components/WishlistButton";
 import { Product, Category, formatPrice } from "@/lib/data";
 import type { Dict } from "@/lib/i18n";
 
@@ -25,7 +26,6 @@ export default function ProductDetail({
 }) {
   const t = dict.product;
   const [quantity, setQuantity] = useState(1);
-  const [wishlisted, setWishlisted] = useState(false);
   const [open, setOpen] = useState<string | null>("description");
 
   const hasDiscount = product.oldPrice != null && product.oldPrice > product.price;
@@ -166,14 +166,12 @@ export default function ProductDetail({
                 size="lg"
               />
 
-              <button
-                type="button"
-                aria-label={wishlisted ? t.wishlistRemove : t.wishlistAdd}
-                onClick={() => setWishlisted((w) => !w)}
-                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-navy/20 bg-white transition hover:border-navy"
-              >
-                <Icon name="heart" className={`h-5 w-5 ${wishlisted ? "text-brass-dark" : "text-navy/60"}`} />
-              </button>
+              <WishlistButton
+                slug={product.slug}
+                addLabel={t.wishlistAdd}
+                removeLabel={t.wishlistRemove}
+                variant="detail"
+              />
             </div>
 
             {/* Trust strip */}

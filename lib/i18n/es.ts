@@ -609,6 +609,11 @@ const es = {
     noResults: "No se han encontrado productos para",
     results: "resultados",
   },
+  wishlist: {
+    title: "Favoritos",
+    empty: "Tu lista de favoritos está vacía.",
+    browse: "Ver productos",
+  },
   auth: {
     signIn: "Iniciar sesión",
     signOut: "Cerrar sesión",

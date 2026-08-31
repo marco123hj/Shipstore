@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Icon from "@/components/Icon";
 import AddToCartButton from "@/components/AddToCartButton";
+import WishlistButton from "@/components/WishlistButton";
 import { Product, formatPrice, getCategory } from "@/lib/data";
 import type { Dict } from "@/lib/i18n";
 
@@ -16,7 +17,8 @@ export default function ProductCard({
   const cat = getCategory(product.category, locale);
   const href = `/${locale}/product/${product.slug}`;
   return (
-    <div className="group flex flex-col overflow-hidden rounded-lg border border-navy/10 bg-white transition hover:border-navy/40">
+    <div className="group relative flex flex-col overflow-hidden rounded-lg border border-navy/10 bg-white transition hover:border-navy/40">
+      <WishlistButton slug={product.slug} addLabel={dict.product.wishlistAdd} removeLabel={dict.product.wishlistRemove} />
       <Link href={href} className="relative flex aspect-[4/3] items-center justify-center bg-sand">
         <Icon name={cat?.icon ?? "anchor"} className="h-12 w-12 text-navy/25" />
         {product.oldPrice && (
