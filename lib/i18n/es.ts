@@ -437,6 +437,11 @@ const es = {
   code: "es",
   htmlLang: "es",
   localeName: "Español",
+  meta: {
+    title: "La Capitana — Náutica y Yates · Valencia",
+    description:
+      "Suministros náuticos y para yates en el puerto Valencia Mar. Mantenimiento, herrajes, seguridad, electrónica y aparejos de pesca para barcos y yates.",
+  },
   switchLabel: "EN",
   switchTo: "Switch to English",
   nav: { shop: "Tienda", nauticTalk: "Nautic Talk", fishing: "Pesca", about: "Sobre nosotros", contact: "Contacto" },

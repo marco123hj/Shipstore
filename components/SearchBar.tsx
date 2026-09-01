@@ -45,7 +45,7 @@ export default function SearchBar({
   const showDropdown = focused && q.trim().length >= 2;
 
   return (
-    <div className="relative hidden sm:block">
+    <div className="relative hidden md:block">
       <form
         onSubmit={(e) => {
           e.preventDefault();

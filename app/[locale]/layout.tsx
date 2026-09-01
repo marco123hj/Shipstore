@@ -16,11 +16,10 @@ const sans = Work_Sans({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "La Capitana — Marine & Yacht Supplies · Valencia",
-  description:
-    "Marine and yacht supplies at the Valencia Mar marina. Maintenance, hardware, safety, electronics and fishing gear.",
-};
+export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
+  const dict = getDict(params.locale);
+  return { title: dict.meta.title, description: dict.meta.description };
+}
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));

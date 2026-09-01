@@ -437,6 +437,11 @@ const en = {
   code: "en",
   htmlLang: "en",
   localeName: "English",
+  meta: {
+    title: "La Capitana — Marine & Yacht Supplies · Valencia",
+    description:
+      "Marine and yacht supplies at the Valencia Mar marina. Maintenance, hardware, safety, electronics and fishing gear for boats and yachts.",
+  },
   switchLabel: "ES",
   switchTo: "Cambiar a español",
   nav: { shop: "Shop", nauticTalk: "Nautic Talk", fishing: "Fishing", about: "About", contact: "Contact" },
