@@ -549,7 +549,9 @@ const es = {
     fEmail: "Correo",
     fMessage: "Mensaje",
     fSend: "Enviar",
+    sending: "Enviando...",
     sent: "Gracias, tu mensaje está en camino. Te responderemos pronto.",
+    error: "Algo salió mal. Inténtalo de nuevo o escríbenos directamente por correo.",
     addr: ["La Capitana", "Puerto Valencia Mar (lado de El Saler)", "Junto a Plan B", "46012 València, España"],
   },
   notFound: {
@@ -565,6 +567,7 @@ const es = {
     placeholder: "Tu correo",
     cta: "Suscribirme",
     done: "Listo, gracias por suscribirte.",
+    error: "Algo salió mal. Inténtalo de nuevo.",
   },
   faqPage: {
     title: "Preguntas frecuentes",

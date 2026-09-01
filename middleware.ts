@@ -6,6 +6,9 @@ import { locales, defaultLocale } from "@/lib/i18n";
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
+  // API routes are locale-agnostic — never redirect them.
+  if (pathname.startsWith("/api/")) return;
+
   const hasLocale = locales.some(
     (l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`)
   );
@@ -17,5 +20,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next|.*\\..*).*)"],
+  matcher: ["/((?!_next|api|.*\\..*).*)"],
 };

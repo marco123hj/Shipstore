@@ -549,7 +549,9 @@ const en = {
     fEmail: "Email",
     fMessage: "Message",
     fSend: "Send",
+    sending: "Sending...",
     sent: "Thanks, your message is on its way. We'll get back to you soon.",
+    error: "Something went wrong. Please try again or email us directly.",
     addr: ["La Capitana", "Valencia Mar marina (El Saler side)", "Next to Plan B", "46012 València, España"],
   },
   notFound: {
@@ -565,6 +567,7 @@ const en = {
     placeholder: "Your email",
     cta: "Subscribe",
     done: "You're in, thanks for subscribing.",
+    error: "Something went wrong. Please try again.",
   },
   faqPage: {
     title: "Frequently asked questions",
