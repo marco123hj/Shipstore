@@ -6,6 +6,8 @@ import {
   getProductsByCategory,
 } from "@/lib/data";
 import ProductDetail from "@/components/ProductDetail";
+import JsonLd from "@/components/JsonLd";
+import { productSchema } from "@/lib/seo";
 import { getDict, locales } from "@/lib/i18n";
 
 export function generateStaticParams() {
@@ -16,7 +18,12 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: { params: { locale: string; slug: string } }) {
   const p = getProduct(params.slug, params.locale);
-  return { title: p ? `${p.name} — La Capitana` : "La Capitana" };
+  if (!p) return { title: "La Capitana" };
+  return {
+    title: `${p.name} — La Capitana`,
+    description: p.blurb,
+    openGraph: { title: `${p.name} — La Capitana`, description: p.blurb, type: "website" },
+  };
 }
 
 export default function ProductPage({ params }: { params: { locale: string; slug: string } }) {
@@ -31,12 +38,15 @@ export default function ProductPage({ params }: { params: { locale: string; slug
     .slice(0, 4);
 
   return (
-    <ProductDetail
-      product={product}
-      category={category}
-      related={related}
-      locale={locale}
-      dict={dict}
-    />
+    <>
+      <JsonLd data={productSchema(product, locale)} />
+      <ProductDetail
+        product={product}
+        category={category}
+        related={related}
+        locale={locale}
+        dict={dict}
+      />
+    </>
   );
 }

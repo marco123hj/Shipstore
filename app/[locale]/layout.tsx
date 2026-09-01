@@ -8,6 +8,7 @@ import CookieBanner from "@/components/CookieBanner";
 import CartDrawer from "@/components/CartDrawer";
 import { getDict } from "@/lib/i18n";
 import { locales, isLocale } from "@/lib/i18n";
+import { SITE_URL } from "@/lib/seo";
 
 const sans = Work_Sans({
   subsets: ["latin"],
@@ -18,7 +19,19 @@ const sans = Work_Sans({
 
 export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
   const dict = getDict(params.locale);
-  return { title: dict.meta.title, description: dict.meta.description };
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: dict.meta.title,
+    description: dict.meta.description,
+    openGraph: {
+      title: dict.meta.title,
+      description: dict.meta.description,
+      type: "website",
+      siteName: "La Capitana",
+      locale: params.locale === "es" ? "es_ES" : "en_GB",
+      url: `${SITE_URL}/${params.locale}`,
+    },
+  };
 }
 
 export function generateStaticParams() {

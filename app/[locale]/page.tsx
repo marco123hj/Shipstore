@@ -3,6 +3,8 @@ import Icon from "@/components/Icon";
 import { getCategories, getFeaturedProducts, getBrands } from "@/lib/data";
 import CategoryCard from "@/components/CategoryCard";
 import ProductCard from "@/components/ProductCard";
+import JsonLd from "@/components/JsonLd";
+import { organizationSchema } from "@/lib/seo";
 import { getDict } from "@/lib/i18n";
 
 const uspIcons = ["compass", "layers", "anchor", "truck"];
@@ -17,6 +19,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
 
   return (
     <>
+      <JsonLd data={organizationSchema()} />
       <section className="bg-navy text-white">
         <div className="container-c py-16 sm:py-20">
           <h1 className="max-w-2xl text-4xl font-bold leading-tight sm:text-5xl">{t.heroTitle}</h1>
