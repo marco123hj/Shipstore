@@ -709,6 +709,10 @@ const es = {
     marketing: "Quiero recibir correos sobre novedades y ofertas",
     saveChanges: "Guardar cambios",
     saved: "Cambios guardados.",
+    // logout confirmation
+    logoutTitle: "¿Cerrar sesión?",
+    logoutBody: "Tendrás que iniciar sesión de nuevo para ver tus pedidos y datos.",
+    logoutConfirm: "Cerrar sesión",
   },
   nauticTalk: {
     kicker: "Comunicación a bordo con manos libres",

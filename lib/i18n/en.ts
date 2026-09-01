@@ -709,6 +709,10 @@ const en = {
     marketing: "Send me emails about new products and offers",
     saveChanges: "Save changes",
     saved: "Changes saved.",
+    // logout confirmation
+    logoutTitle: "Log out?",
+    logoutBody: "You'll need to sign in again to see your orders and details.",
+    logoutConfirm: "Log out",
   },
   nauticTalk: {
     kicker: "Hands-free onboard communication",

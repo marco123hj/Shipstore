@@ -28,11 +28,22 @@ export default function AccountHub({
   const { slugs } = useWishlist();
   const t = dict.account;
   const [tab, setTab] = useState<Tab>("dashboard");
+  const [confirmLogout, setConfirmLogout] = useState(false);
 
   useEffect(() => {
     const p = new URLSearchParams(window.location.search).get("tab");
     if (p && (TABS as string[]).includes(p)) setTab(p as Tab);
   }, []);
+
+  // Close the logout dialog on Escape.
+  useEffect(() => {
+    if (!confirmLogout) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setConfirmLogout(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [confirmLogout]);
 
   const go = (next: Tab) => {
     setTab(next);
@@ -88,7 +99,7 @@ export default function AccountHub({
             ))}
             <button
               type="button"
-              onClick={logout}
+              onClick={() => setConfirmLogout(true)}
               className="flex shrink-0 items-center gap-3 whitespace-nowrap rounded-lg px-4 py-2.5 text-sm font-semibold text-navy/70 transition hover:bg-sand hover:text-ink lg:mt-1 lg:border-t lg:border-navy/10 lg:pt-3"
             >
               <Icon name="logout" className="h-5 w-5" />
@@ -177,6 +188,53 @@ export default function AccountHub({
           {tab === "settings" && <AccountSettings dict={dict} />}
         </div>
       </div>
+
+      {confirmLogout && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="logout-title"
+        >
+          <div
+            className="absolute inset-0 bg-ink/50 backdrop-blur-sm"
+            onClick={() => setConfirmLogout(false)}
+          />
+          <div className="relative w-full max-w-sm rounded-xl border border-navy/10 bg-white p-6 shadow-xl">
+            <div className="flex items-start gap-4">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-sand text-brass-dark">
+                <Icon name="logout" className="h-5 w-5" />
+              </span>
+              <div>
+                <h3 id="logout-title" className="text-lg font-bold text-ink">
+                  {t.logoutTitle}
+                </h3>
+                <p className="mt-1 text-sm text-navy/60">{t.logoutBody}</p>
+              </div>
+            </div>
+            <div className="mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+              <button
+                type="button"
+                onClick={() => setConfirmLogout(false)}
+                className="rounded-md border border-navy/20 px-5 py-2.5 text-sm font-semibold text-navy transition hover:border-navy"
+              >
+                {t.cancel}
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setConfirmLogout(false);
+                  logout();
+                }}
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-navy px-5 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-ink"
+              >
+                <Icon name="logout" className="h-4 w-4" />
+                {t.logoutConfirm}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
