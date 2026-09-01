@@ -603,6 +603,8 @@ const es = {
     deliveryTitle: "Entrega",
     methodShip: "Envío a mi dirección",
     methodPickup: "Recoger en el puerto",
+    savedAddress: "Enviar a",
+    newAddress: "Usar una dirección nueva",
     address: "Dirección",
     postcode: "Código postal",
     city: "Ciudad",

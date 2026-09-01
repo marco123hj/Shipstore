@@ -20,6 +20,18 @@ export default function CheckoutClient({ locale, dict }: { locale: string; dict:
   const [placed, setPlaced] = useState<string | null>(null);
   const [guest, setGuest] = useState(false);
 
+  // Saved addresses (logged-in users) to prefill the delivery form.
+  // addrId stays null until the user picks, so it always reflects the current
+  // default even though the auth store hydrates after the first render.
+  const addresses = user?.addresses ?? [];
+  const defaultAddrId = addresses.find((a) => a.isDefault)?.id ?? addresses[0]?.id ?? "new";
+  const [addrId, setAddrId] = useState<string | null>(null);
+  const effectiveAddrId = addrId ?? defaultAddrId;
+  const selectedAddr = effectiveAddrId === "new" ? null : addresses.find((a) => a.id === effectiveAddrId) ?? null;
+  const line1Default = selectedAddr
+    ? [selectedAddr.line1, selectedAddr.line2].filter(Boolean).join(", ")
+    : "";
+
   const shipping = method === "pickup" || subtotal >= 75 ? 0 : 5.95;
   const total = subtotal + shipping;
   const vat = (total * 21) / 121;
@@ -122,15 +134,15 @@ export default function CheckoutClient({ locale, dict }: { locale: string; dict:
         </p>
       )}
 
-      <form key={user?.email ?? "guest"} onSubmit={onSubmit} className="mt-8 grid gap-10 lg:grid-cols-[1fr_380px]">
+      <form key={`${user?.email ?? "guest"}-${effectiveAddrId}`} onSubmit={onSubmit} className="mt-8 grid gap-10 lg:grid-cols-[1fr_380px]">
         {/* Form */}
         <div className="space-y-8">
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-ink">{t.contactTitle}</h2>
-            <input className={inputClass} placeholder={t.name} defaultValue={user?.name} required autoComplete="name" />
+            <input className={inputClass} placeholder={t.name} defaultValue={selectedAddr?.name ?? user?.name} required autoComplete="name" />
             <div className="grid gap-3 sm:grid-cols-2">
               <input className={inputClass} type="email" placeholder={t.email} defaultValue={user?.email} required autoComplete="email" />
-              <input className={inputClass} type="tel" placeholder={t.phone} autoComplete="tel" />
+              <input className={inputClass} type="tel" placeholder={t.phone} defaultValue={selectedAddr?.phone ?? ""} autoComplete="tel" />
             </div>
           </section>
 
@@ -155,12 +167,52 @@ export default function CheckoutClient({ locale, dict }: { locale: string; dict:
 
             {method === "ship" && (
               <div className="space-y-3 pt-1">
-                <input className={inputClass} placeholder={t.address} required autoComplete="street-address" />
+                {addresses.length > 0 && (
+                  <div className="mb-2">
+                    <div className="mb-2 text-sm font-medium text-navy">{t.savedAddress}</div>
+                    <div className="grid gap-2 sm:grid-cols-2">
+                      {addresses.map((a) => (
+                        <button
+                          key={a.id}
+                          type="button"
+                          onClick={() => setAddrId(a.id)}
+                          className={`rounded-lg border p-3 text-left text-sm transition ${
+                            effectiveAddrId === a.id ? "border-navy bg-navy/[0.04] ring-1 ring-navy" : "border-navy/15 bg-white hover:border-navy/40"
+                          }`}
+                        >
+                          <div className="flex items-center justify-between gap-2">
+                            <span className="font-semibold text-ink">{a.name}</span>
+                            {a.isDefault && (
+                              <span className="rounded bg-brass/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-brass-dark">
+                                {dict.account.default}
+                              </span>
+                            )}
+                          </div>
+                          <div className="mt-1 text-navy/60">
+                            {a.line1}, {a.postcode} {a.city}
+                          </div>
+                        </button>
+                      ))}
+                      <button
+                        type="button"
+                        onClick={() => setAddrId("new")}
+                        className={`flex items-center gap-2 rounded-lg border border-dashed p-3 text-left text-sm font-semibold transition ${
+                          effectiveAddrId === "new" ? "border-navy bg-navy/[0.04] text-ink ring-1 ring-navy" : "border-navy/25 bg-white text-navy hover:border-navy/50"
+                        }`}
+                      >
+                        <Icon name="plus" className="h-4 w-4" />
+                        {t.newAddress}
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                <input className={inputClass} placeholder={t.address} defaultValue={line1Default} required autoComplete="street-address" />
                 <div className="grid gap-3 sm:grid-cols-3">
-                  <input className={inputClass} placeholder={t.postcode} required autoComplete="postal-code" />
-                  <input className={`${inputClass} sm:col-span-2`} placeholder={t.city} required autoComplete="address-level2" />
+                  <input className={inputClass} placeholder={t.postcode} defaultValue={selectedAddr?.postcode ?? ""} required autoComplete="postal-code" />
+                  <input className={`${inputClass} sm:col-span-2`} placeholder={t.city} defaultValue={selectedAddr?.city ?? ""} required autoComplete="address-level2" />
                 </div>
-                <input className={inputClass} placeholder={t.country} defaultValue="España" required autoComplete="country-name" />
+                <input className={inputClass} placeholder={t.country} defaultValue={selectedAddr?.country ?? "España"} required autoComplete="country-name" />
               </div>
             )}
 
