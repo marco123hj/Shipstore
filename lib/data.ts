@@ -321,17 +321,32 @@ export function getProductsByBrand(brand: string, locale?: string): Product[] {
   return products.filter((p) => p.brand === brand).map((p) => localizeProduct(p, locale));
 }
 
+// Bilingual search index for a product: combines EN + ES name/blurb, brand,
+// and both category names, so search works regardless of the active language.
+function buildSearchText(p: Product): string {
+  const es = esProduct[p.slug];
+  const catEn = categories.find((c) => c.slug === p.category)?.name ?? "";
+  const catEs = esCategory[p.category]?.name ?? "";
+  return [p.name, p.brand, p.blurb, es?.name, es?.blurb, catEn, catEs]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+}
+
 export function searchProducts(query: string, locale?: string): Product[] {
   const q = query.trim().toLowerCase();
   if (!q) return [];
-  return getProducts(locale).filter((p) => {
-    const cat = getCategory(p.category, locale);
-    return (
-      p.name.toLowerCase().includes(q) ||
-      p.brand.toLowerCase().includes(q) ||
-      p.blurb.toLowerCase().includes(q) ||
-      (cat ? cat.name.toLowerCase().includes(q) : false)
-    );
+  return products.filter((p) => buildSearchText(p).includes(q)).map((p) => localizeProduct(p, locale));
+}
+
+// Lightweight list for the header search dropdown: localized display fields
+// plus a bilingual search string to filter against.
+export type SearchItem = { slug: string; name: string; brand: string; price: number; search: string };
+
+export function getSearchItems(locale?: string): SearchItem[] {
+  return products.map((p) => {
+    const l = localizeProduct(p, locale);
+    return { slug: p.slug, name: l.name, brand: l.brand, price: l.price, search: buildSearchText(p) };
   });
 }
 

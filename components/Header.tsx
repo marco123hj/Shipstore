@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Icon from "@/components/Icon";
-import { getProducts } from "@/lib/data";
+import { getSearchItems } from "@/lib/data";
 import LangSwitcher from "@/components/LangSwitcher";
 import CartButton from "@/components/CartButton";
 import SearchBar from "@/components/SearchBar";
@@ -22,7 +22,7 @@ export default function Header({ locale, dict }: { locale: string; dict: Dict })
     <header className="sticky top-0 z-50 border-b border-navy/10 bg-sand/95 backdrop-blur">
       <div className="container-c flex h-16 items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <MobileMenu locale={locale} dict={dict} products={getProducts(locale)} />
+          <MobileMenu locale={locale} dict={dict} items={getSearchItems(locale)} />
           <Link href={`/${locale}`} className="flex items-center gap-2 text-navy">
             <Icon name="anchor" className="h-6 w-6 text-brass-dark" />
             <span className="text-xl font-bold text-ink">La Capitana</span>
@@ -38,7 +38,7 @@ export default function Header({ locale, dict }: { locale: string; dict: Dict })
         </nav>
 
         <div className="flex items-center gap-3 text-navy">
-          <SearchBar locale={locale} products={getProducts(locale)} search={dict.search} />
+          <SearchBar locale={locale} items={getSearchItems(locale)} search={dict.search} />
           <LangSwitcher locale={locale} label={dict.switchLabel} title={dict.switchTo} />
           <WishlistNav locale={locale} label={dict.wishlist.title} />
           <AuthNav locale={locale} label={dict.auth.account} />

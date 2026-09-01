@@ -4,17 +4,17 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Icon from "@/components/Icon";
-import { Product, formatPrice } from "@/lib/data";
+import { SearchItem, formatPrice } from "@/lib/data";
 import type { Dict } from "@/lib/i18n";
 
 export default function MobileMenu({
   locale,
   dict,
-  products,
+  items,
 }: {
   locale: string;
   dict: Dict;
-  products: Product[];
+  items: SearchItem[];
 }) {
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState("");
@@ -33,15 +33,8 @@ export default function MobileMenu({
   const matches = useMemo(() => {
     const s = q.trim().toLowerCase();
     if (s.length < 2) return [];
-    return products
-      .filter(
-        (p) =>
-          p.name.toLowerCase().includes(s) ||
-          p.brand.toLowerCase().includes(s) ||
-          p.blurb.toLowerCase().includes(s)
-      )
-      .slice(0, 6);
-  }, [q, products]);
+    return items.filter((it) => it.search.includes(s)).slice(0, 6);
+  }, [q, items]);
 
   const typing = q.trim().length >= 2;
 

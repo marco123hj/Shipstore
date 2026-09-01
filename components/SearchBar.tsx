@@ -4,17 +4,17 @@ import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Icon from "@/components/Icon";
-import { Product, formatPrice } from "@/lib/data";
+import { SearchItem, formatPrice } from "@/lib/data";
 
 type SearchDict = { placeholder: string; resultsFor: string; noResults: string };
 
 export default function SearchBar({
   locale,
-  products,
+  items,
   search,
 }: {
   locale: string;
-  products: Product[];
+  items: SearchItem[];
   search: SearchDict;
 }) {
   const router = useRouter();
@@ -24,15 +24,8 @@ export default function SearchBar({
   const matches = useMemo(() => {
     const s = q.trim().toLowerCase();
     if (s.length < 2) return [];
-    return products
-      .filter(
-        (p) =>
-          p.name.toLowerCase().includes(s) ||
-          p.brand.toLowerCase().includes(s) ||
-          p.blurb.toLowerCase().includes(s)
-      )
-      .slice(0, 6);
-  }, [q, products]);
+    return items.filter((it) => it.search.includes(s)).slice(0, 6);
+  }, [q, items]);
 
   const go = (v: string) => {
     const term = v.trim();
