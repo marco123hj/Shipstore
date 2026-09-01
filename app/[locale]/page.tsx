@@ -1,8 +1,9 @@
 import Link from "next/link";
 import Icon from "@/components/Icon";
-import { getCategories, getFeaturedProducts, getBrands } from "@/lib/data";
+import { getCategories, getFeaturedProducts, getBrands, getProducts } from "@/lib/data";
 import CategoryCard from "@/components/CategoryCard";
 import ProductCard from "@/components/ProductCard";
+import RecentlyViewed from "@/components/RecentlyViewed";
 import JsonLd from "@/components/JsonLd";
 import { organizationSchema } from "@/lib/seo";
 import { getDict } from "@/lib/i18n";
@@ -114,6 +115,8 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           </Link>
         </div>
       </section>
+
+      <RecentlyViewed products={getProducts(locale)} locale={locale} dict={dict} />
     </>
   );
 }

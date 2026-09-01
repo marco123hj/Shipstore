@@ -549,7 +549,22 @@ const es = {
     fEmail: "Correo",
     fMessage: "Mensaje",
     fSend: "Enviar",
+    sent: "Gracias, tu mensaje está en camino. Te responderemos pronto.",
     addr: ["La Capitana", "Puerto Valencia Mar (lado de El Saler)", "Junto a Plan B", "46012 València, España"],
+  },
+  notFound: {
+    title: "Página no encontrada",
+    body: "La página que buscas no existe o se ha movido.",
+    home: "Volver al inicio",
+    shop: "Ir a la tienda",
+  },
+  recentlyViewed: "Vistos recientemente",
+  newsletter: {
+    title: "No te pierdas nada",
+    subtitle: "Novedades, reposiciones y ofertas desde el puerto. Sin spam.",
+    placeholder: "Tu correo",
+    cta: "Suscribirme",
+    done: "Listo, gracias por suscribirte.",
   },
   faqPage: {
     title: "Preguntas frecuentes",

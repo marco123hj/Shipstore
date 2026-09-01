@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Icon from "@/components/Icon";
+import { recordView } from "@/context/RecentlyViewed";
 import ProductCard from "@/components/ProductCard";
 import AddToCartButton from "@/components/AddToCartButton";
 import WishlistButton from "@/components/WishlistButton";
@@ -27,6 +28,10 @@ export default function ProductDetail({
   const t = dict.product;
   const [quantity, setQuantity] = useState(1);
   const [open, setOpen] = useState<string | null>("description");
+
+  useEffect(() => {
+    recordView(product.slug);
+  }, [product.slug]);
 
   const hasDiscount = product.oldPrice != null && product.oldPrice > product.price;
 

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getCategories } from "@/lib/data";
+import NewsletterForm from "@/components/NewsletterForm";
 import type { Dict } from "@/lib/i18n";
 
 export default function Footer({ locale, dict }: { locale: string; dict: Dict }) {
@@ -8,6 +9,12 @@ export default function Footer({ locale, dict }: { locale: string; dict: Dict })
 
   return (
     <footer className="mt-20 bg-navy text-white/70">
+      <div className="border-b border-white/10">
+        <div className="container-c py-10">
+          <NewsletterForm t={dict.newsletter} />
+        </div>
+      </div>
+
       <div className="container-c grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-5">
         <div className="sm:col-span-2 lg:col-span-1">
           <div className="text-xl font-bold text-white">La Capitana</div>

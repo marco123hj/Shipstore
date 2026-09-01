@@ -6,6 +6,7 @@ import {
   getProductsByCategory,
 } from "@/lib/data";
 import ProductDetail from "@/components/ProductDetail";
+import RecentlyViewed from "@/components/RecentlyViewed";
 import JsonLd from "@/components/JsonLd";
 import { productSchema } from "@/lib/seo";
 import { getDict, locales } from "@/lib/i18n";
@@ -47,6 +48,7 @@ export default function ProductPage({ params }: { params: { locale: string; slug
         locale={locale}
         dict={dict}
       />
+      <RecentlyViewed products={getProducts(locale)} locale={locale} dict={dict} excludeSlug={slug} />
     </>
   );
 }

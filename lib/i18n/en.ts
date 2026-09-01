@@ -549,7 +549,22 @@ const en = {
     fEmail: "Email",
     fMessage: "Message",
     fSend: "Send",
+    sent: "Thanks, your message is on its way. We'll get back to you soon.",
     addr: ["La Capitana", "Valencia Mar marina (El Saler side)", "Next to Plan B", "46012 València, España"],
+  },
+  notFound: {
+    title: "Page not found",
+    body: "The page you're looking for doesn't exist or has moved.",
+    home: "Back to home",
+    shop: "Go to the shop",
+  },
+  recentlyViewed: "Recently viewed",
+  newsletter: {
+    title: "Stay in the loop",
+    subtitle: "New arrivals, restocks and offers from the marina. No spam.",
+    placeholder: "Your email",
+    cta: "Subscribe",
+    done: "You're in, thanks for subscribing.",
   },
   faqPage: {
     title: "Frequently asked questions",

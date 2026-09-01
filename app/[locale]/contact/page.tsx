@@ -1,3 +1,4 @@
+import ContactForm from "@/components/ContactForm";
 import { getDict } from "@/lib/i18n";
 
 export function generateMetadata({ params }: { params: { locale: string } }) {
@@ -37,15 +38,7 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
           </dl>
         </div>
 
-        <form className="rounded-lg border border-navy/10 bg-white p-6">
-          <h2 className="text-xl font-bold text-ink">{t.formTitle}</h2>
-          <div className="mt-4 space-y-3">
-            <input placeholder={t.fName} className="w-full rounded-md border border-navy/15 px-4 py-2.5 text-sm outline-none focus:border-brass" />
-            <input placeholder={t.fEmail} className="w-full rounded-md border border-navy/15 px-4 py-2.5 text-sm outline-none focus:border-brass" />
-            <textarea placeholder={t.fMessage} rows={4} className="w-full rounded-md border border-navy/15 px-4 py-2.5 text-sm outline-none focus:border-brass" />
-            <button type="button" className="btn-brass w-full">{t.fSend}</button>
-          </div>
-        </form>
+        <ContactForm t={t} />
       </div>
     </>
   );
