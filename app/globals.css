@@ -34,3 +34,36 @@ body {
     @apply inline-flex items-center justify-center gap-2 rounded-md bg-brass px-5 py-2.5 text-sm font-semibold text-navy transition hover:bg-brass-dark;
   }
 }
+
+/* Dual-thumb range slider (price filter) */
+input[type="range"].range-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+input[type="range"].range-thumb::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  pointer-events: auto;
+  height: 16px;
+  width: 16px;
+  border-radius: 9999px;
+  background: #0b2238;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 1px rgba(11, 34, 56, 0.25);
+  cursor: pointer;
+}
+input[type="range"].range-thumb::-moz-range-thumb {
+  pointer-events: auto;
+  height: 16px;
+  width: 16px;
+  border-radius: 9999px;
+  background: #0b2238;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+}
