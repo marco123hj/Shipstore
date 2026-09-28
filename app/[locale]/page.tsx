@@ -8,7 +8,12 @@ import JsonLd from "@/components/JsonLd";
 import { organizationSchema } from "@/lib/seo";
 import { getDict } from "@/lib/i18n";
 
-const uspIcons = ["compass", "layers", "anchor", "truck"];
+const uspIcons = ["compass", "layers", "truck", "anchor"];
+
+const heroTag: Record<string, string> = {
+  nl: "Voor de watersport- en de scheepvaart",
+  en: "For watersports and shipping",
+};
 
 export default function HomePage({ params }: { params: { locale: string } }) {
   const { locale } = params;
@@ -21,12 +26,44 @@ export default function HomePage({ params }: { params: { locale: string } }) {
   return (
     <>
       <JsonLd data={organizationSchema()} />
-      <section className="bg-navy text-white">
-        <div className="container-c py-16 sm:py-20">
-          <h1 className="max-w-2xl text-4xl font-bold leading-tight sm:text-5xl">{t.heroTitle}</h1>
-          <p className="mt-4 max-w-xl text-lg text-white/75">{t.heroSub}</p>
-          <div className="mt-7">
-            <Link href={`/${locale}/shop`} className="btn-brass">{t.heroCta}</Link>
+      <section className="bg-white">
+        <div className="container-c grid items-center gap-10 py-12 lg:grid-cols-2 lg:py-16">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full bg-orange/10 px-3 py-1 text-xs font-semibold text-orange-dark">
+              <Icon name="anchor" className="h-3.5 w-3.5" /> {heroTag[locale] ?? heroTag.nl}
+            </span>
+            <h1 className="mt-4 text-3xl font-bold leading-tight text-navy sm:text-4xl lg:text-5xl">
+              {t.heroTitle}
+            </h1>
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-navy/70">{t.heroSub}</p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link href={`/${locale}/shop`} className="btn-primary">{t.heroCta}</Link>
+              <Link href={`/${locale}/nautic-talk`} className="btn-outline">{dict.nauticTalk.title}</Link>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="relative overflow-hidden rounded-2xl">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=600&h=760&fit=crop"
+                alt="Watersport"
+                className="h-full w-full object-cover"
+              />
+              <span className="absolute bottom-3 left-3 rounded-md bg-navy/70 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+                Watersport
+              </span>
+            </div>
+            <div className="relative overflow-hidden rounded-2xl">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=600&h=760&fit=crop"
+                alt="Scheepvaart"
+                className="h-full w-full object-cover"
+              />
+              <span className="absolute bottom-3 left-3 rounded-md bg-navy/70 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+                Scheepvaart
+              </span>
+            </div>
           </div>
         </div>
       </section>

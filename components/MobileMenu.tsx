@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Icon from "@/components/Icon";
-import { SearchItem, formatPrice } from "@/lib/data";
+import { SearchItem, formatPrice, getCategories } from "@/lib/data";
 import type { Dict } from "@/lib/i18n";
 
 export default function MobileMenu({
@@ -21,9 +21,11 @@ export default function MobileMenu({
   const router = useRouter();
 
   const nav = [
-    { href: `/${locale}/shop`, label: dict.nav.shop },
+    ...getCategories(locale).map((c) => ({
+      href: `/${locale}/category/${c.slug}`,
+      label: c.name,
+    })),
     { href: `/${locale}/nautic-talk`, label: dict.nav.nauticTalk },
-    { href: `/${locale}/category/fishing`, label: dict.nav.fishing },
     { href: `/${locale}/about`, label: dict.nav.about },
     { href: `/${locale}/contact`, label: dict.nav.contact },
     { href: `/${locale}/wishlist`, label: dict.wishlist.title },

@@ -468,10 +468,10 @@ const en = {
     cookies: "Cookie Policy",
   },
   home: {
-    heroTitle: "Marine and watersports supplies in Lemmer.",
-    heroSub: "Maintenance, marine equipment, safety, electronics and coatings for boats and yachts, right on the water.",
+    heroTitle: "Everything for watersports and shipping",
+    heroSub: "As experienced inland skippers and passionate watersports lovers we supply high-quality gear and expert advice — from fenders and tools to electrics and safety equipment. Fast delivery across the Benelux, Germany and Spain.",
     heroCta: "Shop all products",
-    usps: ["Expert advice", "Wide range", "On the water", "Delivery across the Netherlands"],
+    usps: ["Expert advice", "Wide range", "Fast Benelux delivery", "Business & private"],
     categories: "Shop by category",
     featured: "Featured products",
     brands: "Brands",

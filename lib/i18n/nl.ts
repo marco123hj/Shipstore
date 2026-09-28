@@ -468,10 +468,10 @@ const nl = {
     cookies: "Cookiebeleid",
   },
   home: {
-    heroTitle: "Scheepsbenodigdheden en watersportartikelen in Lemmer.",
-    heroSub: "Onderhoud, scheepsuitrusting, veiligheid, elektronica en coatings voor boten en jachten, direct aan het water.",
+    heroTitle: "Alles voor de watersport en de scheepvaart",
+    heroSub: "Als ervaren binnenvaartschippers en gepassioneerde watersportliefhebbers leveren wij hoogwaardige materialen en deskundig advies — van fenders en gereedschap tot elektra en veiligheidsmiddelen. Snelle levering in de Benelux, Duitsland en Spanje.",
     heroCta: "Bekijk alle producten",
-    usps: ["Deskundig advies", "Breed assortiment", "Aan het water", "Bezorging door heel Nederland"],
+    usps: ["Deskundig advies", "Breed assortiment", "Snelle levering in de Benelux", "Zakelijk & particulier"],
     categories: "Winkel per categorie",
     featured: "Uitgelichte producten",
     brands: "Merken",

@@ -45,17 +45,13 @@ export const OWN_BRAND = "Shipstore";
 // --- Categories (curated for the Dutch leisure boat & yacht market) ----------
 
 export const categories: Category[] = [
-  { slug: "maintenance", name: "Maintenance & Care", tagline: "Keep her looking new", icon: "droplet", tone: "sea", blurb: "Cleaners, polishes, antifouling and varnish from Hempel, Epifanes and Yachticon." },
-  { slug: "deck-hardware", name: "Deck & Hardware", tagline: "Built to last at sea", icon: "link", tone: "ink", blurb: "Cleats, shackles, stainless fittings and rope for every deck." },
-  { slug: "mooring-fenders", name: "Mooring & Fenders", tagline: "Come alongside easy", icon: "anchor", tone: "rust", blurb: "Yacht fenders, mooring lines and bollards sized for leisure boats." },
-  { slug: "electrical-lighting", name: "Electrical & Lighting", tagline: "Power and visibility", icon: "bolt", tone: "brass", blurb: "Marine batteries, tinned cabling and navigation lighting." },
-  { slug: "engine-bilge", name: "Engine & Bilge", tagline: "Keep her running", icon: "gear", tone: "ink", blurb: "Pumps, oils, grease, belts and engine-room essentials." },
-  { slug: "safety-rescue", name: "Safety & Rescue", tagline: "Everyone home safe", icon: "buoy", tone: "rust", blurb: "Life jackets, flares, first aid and fire safety." },
-  { slug: "electronics-comms", name: "Electronics & Comms", tagline: "Stay connected aboard", icon: "radio", tone: "sea", blurb: "Nautic Talk headset systems, binoculars and onboard electronics." },
-  { slug: "clothing", name: "Foul-Weather & Kit", tagline: "Dress for the water", icon: "umbrella", tone: "ink", blurb: "Sailing jackets, boots, gloves and rain gear." },
-  { slug: "flags-accessories", name: "Flags & Accessories", tagline: "The finishing touches", icon: "flag", tone: "brass", blurb: "Courtesy flags, poles, cabin and decoration." },
-  { slug: "tools", name: "Tools", tagline: "For jobs on the water", icon: "wrench", tone: "sea", blurb: "Marine tool kits, covers, tarpaulins and lifting straps." },
-  { slug: "fishing", name: "Fishing", tagline: "Sea, coast and inland", icon: "fish", tone: "rust", blurb: "Rods, reels and lures for sea bass, pike-perch and inland fishing." },
+  { slug: "onderhoud", name: "Maintenance", tagline: "Keep her looking new", icon: "droplet", tone: "sea", blurb: "Cleaners, polishes, antifouling and varnish from Hempel, Epifanes and Yachticon." },
+  { slug: "elektro", name: "Electrical", tagline: "Power and light aboard", icon: "bolt", tone: "brass", blurb: "Marine cabling, shore power, navigation lighting and electrics." },
+  { slug: "gereedschap", name: "Tools", tagline: "For jobs on the water", icon: "wrench", tone: "sea", blurb: "Marine tool kits, brushes, straps and lifting gear." },
+  { slug: "machinekamer", name: "Engine Room", tagline: "Keep her running", icon: "gear", tone: "ink", blurb: "Pumps, hoses, clamps, oils and engine-room essentials." },
+  { slug: "scheeps-benodigdheden", name: "Ship Supplies", tagline: "Everything for on board", icon: "anchor", tone: "rust", blurb: "Fenders, mooring lines, rope, blocks, flags and deck hardware." },
+  { slug: "technisch", name: "Technical", tagline: "Systems & communication", icon: "radio", tone: "sea", blurb: "Nautic Talk hands-free headsets and onboard technical gear." },
+  { slug: "veiligheid", name: "Safety", tagline: "Everyone home safe", icon: "buoy", tone: "rust", blurb: "Life jackets, fire safety, gloves and rescue equipment." },
 ];
 
 // --- Brands ------------------------------------------------------------------
@@ -81,60 +77,49 @@ export const brands: Brand[] = [
 // brand. The full catalogue lands with the Shopify (Logic4-imported) backend.
 
 export const products: Product[] = [
-  // Maintenance & Care
-  { slug: "zettex-ship-cleaner-10l", name: "Zettex Ship Cleaner 10L", brand: "Zettex", category: "maintenance", price: 33.73, unit: "per can", blurb: "Concentrated heavy-duty cleaner that lifts grime from hull, deck and waterline.", featured: true },
-  { slug: "flat-brush-2in", name: "Flat Paint Brush 2\"", brand: OWN_BRAND, category: "maintenance", price: 4.57, blurb: "A hard-wearing flat brush for varnish, primer and antifouling." },
-  { slug: "foam-roller-10cm", name: "Foam Paint Roller 10cm (10 pcs)", brand: OWN_BRAND, category: "maintenance", price: 1.09, unit: "per pack", blurb: "Fine foam mini-rollers for a smooth finish on small areas." },
+  // Onderhoud (Maintenance)
+  { slug: "zettex-ship-cleaner-10l", name: "Zettex Ship Cleaner 10L", brand: "Zettex", category: "onderhoud", price: 33.73, unit: "per can", blurb: "Concentrated heavy-duty cleaner that lifts grime from hull, deck and waterline.", featured: true },
+  { slug: "flat-brush-2in", name: "Flat Paint Brush 2\"", brand: OWN_BRAND, category: "onderhoud", price: 4.57, blurb: "A hard-wearing flat brush for varnish, primer and antifouling." },
+  { slug: "foam-roller-10cm", name: "Foam Paint Roller 10cm (10 pcs)", brand: OWN_BRAND, category: "onderhoud", price: 1.09, unit: "per pack", blurb: "Fine foam mini-rollers for a smooth finish on small areas." },
 
-  // Deck & Hardware
-  { slug: "orka-hmpe-rope-24mm", name: "Orka HMPE Rope 24mm", brand: "Orka", category: "deck-hardware", price: 22.02, unit: "per m", blurb: "High-strength HMPE line, rated to 486 kN, for halyards, sheets and heavy loads." },
-  { slug: "ss316-carabiner-120", name: "Stainless 316 Carabiner Hook 120mm", brand: OWN_BRAND, category: "deck-hardware", price: 10.89, blurb: "Marine-grade A4 stainless carabiner for gear, lines and safety clips." },
-  { slug: "nylon-block-single-25", name: "Single Nylon Block 25mm", brand: OWN_BRAND, category: "deck-hardware", price: 2.24, blurb: "Light single-sheave block for control lines and small tackle." },
+  // Elektro (Electrical)
+  { slug: "nav-bulb-bay15d-28v", name: "Navigation Bulb BAY15D 25W 28V", brand: OWN_BRAND, category: "elektro", price: 3.15, blurb: "Replacement bayonet bulb for navigation lights, 24 to 28V." },
+  { slug: "dhr-sealed-beam-par64", name: "DHR Sealed Beam PAR64 230V 1000W", brand: "DHR", category: "elektro", price: 70.85, blurb: "High-output sealed-beam lamp for searchlights and deck floods.", featured: true },
+  { slug: "cee-shore-plug-16a", name: "CEE Shore Power Plug 16A", brand: OWN_BRAND, category: "elektro", price: 13.79, blurb: "IP44 CEE connector for shore-power hook-up at the marina." },
 
-  // Mooring & Fenders
-  { slug: "talamex-mooring-line-10", name: "Talamex Mooring Line 10mm", brand: "Talamex", category: "mooring-fenders", price: 1.0, unit: "per m", blurb: "Black PPM mooring line, sold by the metre, soft and easy on the hands." },
-  { slug: "talamex-mooring-line-12", name: "Talamex Mooring Line 12mm", brand: "Talamex", category: "mooring-fenders", price: 1.35, unit: "per m", blurb: "Heavier 12mm black PPM mooring line for larger boats, sold by the metre." },
-  { slug: "fender-12x100", name: "Fender 12x11x100cm", brand: OWN_BRAND, category: "mooring-fenders", price: 13.85, blurb: "Compact hanging fender that protects the topsides at the quay.", featured: true },
-  { slug: "orka-fender-rope-18", name: "Orka Fender Rope 18mm x 50m", brand: "Orka", category: "mooring-fenders", price: 61.23, unit: "per roll", blurb: "Traditional fender rope for making up your own fenders and rubbing gear." },
+  // Gereedschap (Tools)
+  { slug: "lifting-sling-1t-3m", name: "Round Lifting Sling 1T 3m", brand: "Pro lift", category: "gereedschap", price: 16.52, blurb: "One-tonne round sling for lifting, recovery and mast work." },
+  { slug: "ratchet-strap-9m", name: "Ratchet Tie-Down Strap 25mm x 9m", brand: OWN_BRAND, category: "gereedschap", price: 27.71, blurb: "Ratchet strap for securing gear, tenders and deck cargo." },
+  { slug: "wire-cup-brush-115", name: "Wire Cup Brush 115mm", brand: OWN_BRAND, category: "gereedschap", price: 17.41, blurb: "Twist-knot cup brush for angle grinders, for rust and paint prep." },
 
-  // Electrical & Lighting
-  { slug: "nav-bulb-bay15d-28v", name: "Navigation Bulb BAY15D 25W 28V", brand: OWN_BRAND, category: "electrical-lighting", price: 3.15, blurb: "Replacement bayonet bulb for navigation lights, 24 to 28V." },
-  { slug: "dhr-sealed-beam-par64", name: "DHR Sealed Beam PAR64 230V 1000W", brand: "DHR", category: "electrical-lighting", price: 70.85, blurb: "High-output sealed-beam lamp for searchlights and deck floods.", featured: true },
-  { slug: "cee-shore-plug-16a", name: "CEE Shore Power Plug 16A", brand: OWN_BRAND, category: "electrical-lighting", price: 13.79, blurb: "IP44 CEE connector for shore-power hook-up at the marina." },
+  // Machinekamer (Engine Room)
+  { slug: "pvc-suction-hose-25", name: "PVC Suction Hose 25mm", brand: OWN_BRAND, category: "machinekamer", price: 3.63, unit: "per m", blurb: "Reinforced suction hose for bilge, water and transfer pumps." },
+  { slug: "jerrycan-siphon-pump", name: "Jerrycan Siphon Pump", brand: OWN_BRAND, category: "machinekamer", price: 5.75, blurb: "Simple hand siphon for moving fuel or water from a jerrycan." },
+  { slug: "ss-hose-clamp-25-40", name: "Stainless Hose Clamp 25-40mm", brand: OWN_BRAND, category: "machinekamer", price: 2.53, blurb: "A4 stainless worm-drive clamp that stands up to salt air." },
 
-  // Engine & Bilge
-  { slug: "pvc-suction-hose-25", name: "PVC Suction Hose 25mm", brand: OWN_BRAND, category: "engine-bilge", price: 3.63, unit: "per m", blurb: "Reinforced suction hose for bilge, water and transfer pumps." },
-  { slug: "jerrycan-siphon-pump", name: "Jerrycan Siphon Pump", brand: OWN_BRAND, category: "engine-bilge", price: 5.75, blurb: "Simple hand siphon for moving fuel or water from a jerrycan." },
-  { slug: "ss-hose-clamp-25-40", name: "Stainless Hose Clamp 25-40mm", brand: OWN_BRAND, category: "engine-bilge", price: 2.53, blurb: "A4 stainless worm-drive clamp that stands up to salt air." },
+  // Scheeps benodigdheden (Ship Supplies)
+  { slug: "orka-hmpe-rope-24mm", name: "Orka HMPE Rope 24mm", brand: "Orka", category: "scheeps-benodigdheden", price: 22.02, unit: "per m", blurb: "High-strength HMPE line, rated to 486 kN, for halyards, sheets and heavy loads." },
+  { slug: "ss316-carabiner-120", name: "Stainless 316 Carabiner Hook 120mm", brand: OWN_BRAND, category: "scheeps-benodigdheden", price: 10.89, blurb: "Marine-grade A4 stainless carabiner for gear, lines and safety clips." },
+  { slug: "nylon-block-single-25", name: "Single Nylon Block 25mm", brand: OWN_BRAND, category: "scheeps-benodigdheden", price: 2.24, blurb: "Light single-sheave block for control lines and small tackle." },
+  { slug: "talamex-mooring-line-10", name: "Talamex Mooring Line 10mm", brand: "Talamex", category: "scheeps-benodigdheden", price: 1.0, unit: "per m", blurb: "Black PPM mooring line, sold by the metre, soft and easy on the hands." },
+  { slug: "talamex-mooring-line-12", name: "Talamex Mooring Line 12mm", brand: "Talamex", category: "scheeps-benodigdheden", price: 1.35, unit: "per m", blurb: "Heavier 12mm black PPM mooring line for larger boats, sold by the metre." },
+  { slug: "fender-12x100", name: "Fender 12x11x100cm", brand: OWN_BRAND, category: "scheeps-benodigdheden", price: 13.85, blurb: "Compact hanging fender that protects the topsides at the quay.", featured: true },
+  { slug: "orka-fender-rope-18", name: "Orka Fender Rope 18mm x 50m", brand: "Orka", category: "scheeps-benodigdheden", price: 61.23, unit: "per roll", blurb: "Traditional fender rope for making up your own fenders and rubbing gear." },
+  { slug: "dutch-ensign-30x45", name: "Dutch Ensign 30x45cm", brand: OWN_BRAND, category: "scheeps-benodigdheden", price: 4.3, blurb: "Woven courtesy ensign for Dutch-flagged boats." },
+  { slug: "dressing-line-10m", name: "Dressing Line 10m", brand: OWN_BRAND, category: "scheeps-benodigdheden", price: 9.14, blurb: "Red-white-blue dressing line to dress ship on a special day." },
 
-  // Safety & Rescue
-  { slug: "besto-lifejacket-165n", name: "Besto Automatic Life Jacket 165N", brand: "Besto", category: "safety-rescue", price: 114.22, blurb: "Automatic inflatable life jacket with 165N of buoyancy, comfortable all day.", featured: true },
-  { slug: "marinepool-300n-offshore", name: "MarinePool Automatic Life Jacket 300N Offshore", brand: "MarinePool", category: "safety-rescue", price: 216.95, blurb: "Heavy-duty 300N offshore life jacket with harness, for serious passages." },
-  { slug: "besto-dog-lifejacket-m", name: "Besto Dog Life Jacket M (8-15kg)", brand: "Besto", category: "safety-rescue", price: 27.47, blurb: "Buoyancy aid for dogs, with a grab handle to lift them back aboard." },
-  { slug: "fire-extinguisher-powder-2kg", name: "Fire Extinguisher Powder 2kg", brand: OWN_BRAND, category: "safety-rescue", price: 44.04, blurb: "Compact 2kg ABC powder extinguisher with a mounting bracket." },
-  { slug: "fire-blanket-100", name: "Fire Blanket 100x100cm", brand: OWN_BRAND, category: "safety-rescue", price: 30.49, blurb: "Galley fire blanket for smothering flames fast." },
+  // Technisch (Technical / Communication)
+  { slug: "nautic-talk-duo", name: "Nautic Talk Duo Headset System", brand: "Nautic Talk", category: "technisch", price: 258.26, oldPrice: 312.49, unit: "set", blurb: "Hands-free Bluetooth headset pair for stress-free communication when mooring and manoeuvring.", featured: true },
+  { slug: "nautic-talk-solo", name: "Nautic Talk Solo Headset", brand: "Nautic Talk", category: "technisch", price: 179.0, blurb: "Single-headset add-on for the Nautic Talk system." },
 
-  // Electronics & Comms
-  { slug: "nautic-talk-duo", name: "Nautic Talk Duo Headset System", brand: "Nautic Talk", category: "electronics-comms", price: 258.26, oldPrice: 312.49, unit: "set", blurb: "Hands-free Bluetooth headset pair for stress-free communication when mooring and manoeuvring.", featured: true },
-  { slug: "nautic-talk-solo", name: "Nautic Talk Solo Headset", brand: "Nautic Talk", category: "electronics-comms", price: 179.0, blurb: "Single-headset add-on for the Nautic Talk system." },
-
-  // Foul-Weather & Kit
-  { slug: "winter-pvc-gloves", name: "Winter PVC Gloves", brand: OWN_BRAND, category: "clothing", price: 16.58, unit: "per pair", blurb: "Warm, waterproof PVC gloves for cold, wet work on deck." },
-  { slug: "nitrile-grip-gloves", name: "Nitrile Grip Gloves", brand: "Psp", category: "clothing", price: 3.15, unit: "per pair", blurb: "All-round nitrile-coated gloves with a secure grip for lines and tools." },
-
-  // Flags & Accessories
-  { slug: "dutch-ensign-30x45", name: "Dutch Ensign 30x45cm", brand: OWN_BRAND, category: "flags-accessories", price: 4.3, blurb: "Woven courtesy ensign for Dutch-flagged boats." },
-  { slug: "dressing-line-10m", name: "Dressing Line 10m", brand: OWN_BRAND, category: "flags-accessories", price: 9.14, blurb: "Red-white-blue dressing line to dress ship on a special day." },
-
-  // Tools
-  { slug: "lifting-sling-1t-3m", name: "Round Lifting Sling 1T 3m", brand: "Pro lift", category: "tools", price: 16.52, blurb: "One-tonne round sling for lifting, recovery and mast work." },
-  { slug: "ratchet-strap-9m", name: "Ratchet Tie-Down Strap 25mm x 9m", brand: OWN_BRAND, category: "tools", price: 27.71, blurb: "Ratchet strap for securing gear, tenders and deck cargo." },
-  { slug: "wire-cup-brush-115", name: "Wire Cup Brush 115mm", brand: OWN_BRAND, category: "tools", price: 17.41, blurb: "Twist-knot cup brush for angle grinders, for rust and paint prep." },
-
-  // Fishing
-  { slug: "shore-spinning-rod-80", name: "Shore Spinning Rod 8'0\" 10-30g", brand: OWN_BRAND, category: "fishing", price: 99.0, blurb: "Crisp, fast shore rod built for sea bass along the coast.", featured: true },
-  { slug: "saltwater-reel-4000", name: "Saltwater Spinning Reel 4000", brand: OWN_BRAND, category: "fishing", price: 119.0, blurb: "Sealed, salt-ready spinning reel with a smooth drag." },
-  { slug: "seabass-lure-set", name: "Sea Bass Lure Set (5 pcs)", brand: OWN_BRAND, category: "fishing", price: 29.95, blurb: "A hand-picked set of hard and soft lures for sea bass and pike-perch." },
+  // Veiligheid (Safety)
+  { slug: "besto-lifejacket-165n", name: "Besto Automatic Life Jacket 165N", brand: "Besto", category: "veiligheid", price: 114.22, blurb: "Automatic inflatable life jacket with 165N of buoyancy, comfortable all day.", featured: true },
+  { slug: "marinepool-300n-offshore", name: "MarinePool Automatic Life Jacket 300N Offshore", brand: "MarinePool", category: "veiligheid", price: 216.95, blurb: "Heavy-duty 300N offshore life jacket with harness, for serious passages." },
+  { slug: "besto-dog-lifejacket-m", name: "Besto Dog Life Jacket M (8-15kg)", brand: "Besto", category: "veiligheid", price: 27.47, blurb: "Buoyancy aid for dogs, with a grab handle to lift them back aboard." },
+  { slug: "fire-extinguisher-powder-2kg", name: "Fire Extinguisher Powder 2kg", brand: OWN_BRAND, category: "veiligheid", price: 44.04, blurb: "Compact 2kg ABC powder extinguisher with a mounting bracket." },
+  { slug: "fire-blanket-100", name: "Fire Blanket 100x100cm", brand: OWN_BRAND, category: "veiligheid", price: 30.49, blurb: "Galley fire blanket for smothering flames fast." },
+  { slug: "winter-pvc-gloves", name: "Winter PVC Gloves", brand: OWN_BRAND, category: "veiligheid", price: 16.58, unit: "per pair", blurb: "Warm, waterproof PVC gloves for cold, wet work on deck." },
+  { slug: "nitrile-grip-gloves", name: "Nitrile Grip Gloves", brand: "Psp", category: "veiligheid", price: 3.15, unit: "per pair", blurb: "All-round nitrile-coated gloves with a secure grip for lines and tools." },
 ];
 
 // --- Dutch overrides ---------------------------------------------------------
@@ -143,17 +128,13 @@ export const products: Product[] = [
 // Product model numbers / brand product names are left as-is.
 
 const nlCategory: Record<string, { name: string; tagline: string; blurb: string }> = {
-  maintenance: { name: "Onderhoud & verzorging", tagline: "Houd haar als nieuw", blurb: "Reinigers, poetsmiddelen, antifouling en lak van Hempel, Epifanes en Yachticon." },
-  "deck-hardware": { name: "Dek & beslag", tagline: "Gemaakt om te blijven", blurb: "Klampen, sluitingen, rvs-beslag en touw voor elk dek." },
-  "mooring-fenders": { name: "Afmeren & stootwillen", tagline: "Makkelijk langszij", blurb: "Jachtstootwillen, meerlijnen en bolders op maat voor pleziervaart." },
-  "electrical-lighting": { name: "Elektra & verlichting", tagline: "Stroom en zicht", blurb: "Scheepsaccu's, vertind kabelwerk en navigatieverlichting." },
-  "engine-bilge": { name: "Motor & bilge", tagline: "Houd haar draaiend", blurb: "Pompen, oliën, vet, snaren en essentials voor de motorruimte." },
-  "safety-rescue": { name: "Veiligheid & redding", tagline: "Iedereen veilig thuis", blurb: "Reddingsvesten, seinmiddelen, EHBO en brandbeveiliging." },
-  "electronics-comms": { name: "Elektronica & communicatie", tagline: "Verbonden aan boord", blurb: "Nautic Talk headsetsystemen, verrekijkers en boordelektronica." },
-  clothing: { name: "Slechtweerkleding & uitrusting", tagline: "Gekleed voor het water", blurb: "Zeiljassen, laarzen, handschoenen en regenkleding." },
-  "flags-accessories": { name: "Vlaggen & accessoires", tagline: "De finishing touch", blurb: "Beleefdheidsvlaggen, stokken, kajuit en decoratie." },
-  tools: { name: "Gereedschap", tagline: "Voor klussen op het water", blurb: "Scheepsgereedschap, hoezen, dekzeilen en hijsbanden." },
-  fishing: { name: "Vissen", tagline: "Zee, kust en binnenwater", blurb: "Hengels, molens en pluggen voor zeebaars, snoekbaars en binnenwater." },
+  onderhoud: { name: "Onderhoud", tagline: "Houd haar als nieuw", blurb: "Reinigers, poetsmiddelen, antifouling en lak van Hempel, Epifanes en Yachticon." },
+  elektro: { name: "Elektro", tagline: "Stroom en licht aan boord", blurb: "Scheepskabel, walstroom, navigatieverlichting en elektra." },
+  gereedschap: { name: "Gereedschap", tagline: "Voor klussen op het water", blurb: "Scheepsgereedschap, borstels, spanbanden en hijsmiddelen." },
+  machinekamer: { name: "Machinekamer", tagline: "Houd haar draaiend", blurb: "Pompen, slangen, klemmen, oliën en essentials voor de machinekamer." },
+  "scheeps-benodigdheden": { name: "Scheeps benodigdheden", tagline: "Alles voor aan boord", blurb: "Stootwillen, meerlijnen, touw, blokken, vlaggen en dekbeslag." },
+  technisch: { name: "Technisch", tagline: "Systemen & communicatie", blurb: "Nautic Talk handsfree headsets en technische uitrusting aan boord." },
+  veiligheid: { name: "Veiligheid", tagline: "Iedereen veilig thuis", blurb: "Reddingsvesten, brandbeveiliging, handschoenen en reddingsmateriaal." },
 };
 
 const nlBrandNote: Record<string, string> = {
@@ -227,9 +208,6 @@ const nlProduct: Record<string, { name: string; blurb: string }> = {
   "lifting-sling-1t-3m": { name: "Rondstrop 1T 3m", blurb: "Rondstrop van 1 ton voor hijsen, bergen en mastwerk." },
   "ratchet-strap-9m": { name: "Spanband met ratel 25mm x 9m", blurb: "Spanband met ratel voor het vastzetten van uitrusting, bijboot en deklading." },
   "wire-cup-brush-115": { name: "Draadkomstaalborstel 115mm", blurb: "Getwiste komborstel voor haakse slijpers, voor roest en verfvoorbereiding." },
-  "shore-spinning-rod-80": { name: "Kustspinhengel 8'0\" 10-30g", blurb: "Strakke, snelle kusthengel gebouwd voor zeebaars langs de kust." },
-  "saltwater-reel-4000": { name: "Zoutwater spinmolen 4000", blurb: "Afgedichte, zoutbestendige spinmolen met soepele slip." },
-  "seabass-lure-set": { name: "Zeebaars pluggenset (5 st)", blurb: "Handgekozen set harde en zachte pluggen voor zeebaars en snoekbaars." },
 };
 
 const productSpecs: Record<string, Record<string, string>> = {
