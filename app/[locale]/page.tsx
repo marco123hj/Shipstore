@@ -15,6 +15,47 @@ const heroTag: Record<string, string> = {
   en: "For watersports and shipping",
 };
 
+const promo: Record<
+  string,
+  { heading: string; summerTitle: string; summerText: string; winterTitle: string; winterText: string; cta: string }
+> = {
+  nl: {
+    heading: "Klaar voor elk seizoen",
+    summerTitle: "Alles voor uw boot voor de zomer",
+    summerText: "Onderhoud, reiniging en dek­uitrusting om varend het seizoen in te gaan.",
+    winterTitle: "Boot winterklaar maken",
+    winterText: "Antifouling, hoezen en conservering om veilig te overwinteren.",
+    cta: "Bekijk producten",
+  },
+  en: {
+    heading: "Ready for every season",
+    summerTitle: "Everything for your boat this summer",
+    summerText: "Maintenance, cleaning and deck gear to start the season right.",
+    winterTitle: "Winterise your boat",
+    winterText: "Antifouling, covers and conservation to lay up safely.",
+    cta: "Shop products",
+  },
+};
+
+const blog: Record<string, { heading: string; posts: { title: string; tag: string }[] }> = {
+  nl: {
+    heading: "Blogs & Nieuws",
+    posts: [
+      { title: "Online vernieuwde shop: shipstore.nl", tag: "Nieuws" },
+      { title: "Handsfree aan boord met Nautic Talk", tag: "Product" },
+      { title: "Checklist: je boot winterklaar", tag: "Gids" },
+    ],
+  },
+  en: {
+    heading: "Blog & News",
+    posts: [
+      { title: "Our renewed shop: shipstore.nl", tag: "News" },
+      { title: "Hands-free on board with Nautic Talk", tag: "Product" },
+      { title: "Checklist: winterise your boat", tag: "Guide" },
+    ],
+  },
+};
+
 export default function HomePage({ params }: { params: { locale: string } }) {
   const { locale } = params;
   const dict = getDict(locale);
@@ -99,6 +140,44 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         </div>
       </section>
 
+      {/* Seasonal promo band */}
+      <section className="container-c py-14">
+        <h2 className="text-2xl font-bold text-ink">{(promo[locale] ?? promo.nl).heading}</h2>
+        <div className="mt-6 grid gap-5 md:grid-cols-2">
+          {[
+            {
+              title: (promo[locale] ?? promo.nl).summerTitle,
+              text: (promo[locale] ?? promo.nl).summerText,
+              img: "https://images.unsplash.com/photo-1540946485063-a40da27545f8?w=800&h=500&fit=crop",
+              href: `/${locale}/category/onderhoud`,
+            },
+            {
+              title: (promo[locale] ?? promo.nl).winterTitle,
+              text: (promo[locale] ?? promo.nl).winterText,
+              img: "https://images.unsplash.com/photo-1518623489648-a173ef7824f3?w=800&h=500&fit=crop",
+              href: `/${locale}/category/onderhoud`,
+            },
+          ].map((p) => (
+            <Link
+              key={p.title}
+              href={p.href}
+              className="group relative flex min-h-[200px] flex-col justify-end overflow-hidden rounded-2xl p-6 text-white"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={p.img} alt="" className="absolute inset-0 h-full w-full object-cover transition group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/40 to-transparent" />
+              <div className="relative">
+                <h3 className="text-xl font-bold">{p.title}</h3>
+                <p className="mt-1 max-w-sm text-sm text-white/80">{p.text}</p>
+                <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-orange-light">
+                  {(promo[locale] ?? promo.nl).cta} →
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <section className="bg-navy text-white">
         <div className="container-c grid items-center gap-8 py-14 lg:grid-cols-[1fr_auto]">
           <div>
@@ -150,6 +229,29 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           >
             {t.visitCta}
           </Link>
+        </div>
+      </section>
+
+      {/* Blogs & Nieuws */}
+      <section className="border-t border-navy/10 bg-sand-dark py-14">
+        <div className="container-c">
+          <h2 className="text-2xl font-bold text-ink">{(blog[locale] ?? blog.nl).heading}</h2>
+          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {(blog[locale] ?? blog.nl).posts.map((post, i) => (
+              <div
+                key={post.title}
+                className="group flex flex-col overflow-hidden rounded-xl border border-navy/10 bg-white"
+              >
+                <div className="flex aspect-[16/9] items-center justify-center bg-navy/5">
+                  <Icon name={["anchor", "headset", "droplet"][i] ?? "anchor"} className="h-10 w-10 text-navy/20" />
+                </div>
+                <div className="flex flex-1 flex-col p-5">
+                  <span className="text-xs font-semibold uppercase tracking-wide text-orange-dark">{post.tag}</span>
+                  <h3 className="mt-1 text-base font-semibold text-ink">{post.title}</h3>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

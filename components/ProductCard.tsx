@@ -2,7 +2,8 @@ import Link from "next/link";
 import Icon from "@/components/Icon";
 import AddToCartButton from "@/components/AddToCartButton";
 import WishlistButton from "@/components/WishlistButton";
-import { Product, formatPrice, getCategory } from "@/lib/data";
+import Price from "@/components/Price";
+import { Product, getCategory } from "@/lib/data";
 import type { Dict } from "@/lib/i18n";
 
 export default function ProductCard({
@@ -37,9 +38,9 @@ export default function ProductCard({
         </Link>
         <div className="mt-auto flex items-center justify-between pt-3">
           <div className="flex items-baseline gap-2">
-            <span className="text-base font-bold text-navy">{formatPrice(product.price, locale)}</span>
+            <Price value={product.price} locale={locale} className="text-base font-bold text-navy" />
             {product.oldPrice && (
-              <span className="text-xs text-navy/40 line-through">{formatPrice(product.oldPrice, locale)}</span>
+              <Price value={product.oldPrice} locale={locale} strike className="text-xs text-navy/40 line-through" />
             )}
           </div>
           <AddToCartButton

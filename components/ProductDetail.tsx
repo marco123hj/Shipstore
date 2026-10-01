@@ -7,10 +7,16 @@ import { recordView } from "@/context/RecentlyViewed";
 import ProductCard from "@/components/ProductCard";
 import AddToCartButton from "@/components/AddToCartButton";
 import WishlistButton from "@/components/WishlistButton";
-import { Product, Category, formatPrice } from "@/lib/data";
+import { Product, Category } from "@/lib/data";
+import Price from "@/components/Price";
 import type { Dict } from "@/lib/i18n";
 
 const trustIcons = ["shield", "truck", "refresh", "lock"];
+
+const askLabels: Record<string, { q: string; cta: string }> = {
+  nl: { q: "Heeft u een vraag of opmerking over dit artikel?", cta: "Neem contact op" },
+  en: { q: "Have a question or comment about this item?", cta: "Contact us" },
+};
 
 export default function ProductDetail({
   product,
@@ -136,15 +142,14 @@ export default function ProductDetail({
             {/* Price */}
             <div>
               <div className="flex items-center gap-3">
-                <span className="text-2xl font-semibold text-ink">{formatPrice(product.price, locale)}</span>
+                <Price value={product.price} locale={locale} note className="text-2xl font-semibold text-ink" />
                 {hasDiscount && (
                   <>
-                    <span className="text-lg text-navy/40 line-through">{formatPrice(product.oldPrice!, locale)}</span>
-                    <span className="rounded bg-brass px-2 py-0.5 text-[11px] font-semibold text-navy">{dict.common.sale}</span>
+                    <Price value={product.oldPrice!} locale={locale} strike className="text-lg text-navy/40 line-through" />
+                    <span className="rounded bg-brass px-2 py-0.5 text-[11px] font-semibold text-white">{dict.common.sale}</span>
                   </>
                 )}
               </div>
-              <p className="mt-1 text-[11px] text-navy/50">{t.priceNote}</p>
             </div>
 
             {/* Quantity + add + wishlist */}
@@ -231,6 +236,18 @@ export default function ProductDetail({
                   {open === s.id && <div className="pb-5">{s.body}</div>}
                 </div>
               ))}
+            </div>
+
+            {/* Question box */}
+            <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-navy/10 bg-sand-dark px-5 py-4">
+              <span className="text-sm text-navy/70">{(askLabels[locale] ?? askLabels.nl).q}</span>
+              <Link
+                href={`/${locale}/contact`}
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-orange-dark hover:underline"
+              >
+                <Icon name="compass" className="h-4 w-4" />
+                {(askLabels[locale] ?? askLabels.nl).cta}
+              </Link>
             </div>
           </div>
         </div>

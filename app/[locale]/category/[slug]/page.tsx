@@ -25,18 +25,22 @@ export default function CategoryPage({ params }: { params: { locale: string; slu
 
   return (
     <>
-      <section className="bg-navy text-white">
-        <div className="container-c py-12">
-          <Link href={`/${locale}/shop`} className="text-sm text-brass hover:underline">
-            ← {dict.category.back}
-          </Link>
+      <section className="border-b border-navy/10 bg-sand-dark">
+        <div className="container-c py-10">
+          <nav className="flex items-center gap-2 text-sm text-navy/50">
+            <Link href={`/${locale}`} className="transition hover:text-orange-dark">{dict.common.home}</Link>
+            <span className="text-navy/30">/</span>
+            <Link href={`/${locale}/shop`} className="transition hover:text-orange-dark">{dict.common.shop}</Link>
+            <span className="text-navy/30">/</span>
+            <span className="text-ink">{cat.name}</span>
+          </nav>
           <div className="mt-4 flex items-center gap-4">
-            <span className="grid h-12 w-12 place-items-center rounded-md bg-white/10 text-white">
+            <span className="grid h-12 w-12 place-items-center rounded-md bg-orange/10 text-orange-dark">
               <Icon name={cat.icon} className="h-6 w-6" />
             </span>
             <div>
-              <h1 className="text-3xl font-bold">{cat.name}</h1>
-              <p className="mt-1 max-w-xl text-white/70">{cat.blurb}</p>
+              <h1 className="text-3xl font-bold text-ink">{cat.name}</h1>
+              <p className="mt-1 max-w-xl text-navy/60">{cat.blurb}</p>
             </div>
           </div>
         </div>

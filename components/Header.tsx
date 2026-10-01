@@ -7,6 +7,7 @@ import SearchBar from "@/components/SearchBar";
 import AuthNav from "@/components/AuthNav";
 import WishlistNav from "@/components/WishlistNav";
 import MobileMenu from "@/components/MobileMenu";
+import BtwToggle from "@/components/BtwToggle";
 import type { Dict } from "@/lib/i18n";
 
 const topbar: Record<string, { shop: string; business: string }> = {
@@ -35,6 +36,7 @@ export default function Header({ locale, dict }: { locale: string; dict: Dict })
             <a href="tel:+31514856718" className="hidden transition hover:text-white sm:inline">
               +31 514-856718
             </a>
+            <BtwToggle locale={locale} />
             <LangSwitcher locale={locale} label={dict.switchLabel} title={dict.switchTo} />
           </div>
         </div>
