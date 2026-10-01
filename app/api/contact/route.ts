@@ -17,7 +17,7 @@ function escapeHtml(s: string) {
 }
 
 export async function POST(req: Request) {
-  let body: { name?: string; email?: string; message?: string };
+  let body: { name?: string; company?: string; phone?: string; email?: string; message?: string };
   try {
     body = await req.json();
   } catch {
@@ -25,6 +25,8 @@ export async function POST(req: Request) {
   }
 
   const name = (body.name ?? "").trim();
+  const company = (body.company ?? "").trim();
+  const phone = (body.phone ?? "").trim();
   const email = (body.email ?? "").trim();
   const message = (body.message ?? "").trim();
 
@@ -55,6 +57,8 @@ export async function POST(req: Request) {
       reply_to: email,
       subject: `Nieuw contactbericht — ${name}`,
       html: `<p><strong>${escapeHtml(name)}</strong> &lt;${escapeHtml(email)}&gt; schreef:</p>
+             ${company ? `<p>Bedrijf: ${escapeHtml(company)}</p>` : ""}
+             ${phone ? `<p>Telefoon: ${escapeHtml(phone)}</p>` : ""}
              <p style="white-space:pre-wrap">${escapeHtml(message)}</p>`,
     }),
   });

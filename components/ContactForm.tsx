@@ -22,6 +22,8 @@ export default function ContactForm({ t }: { t: Dict["contact"] }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: data.get("name"),
+          company: data.get("company"),
+          phone: data.get("phone"),
           email: data.get("email"),
           message: data.get("message"),
         }),
@@ -51,11 +53,14 @@ export default function ContactForm({ t }: { t: Dict["contact"] }) {
     <form onSubmit={onSubmit} className="rounded-lg border border-navy/10 bg-white p-6">
       <h2 className="text-xl font-bold text-ink">{t.formTitle}</h2>
       <div className="mt-4 space-y-3">
-        <input name="name" className={inputClass} placeholder={t.fName} required autoComplete="name" />
-        <input name="email" className={inputClass} type="email" placeholder={t.fEmail} required autoComplete="email" />
-        <textarea name="message" className={inputClass} placeholder={t.fMessage} rows={4} required />
+        <input name="name" className={inputClass} placeholder={`${t.fName} *`} required autoComplete="name" />
+        <input name="company" className={inputClass} placeholder={t.fCompany} autoComplete="organization" />
+        <input name="phone" className={inputClass} type="tel" placeholder={t.fPhone} autoComplete="tel" />
+        <input name="email" className={inputClass} type="email" placeholder={`${t.fEmail} *`} required autoComplete="email" />
+        <textarea name="message" className={inputClass} placeholder={`${t.fMessage} *`} rows={4} required />
         {status === "error" && <p className="text-sm font-medium text-red-600">{t.error}</p>}
-        <button type="submit" disabled={sending} className="btn-brass w-full disabled:opacity-60">
+        <p className="text-xs text-navy/50">{t.required}</p>
+        <button type="submit" disabled={sending} className="w-full rounded-md bg-green px-5 py-2.5 text-sm font-bold text-white transition hover:bg-green-dark disabled:opacity-60">
           {sending ? t.sending : t.fSend}
         </button>
       </div>
