@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        orange: { DEFAULT: "#ff7f00", dark: "#e47507", light: "#ffae19" },
+        orange: { DEFAULT: "#ffae19", dark: "#e59400", light: "#ffd68c", cta: "#ff7f00", ctadark: "#e47507" },
         navy: { DEFAULT: "#06384d", light: "#0a4a63", deep: "#052126" },
         brass: { DEFAULT: "#ff7f00", dark: "#e47507" }, // accent/CTA → orange
         sand: { DEFAULT: "#ffffff", dark: "#fff7e8" },   // surfaces → white / warm cream

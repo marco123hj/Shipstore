@@ -28,10 +28,10 @@ body {
     @apply mx-auto max-w-content px-5 sm:px-8;
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-md bg-orange px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-dark;
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-orange-cta px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-ctadark;
   }
   .btn-brass {
-    @apply inline-flex items-center justify-center gap-2 rounded-md bg-orange px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-dark;
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-orange px-5 py-2.5 text-sm font-bold text-navy transition hover:bg-orange-dark;
   }
   .btn-outline {
     @apply inline-flex items-center justify-center gap-2 rounded-md border border-navy/20 bg-white px-5 py-2.5 text-sm font-semibold text-navy transition hover:border-navy;

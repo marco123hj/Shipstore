@@ -68,7 +68,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
     <>
       <JsonLd data={organizationSchema()} />
       <section className="bg-white">
-        <div className="container-c grid items-center gap-10 py-12 lg:grid-cols-2 lg:py-16">
+        <div className="container-c grid items-center gap-10 py-12 lg:grid-cols-[1fr_1.15fr] lg:py-16">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full bg-orange/10 px-3 py-1 text-xs font-semibold text-orange-dark">
               <Icon name="anchor" className="h-3.5 w-3.5" /> {heroTag[locale] ?? heroTag.nl}
@@ -82,18 +82,24 @@ export default function HomePage({ params }: { params: { locale: string } }) {
               <Link href={`/${locale}/nautic-talk`} className="btn-outline">{dict.nauticTalk.title}</Link>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-3">
-            <Link href={`/${locale}/shop`} className="relative overflow-hidden rounded-2xl">
+          <div className="grid grid-cols-2 gap-4">
+            <Link
+              href={`/${locale}/shop`}
+              className="group relative block h-72 overflow-hidden rounded-2xl shadow-sm sm:h-96 lg:h-[30rem]"
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/shipstore/hero-watersport.webp" alt="Watersport" className="h-full w-full object-cover" />
-              <span className="absolute bottom-3 left-3 rounded-md bg-navy/75 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+              <img src="/shipstore/hero-watersport.webp" alt="Watersport" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <span className="absolute bottom-4 left-4 rounded-md bg-navy/75 px-3 py-1.5 text-sm font-bold uppercase tracking-wide text-white">
                 Watersport
               </span>
             </Link>
-            <Link href={`/${locale}/shop`} className="relative overflow-hidden rounded-2xl">
+            <Link
+              href={`/${locale}/shop`}
+              className="group relative block h-72 overflow-hidden rounded-2xl shadow-sm sm:h-96 lg:h-[30rem]"
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/shipstore/hero-scheepvaart.webp" alt="Scheepvaart" className="h-full w-full object-cover" />
-              <span className="absolute bottom-3 left-3 rounded-md bg-navy/75 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+              <img src="/shipstore/hero-scheepvaart.webp" alt="Scheepvaart" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <span className="absolute bottom-4 left-4 rounded-md bg-navy/75 px-3 py-1.5 text-sm font-bold uppercase tracking-wide text-white">
                 Scheepvaart
               </span>
             </Link>
