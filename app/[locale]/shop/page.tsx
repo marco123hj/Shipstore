@@ -3,11 +3,11 @@ import CategoryCard from "@/components/CategoryCard";
 import ProductBrowser from "@/components/ProductBrowser";
 import { getDict } from "@/lib/i18n";
 
-export default function ShopPage({ params }: { params: { locale: string } }) {
+export default async function ShopPage({ params }: { params: { locale: string } }) {
   const { locale } = params;
   const dict = getDict(locale);
   const categories = getCategories(locale);
-  const products = getProducts(locale);
+  const products = await getProducts(locale);
 
   return (
     <div className="container-c py-12">

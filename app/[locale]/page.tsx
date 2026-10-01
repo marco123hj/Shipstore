@@ -56,12 +56,13 @@ const blog: Record<string, { heading: string; posts: { title: string; tag: strin
   },
 };
 
-export default function HomePage({ params }: { params: { locale: string } }) {
+export default async function HomePage({ params }: { params: { locale: string } }) {
   const { locale } = params;
   const dict = getDict(locale);
   const t = dict.home;
   const categories = getCategories(locale);
-  const featured = getFeaturedProducts(locale);
+  const featured = await getFeaturedProducts(locale);
+  const recent = await getProducts(locale);
   const brands = getBrands(locale);
 
   return (
@@ -253,7 +254,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         </div>
       </section>
 
-      <RecentlyViewed products={getProducts(locale)} locale={locale} dict={dict} />
+      <RecentlyViewed products={recent} locale={locale} dict={dict} />
     </>
   );
 }

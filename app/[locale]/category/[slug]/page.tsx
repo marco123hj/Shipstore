@@ -16,12 +16,12 @@ export function generateMetadata({ params }: { params: { locale: string; slug: s
   return { title: cat ? `${cat.name} — Shipstore` : "Shipstore" };
 }
 
-export default function CategoryPage({ params }: { params: { locale: string; slug: string } }) {
+export default async function CategoryPage({ params }: { params: { locale: string; slug: string } }) {
   const { locale, slug } = params;
   const dict = getDict(locale);
   const cat = getCategory(slug, locale);
   if (!cat) notFound();
-  const products = getProductsByCategory(slug, locale);
+  const products = await getProductsByCategory(slug, locale);
 
   return (
     <>

@@ -6,7 +6,7 @@ export function generateMetadata({ params }: { params: { locale: string } }) {
   return { title: `${getDict(params.locale).search.title} — Shipstore` };
 }
 
-export default function SearchPage({
+export default async function SearchPage({
   params,
   searchParams,
 }: {
@@ -16,7 +16,7 @@ export default function SearchPage({
   const { locale } = params;
   const q = (searchParams.q ?? "").toString();
   const dict = getDict(locale);
-  const results = searchProducts(q, locale);
+  const results = await searchProducts(q, locale);
 
   return (
     <div className="container-c py-12">

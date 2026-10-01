@@ -109,16 +109,21 @@ export default function ProductDetail({
         <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-16">
           {/* Gallery */}
           <div className="lg:sticky lg:top-24">
-            <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-xl border border-navy/10 bg-gradient-to-br from-white to-sand">
-              <span className="absolute left-4 top-4 text-xs font-semibold uppercase tracking-wide text-navy/40">
+            <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-xl border border-navy/10 bg-white p-6">
+              <span className="absolute left-4 top-4 z-10 text-xs font-semibold uppercase tracking-wide text-navy/40">
                 {product.brand}
               </span>
               {hasDiscount && (
-                <span className="absolute right-4 top-4 rounded bg-brass px-2 py-0.5 text-[11px] font-semibold text-navy">
+                <span className="absolute right-4 top-4 z-10 rounded bg-orange px-2 py-0.5 text-[11px] font-bold text-navy">
                   {dict.common.sale}
                 </span>
               )}
-              <Icon name={category?.icon ?? "anchor"} className="h-32 w-32 text-navy/15" />
+              {product.image ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={product.image} alt={product.name} className="h-full w-full object-contain" />
+              ) : (
+                <Icon name={category?.icon ?? "anchor"} className="h-32 w-32 text-navy/15" />
+              )}
             </div>
             <div className="mt-3 grid grid-cols-4 gap-3">
               {[0, 1, 2, 3].map((i) => (

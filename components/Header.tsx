@@ -15,8 +15,9 @@ const topbar: Record<string, { shop: string; business: string }> = {
   en: { shop: "Store", business: "Business customer" },
 };
 
-export default function Header({ locale, dict }: { locale: string; dict: Dict }) {
+export default async function Header({ locale, dict }: { locale: string; dict: Dict }) {
   const categories = getCategories(locale);
+  const searchItems = await getSearchItems(locale);
   const tb = topbar[locale] ?? topbar.nl;
 
   return (
@@ -46,7 +47,7 @@ export default function Header({ locale, dict }: { locale: string; dict: Dict })
       <div className="border-b border-navy/10 bg-white">
         <div className="container-c flex h-16 items-center gap-4">
           <div className="flex items-center gap-2">
-            <MobileMenu locale={locale} dict={dict} items={getSearchItems(locale)} />
+            <MobileMenu locale={locale} dict={dict} items={searchItems} />
             <Link href={`/${locale}`} className="flex items-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/shipstore/logo.svg" alt="Shipstore" className="h-10 w-auto" />
@@ -55,13 +56,13 @@ export default function Header({ locale, dict }: { locale: string; dict: Dict })
 
           <div className="hidden flex-1 justify-center px-4 md:flex">
             <div className="w-full max-w-xl">
-              <SearchBar locale={locale} items={getSearchItems(locale)} search={dict.search} />
+              <SearchBar locale={locale} items={searchItems} search={dict.search} />
             </div>
           </div>
 
           <div className="flex flex-1 items-center justify-end gap-3 text-navy md:flex-none">
             <div className="md:hidden">
-              <SearchBar locale={locale} items={getSearchItems(locale)} search={dict.search} />
+              <SearchBar locale={locale} items={searchItems} search={dict.search} />
             </div>
             <WishlistNav locale={locale} label={dict.wishlist.title} />
             <AuthNav locale={locale} label={dict.auth.account} />

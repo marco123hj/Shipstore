@@ -20,10 +20,15 @@ export default function ProductCard({
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-lg border border-navy/10 bg-white transition hover:border-navy/40">
       <WishlistButton slug={product.slug} addLabel={dict.product.wishlistAdd} removeLabel={dict.product.wishlistRemove} />
-      <Link href={href} className="relative flex aspect-[4/3] items-center justify-center bg-sand">
-        <Icon name={cat?.icon ?? "anchor"} className="h-12 w-12 text-navy/25" />
+      <Link href={href} className="relative flex aspect-[4/3] items-center justify-center bg-white p-3">
+        {product.image ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={product.image} alt={product.name} className="h-full w-full object-contain" />
+        ) : (
+          <Icon name={cat?.icon ?? "anchor"} className="h-12 w-12 text-navy/25" />
+        )}
         {product.oldPrice && (
-          <span className="absolute left-2 top-2 rounded bg-brass px-2 py-0.5 text-[11px] font-semibold text-navy">
+          <span className="absolute left-2 top-2 rounded bg-orange px-2 py-0.5 text-[11px] font-bold text-navy">
             {dict.common.sale}
           </span>
         )}

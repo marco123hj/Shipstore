@@ -11,6 +11,13 @@
 // Product shape below.
 // -----------------------------------------------------------------------------
 
+import {
+  isShopifyConfigured,
+  getShopifyProducts,
+  getShopifyProduct,
+  getShopifyProductsByCollection,
+} from "./shopify";
+
 export type Tone = "ink" | "rust" | "sea" | "brass";
 
 export type Category = {
@@ -34,6 +41,7 @@ export type Product = {
   blurb: string;
   featured?: boolean;
   specs?: Record<string, string>;
+  image?: string; // product photo URL (from Shopify); placeholders have none
 };
 
 export type Brand = { slug: string; name: string; note: string; description: string; logo?: string };
@@ -296,15 +304,40 @@ export function getCategory(slug: string, locale?: string): Category | undefined
   return c ? localizeCategory(c, locale) : undefined;
 }
 
-export function getProducts(locale?: string): Product[] {
+export async function getProducts(locale?: string): Promise<Product[]> {
+  if (isShopifyConfigured()) {
+    try {
+      const sp = await getShopifyProducts(250);
+      if (sp.length) return sp;
+    } catch {
+      /* fall back to placeholder below */
+    }
+  }
   return products.map((p) => localizeProduct(p, locale));
 }
 
-export function getProductsByCategory(slug: string, locale?: string): Product[] {
+export async function getProductsByCategory(slug: string, locale?: string): Promise<Product[]> {
+  if (isShopifyConfigured()) {
+    try {
+      const sp = await getShopifyProductsByCollection(slug, 250);
+      if (sp.length) return sp;
+    } catch {
+      /* fall back to placeholder below */
+    }
+  }
   return products.filter((p) => p.category === slug).map((p) => localizeProduct(p, locale));
 }
 
-export function getProductsByBrand(brand: string, locale?: string): Product[] {
+export async function getProductsByBrand(brand: string, locale?: string): Promise<Product[]> {
+  if (isShopifyConfigured()) {
+    try {
+      const sp = await getShopifyProducts(250);
+      const hit = sp.filter((p) => p.brand.toLowerCase() === brand.toLowerCase());
+      if (hit.length) return hit;
+    } catch {
+      /* fall back to placeholder below */
+    }
+  }
   return products.filter((p) => p.brand === brand).map((p) => localizeProduct(p, locale));
 }
 
@@ -320,29 +353,75 @@ function buildSearchText(p: Product): string {
     .toLowerCase();
 }
 
-export function searchProducts(query: string, locale?: string): Product[] {
+export async function searchProducts(query: string, locale?: string): Promise<Product[]> {
   const q = query.trim().toLowerCase();
   if (!q) return [];
+  if (isShopifyConfigured()) {
+    try {
+      const sp = await getShopifyProducts(250);
+      const hit = sp.filter((p) =>
+        `${p.name} ${p.brand} ${p.blurb}`.toLowerCase().includes(q)
+      );
+      return hit;
+    } catch {
+      /* fall back to placeholder below */
+    }
+  }
   return products.filter((p) => buildSearchText(p).includes(q)).map((p) => localizeProduct(p, locale));
 }
 
 // Lightweight list for the header search dropdown: localized display fields
-// plus a bilingual search string to filter against.
+// plus a search string to filter against.
 export type SearchItem = { slug: string; name: string; brand: string; price: number; search: string };
 
-export function getSearchItems(locale?: string): SearchItem[] {
+export async function getSearchItems(locale?: string): Promise<SearchItem[]> {
+  if (isShopifyConfigured()) {
+    try {
+      const sp = await getShopifyProducts(250);
+      if (sp.length) {
+        return sp.map((p) => ({
+          slug: p.slug,
+          name: p.name,
+          brand: p.brand,
+          price: p.price,
+          search: `${p.name} ${p.brand} ${p.blurb}`.toLowerCase(),
+        }));
+      }
+    } catch {
+      /* fall back to placeholder below */
+    }
+  }
   return products.map((p) => {
     const l = localizeProduct(p, locale);
     return { slug: p.slug, name: l.name, brand: l.brand, price: l.price, search: buildSearchText(p) };
   });
 }
 
-export function getProduct(slug: string, locale?: string): Product | undefined {
+export async function getProduct(slug: string, locale?: string): Promise<Product | undefined> {
+  if (isShopifyConfigured()) {
+    try {
+      const sp = await getShopifyProduct(slug);
+      if (sp) return sp;
+    } catch {
+      /* fall back to placeholder below */
+    }
+  }
   const p = products.find((p) => p.slug === slug);
   return p ? localizeProduct(p, locale) : undefined;
 }
 
-export function getFeaturedProducts(locale?: string): Product[] {
+export async function getFeaturedProducts(locale?: string): Promise<Product[]> {
+  if (isShopifyConfigured()) {
+    try {
+      const sp = await getShopifyProducts(50);
+      if (sp.length) {
+        const feat = sp.filter((p) => p.featured);
+        return (feat.length ? feat : sp).slice(0, 8);
+      }
+    } catch {
+      /* fall back to placeholder below */
+    }
+  }
   return products.filter((p) => p.featured).map((p) => localizeProduct(p, locale));
 }
 

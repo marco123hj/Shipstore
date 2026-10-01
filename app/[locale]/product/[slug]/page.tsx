@@ -9,16 +9,16 @@ import ProductDetail from "@/components/ProductDetail";
 import RecentlyViewed from "@/components/RecentlyViewed";
 import JsonLd from "@/components/JsonLd";
 import { productSchema } from "@/lib/seo";
-import { getDict, locales } from "@/lib/i18n";
+import { getDict } from "@/lib/i18n";
 
+// Rendered on demand (products live in Shopify); cached via fetch revalidate.
+export const dynamicParams = true;
 export function generateStaticParams() {
-  return locales.flatMap((locale) =>
-    getProducts().map((p) => ({ locale, slug: p.slug }))
-  );
+  return [];
 }
 
-export function generateMetadata({ params }: { params: { locale: string; slug: string } }) {
-  const p = getProduct(params.slug, params.locale);
+export async function generateMetadata({ params }: { params: { locale: string; slug: string } }) {
+  const p = await getProduct(params.slug, params.locale);
   if (!p) return { title: "Shipstore" };
   return {
     title: `${p.name} — Shipstore`,
@@ -27,16 +27,17 @@ export function generateMetadata({ params }: { params: { locale: string; slug: s
   };
 }
 
-export default function ProductPage({ params }: { params: { locale: string; slug: string } }) {
+export default async function ProductPage({ params }: { params: { locale: string; slug: string } }) {
   const { locale, slug } = params;
   const dict = getDict(locale);
-  const product = getProduct(slug, locale);
+  const product = await getProduct(slug, locale);
   if (!product) notFound();
 
   const category = getCategory(product.category, locale);
-  const related = getProductsByCategory(product.category, locale)
+  const related = (await getProductsByCategory(product.category, locale))
     .filter((p) => p.slug !== product.slug)
     .slice(0, 4);
+  const recent = await getProducts(locale);
 
   return (
     <>
@@ -48,7 +49,7 @@ export default function ProductPage({ params }: { params: { locale: string; slug
         locale={locale}
         dict={dict}
       />
-      <RecentlyViewed products={getProducts(locale)} locale={locale} dict={dict} excludeSlug={slug} />
+      <RecentlyViewed products={recent} locale={locale} dict={dict} excludeSlug={slug} />
     </>
   );
 }

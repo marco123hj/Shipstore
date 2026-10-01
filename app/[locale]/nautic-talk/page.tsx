@@ -8,11 +8,11 @@ export function generateMetadata({ params }: { params: { locale: string } }) {
   return { title: `${getDict(params.locale).nauticTalk.title} — Shipstore` };
 }
 
-export default function NauticTalkPage({ params }: { params: { locale: string } }) {
+export default async function NauticTalkPage({ params }: { params: { locale: string } }) {
   const { locale } = params;
   const dict = getDict(locale);
   const t = dict.nauticTalk;
-  const products = getProductsByBrand("Nautic Talk", locale);
+  const products = await getProductsByBrand("Nautic Talk", locale);
 
   return (
     <>

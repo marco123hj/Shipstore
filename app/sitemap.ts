@@ -3,7 +3,7 @@ import { SITE_URL } from "@/lib/seo";
 import { locales } from "@/lib/i18n";
 import { getCategories, getProducts, getBrands } from "@/lib/data";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPaths = [
     "",
     "/shop",
@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/wishlist",
   ];
   const catPaths = getCategories().map((c) => `/category/${c.slug}`);
-  const productPaths = getProducts().map((p) => `/product/${p.slug}`);
+  const productPaths = (await getProducts()).map((p) => `/product/${p.slug}`);
   const brandPaths = getBrands().map((b) => `/brand/${b.slug}`);
   const all = [...staticPaths, ...catPaths, ...productPaths, ...brandPaths];
 

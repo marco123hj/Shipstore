@@ -6,6 +6,7 @@ export function generateMetadata({ params }: { params: { locale: string } }) {
   return { title: `${getDict(params.locale).wishlist.title} — Shipstore` };
 }
 
-export default function WishlistPage({ params }: { params: { locale: string } }) {
-  return <WishlistClient products={getProducts(params.locale)} locale={params.locale} dict={getDict(params.locale)} />;
+export default async function WishlistPage({ params }: { params: { locale: string } }) {
+  const products = await getProducts(params.locale);
+  return <WishlistClient products={products} locale={params.locale} dict={getDict(params.locale)} />;
 }

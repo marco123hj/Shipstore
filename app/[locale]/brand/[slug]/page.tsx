@@ -15,12 +15,12 @@ export function generateMetadata({ params }: { params: { locale: string; slug: s
   return { title: b ? `${b.name} — Shipstore` : "Shipstore" };
 }
 
-export default function BrandPage({ params }: { params: { locale: string; slug: string } }) {
+export default async function BrandPage({ params }: { params: { locale: string; slug: string } }) {
   const { locale, slug } = params;
   const dict = getDict(locale);
   const brand = getBrand(slug, locale);
   if (!brand) notFound();
-  const products = getProductsByBrand(brand.name, locale);
+  const products = await getProductsByBrand(brand.name, locale);
 
   return (
     <>

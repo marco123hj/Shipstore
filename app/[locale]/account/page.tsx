@@ -6,12 +6,13 @@ export function generateMetadata({ params }: { params: { locale: string } }) {
   return { title: `${getDict(params.locale).account.title} — Shipstore` };
 }
 
-export default function AccountPage({ params }: { params: { locale: string } }) {
+export default async function AccountPage({ params }: { params: { locale: string } }) {
+  const products = await getProducts(params.locale);
   return (
     <AccountHub
       locale={params.locale}
       dict={getDict(params.locale)}
-      products={getProducts(params.locale)}
+      products={products}
     />
   );
 }
