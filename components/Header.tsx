@@ -47,14 +47,9 @@ export default function Header({ locale, dict }: { locale: string; dict: Dict })
         <div className="container-c flex h-16 items-center gap-4">
           <div className="flex items-center gap-2">
             <MobileMenu locale={locale} dict={dict} items={getSearchItems(locale)} />
-            <Link href={`/${locale}`} className="flex items-center gap-2 text-navy">
-              <Icon name="anchor" className="h-7 w-7 text-orange" />
-              <span className="flex flex-col leading-none">
-                <span className="text-xl font-bold text-navy">Shipstore</span>
-                <span className="text-[10px] font-medium uppercase tracking-wide text-navy/50">
-                  Watersport &amp; Scheepvaart
-                </span>
-              </span>
+            <Link href={`/${locale}`} className="flex items-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/shipstore/logo.svg" alt="Shipstore" className="h-10 w-auto" />
             </Link>
           </div>
 

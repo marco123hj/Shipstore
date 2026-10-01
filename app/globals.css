@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --font-sans: "Work Sans", system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-sans: "Open Sans", Arial, Helvetica, Verdana, sans-serif;
 }
 
 html {
@@ -56,9 +56,9 @@ input[type="range"].range-thumb::-webkit-slider-thumb {
   height: 16px;
   width: 16px;
   border-radius: 9999px;
-  background: #f39200;
+  background: #ff7f00;
   border: 2px solid #ffffff;
-  box-shadow: 0 0 0 1px rgba(243, 146, 0, 0.35);
+  box-shadow: 0 0 0 1px rgba(255, 127, 0, 0.35);
   cursor: pointer;
 }
 input[type="range"].range-thumb::-moz-range-thumb {
@@ -66,7 +66,7 @@ input[type="range"].range-thumb::-moz-range-thumb {
   height: 16px;
   width: 16px;
   border-radius: 9999px;
-  background: #f39200;
+  background: #ff7f00;
   border: 2px solid #ffffff;
   cursor: pointer;
 }

@@ -83,28 +83,20 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-3">
-            <div className="relative overflow-hidden rounded-2xl">
+            <Link href={`/${locale}/shop`} className="relative overflow-hidden rounded-2xl">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=600&h=760&fit=crop"
-                alt="Watersport"
-                className="h-full w-full object-cover"
-              />
-              <span className="absolute bottom-3 left-3 rounded-md bg-navy/70 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+              <img src="/shipstore/hero-watersport.webp" alt="Watersport" className="h-full w-full object-cover" />
+              <span className="absolute bottom-3 left-3 rounded-md bg-navy/75 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-white">
                 Watersport
               </span>
-            </div>
-            <div className="relative overflow-hidden rounded-2xl">
+            </Link>
+            <Link href={`/${locale}/shop`} className="relative overflow-hidden rounded-2xl">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=600&h=760&fit=crop"
-                alt="Scheepvaart"
-                className="h-full w-full object-cover"
-              />
-              <span className="absolute bottom-3 left-3 rounded-md bg-navy/70 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+              <img src="/shipstore/hero-scheepvaart.webp" alt="Scheepvaart" className="h-full w-full object-cover" />
+              <span className="absolute bottom-3 left-3 rounded-md bg-navy/75 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-white">
                 Scheepvaart
               </span>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -148,13 +140,13 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             {
               title: (promo[locale] ?? promo.nl).summerTitle,
               text: (promo[locale] ?? promo.nl).summerText,
-              img: "https://images.unsplash.com/photo-1540946485063-a40da27545f8?w=800&h=500&fit=crop",
+              img: "/shipstore/promo-zomer.webp",
               href: `/${locale}/category/onderhoud`,
             },
             {
               title: (promo[locale] ?? promo.nl).winterTitle,
               text: (promo[locale] ?? promo.nl).winterText,
-              img: "https://images.unsplash.com/photo-1518623489648-a173ef7824f3?w=800&h=500&fit=crop",
+              img: "/shipstore/promo-winter.webp",
               href: `/${locale}/category/onderhoud`,
             },
           ].map((p) => (

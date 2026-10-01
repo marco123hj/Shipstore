@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Work_Sans } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import { notFound } from "next/navigation";
 import "../globals.css";
 import Header from "@/components/Header";
@@ -10,9 +10,9 @@ import { getDict } from "@/lib/i18n";
 import { locales, isLocale } from "@/lib/i18n";
 import { SITE_URL } from "@/lib/seo";
 
-const sans = Work_Sans({
+const sans = Open_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-sans",
   display: "swap",
 });
